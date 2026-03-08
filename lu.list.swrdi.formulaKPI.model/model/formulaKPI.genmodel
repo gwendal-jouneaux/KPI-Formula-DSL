@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/lu.list.swrdi.formulaKPI.model/src-gen" creationIcons="false"
+    editDirectory="/lu.list.swrdi.formulaKPI.model.edit/src-gen" editorDirectory="/lu.list.swrdi.formulaKPI.model.editor/src-gen"
+    modelPluginID="lu.list.swrdi.formulaKPI.model" modelName="formulaKPI" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>formulaKPI.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="formulaKPI" basePackage="lu.list.swrdi.formulaKPI.model" disposableProviderFactory="true"
+      ecorePackage="formulaKPI.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="formulaKPI.ecore#//WindowUnit">
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//WindowUnit/SEC"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//WindowUnit/MIN"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//WindowUnit/HOUR"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//WindowUnit/DAY"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//WindowUnit/MEASUREMENT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="formulaKPI.ecore#//ValueUnit">
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/MILLI"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/SEC"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/MIN"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/HOUR"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/LITERS"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/M3"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/Wh"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/kWh"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/gCO2eq"/>
+      <genEnumLiterals ecoreEnumLiteral="formulaKPI.ecore#//ValueUnit/kgCO2eq"/>
+    </genEnums>
+    <genClasses ecoreClass="formulaKPI.ecore#//Computation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//Computation/computed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//Computation/formula"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//QualityModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//QualityModel/qualitycharacteristics"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//Computable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//Computable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//Declaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//Declaration/declared"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//KPIFormula">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//KPIFormula/declarations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//KPIFormula/computations"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//QualityAttribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//QualityAttribute/metrics"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//ValueType"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Metric">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//Metric/provider"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//Declarable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//Declarable/type"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//Operation"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Expression"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//KPI"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Provider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//Provider/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//Provider/Description"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//QualityCharacteristic">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//QualityCharacteristic/qualityattributes"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//IntegerValue"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//RealValue"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//TextualValue"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//BooleanValue"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//EnumerationValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//EnumerationValue/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//AggregationValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//AggregationValue/window"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//AggregationValue/windowUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//AggregationValue/operation"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//EnumerationLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//EnumerationLiteral/name"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//UnitValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//UnitValue/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//DriftValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//DriftValue/window"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//DriftValue/windowUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//DriftValue/operation"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//Minimum"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Average"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Median"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//StandardDeviation"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Maximum"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//BinOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//BinOp/right"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//BinOp/left"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//Greater"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Multiply"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Minus"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Plus"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//LessEq"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//GreaterEq"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//And"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Not">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//Not/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//Literal"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//RealConstant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//RealConstant/value"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//UnaryMinus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//UnaryMinus/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//Divide"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Less"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Inequality"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Equality"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//Or"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//MinOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//MinOp/expressions"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//ConditionalOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ConditionalOp/results"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ConditionalOp/conditions"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//ThresholdOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ThresholdOp/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ThresholdOp/threshold"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//WeightedSumOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//WeightedSumOp/expressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//WeightedSumOp/weights"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//AvgOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//AvgOp/expressions"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//MaxOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//MaxOp/expressions"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//TextConstant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//TextConstant/value"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//EnumLiteralRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//EnumLiteralRef/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//IntConstant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//IntConstant/value"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//UnitConstant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//UnitConstant/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//UnitConstant/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//BoolConstant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//BoolConstant/value"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//ComputableRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ComputableRef/computable"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

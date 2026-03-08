@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="formulaKPI" nsURI="http://www.list.lu/formulaKPI" nsPrefix="formulaKPI">
+  <eClassifiers xsi:type="ecore:EClass" name="Computation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="computed" lowerBound="1"
+        eType="#//Computable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="formula" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QualityModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qualitycharacteristics"
+        upperBound="-1" eType="#//QualityCharacteristic" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Computable" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Declaration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declared" lowerBound="1"
+        eType="#//Declarable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KPIFormula">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" lowerBound="1"
+        upperBound="-1" eType="#//Declaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="computations" lowerBound="1"
+        upperBound="-1" eType="#//Computation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QualityAttribute" eSuperTypes="#//Computable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metrics" upperBound="-1"
+        eType="#//Metric"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueType" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Metric" eSuperTypes="#//Declarable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="provider" eType="#//Provider"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Declarable" abstract="true" interface="true"
+      eSuperTypes="#//Computable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//ValueType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="KPI" eSuperTypes="#//Declarable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Provider">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QualityCharacteristic" eSuperTypes="#//Computable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qualityattributes" upperBound="-1"
+        eType="#//QualityAttribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//ValueType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//ValueType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TextualValue" eSuperTypes="#//ValueType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//ValueType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumerationValue" eSuperTypes="#//ValueType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" lowerBound="1"
+        upperBound="-1" eType="#//EnumerationLiteral" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregationValue" eSuperTypes="#//ValueType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="window" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="windowUnit" eType="#//WindowUnit"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
+        eType="#//Operation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumerationLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitValue" eSuperTypes="#//ValueType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ValueUnit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WindowUnit">
+    <eLiterals name="SEC" literal="seconds"/>
+    <eLiterals name="MIN" value="1" literal="minutes"/>
+    <eLiterals name="HOUR" value="2" literal="hours"/>
+    <eLiterals name="DAY" value="3" literal="days"/>
+    <eLiterals name="MEASUREMENT" value="4" literal="measurement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ValueUnit">
+    <eLiterals name="MILLI" literal="ms"/>
+    <eLiterals name="SEC" value="1" literal="s"/>
+    <eLiterals name="MIN" value="2" literal="min"/>
+    <eLiterals name="HOUR" value="3" literal="h"/>
+    <eLiterals name="LITERS" value="4" literal="L"/>
+    <eLiterals name="M3" value="5" literal="M3"/>
+    <eLiterals name="Wh" value="6" literal="Wh"/>
+    <eLiterals name="kWh" value="7" literal="kWh"/>
+    <eLiterals name="gCO2eq" value="8"/>
+    <eLiterals name="kgCO2eq" value="9" literal="kgCO2eq"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DriftValue" eSuperTypes="#//ValueType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="window" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="windowUnit" eType="#//WindowUnit"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
+        eType="#//Operation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Minimum" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Average" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Median" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StandardDeviation" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Maximum" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BinOp" abstract="true" interface="true"
+      eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" lowerBound="1" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" lowerBound="1" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Greater" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Multiply" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Minus" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Plus" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LessEq" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GreaterEq" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Not" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" abstract="true" interface="true"
+      eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RealConstant" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnaryMinus" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Divide" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Less" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Inequality" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Equality" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//BinOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MinOp" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalOp" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditions" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThresholdOp" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="threshold" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WeightedSumOp" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="weights" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AvgOp" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MaxOp" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextConstant" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumLiteralRef" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literal" lowerBound="1"
+        eType="#//EnumerationLiteral"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntConstant" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitConstant" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ValueUnit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BoolConstant" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComputableRef" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="computable" lowerBound="1"
+        eType="#//Computable"/>
+  </eClassifiers>
+</ecore:EPackage>

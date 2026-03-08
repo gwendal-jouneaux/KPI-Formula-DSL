@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: lu.list.swrdi.formulaKPI.ui
+Bundle-ManifestVersion: 2
+Bundle-Name: lu.list.swrdi.formulaKPI.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: lu.list.swrdi.formulaKPI.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: lu.list.swrdi.formulaKPI,
+ lu.list.swrdi.formulaKPI.ide,
+ lu.list.swrdi.formulaKPI.model,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.14.300",
+ org.eclipse.ui.ide;bundle-version="3.18.500",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: lu.list.swrdi.formulaKPI.ui.contentassist,
+ lu.list.swrdi.formulaKPI.ui.quickfix,
+ lu.list.swrdi.formulaKPI.ui.internal
+Bundle-Activator: lu.list.swrdi.formulaKPI.ui.internal.FormulaKPIActivator

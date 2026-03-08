@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: lu.list.swrdi.formulaKPI.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: lu.list.swrdi.formulaKPI.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.202603081612
+Bundle-SymbolicName: lu.list.swrdi.formulaKPI.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: lu.list.swrdi.formulaKPI,lu.list.swrdi.formulaKPI.model,
+ org.eclipse.xtext.testing,org.eclipse.xtext.xbase.testing,org.eclipse.x
+ text.xbase.lib;bundle-version="2.41.0"
+Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",org.junit.
+ jupiter.api.extension;version="[5.1.0,6.0.0)"
+Export-Package: lu.list.swrdi.formulaKPI.tests;x-internal=true
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=21))"
+

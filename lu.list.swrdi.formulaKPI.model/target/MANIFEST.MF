@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: lu.list.swrdi.formulaKPI.model;singleton:=true
+Automatic-Module-Name: lu.list.swrdi.formulaKPI.model
+Bundle-Version: 1.0.0.202603081612
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: lu.list.swrdi.formulaKPI.model.formulaKPI,lu.list.swrdi.
+ formulaKPI.model.formulaKPI.impl,lu.list.swrdi.formulaKPI.model.formula
+ KPI.util
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,org.eclipse.c
+ ore.runtime
+Bundle-ActivationPolicy: lazy
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=21))"
+

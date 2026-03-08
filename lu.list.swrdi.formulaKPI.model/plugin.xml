@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated KPIFormula -->
+      <package
+            uri="http://www.list.lu/KPIFormula"
+            class="lu.list.swrdi.kpiformula.model.KPIFormula.KPIFormulaPackage"
+            genModel="model/formulaKPI.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated formulaKPI -->
+      <package
+            uri="http://www.list.lu/formulaKPI"
+            class="lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage"
+            genModel="model/formulaKPI.genmodel"/>
+   </extension>
+
+</plugin>

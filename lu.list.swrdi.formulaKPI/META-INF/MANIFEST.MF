@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: lu.list.swrdi.formulaKPI
+Bundle-ManifestVersion: 2
+Bundle-Name: lu.list.swrdi.formulaKPI
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: lu.list.swrdi.formulaKPI; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.19.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.41.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ lu.list.swrdi.formulaKPI.model;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: lu.list.swrdi.formulaKPI.services,
+ lu.list.swrdi.formulaKPI.formatting2,
+ lu.list.swrdi.formulaKPI.generator,
+ lu.list.swrdi.formulaKPI,
+ lu.list.swrdi.formulaKPI.scoping,
+ lu.list.swrdi.formulaKPI.serializer,
+ lu.list.swrdi.formulaKPI.validation,
+ lu.list.swrdi.formulaKPI.parser.antlr.internal,
+ lu.list.swrdi.formulaKPI.parser.antlr
+Import-Package: org.apache.log4j
