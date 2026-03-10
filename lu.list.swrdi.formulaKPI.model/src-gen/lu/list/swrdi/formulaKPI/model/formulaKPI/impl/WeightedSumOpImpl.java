@@ -2,23 +2,18 @@
  */
 package lu.list.swrdi.formulaKPI.model.formulaKPI.impl;
 
-import java.util.Collection;
-
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Expression;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.WeightedSumOpImpl#getExpressions <em>Expressions</em>}</li>
+ *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.WeightedSumOpImpl#getList <em>List</em>}</li>
  *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.WeightedSumOpImpl#getWeights <em>Weights</em>}</li>
  * </ul>
  *
@@ -36,24 +31,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class WeightedSumOpImpl extends MinimalEObjectImpl.Container implements WeightedSumOp {
 	/**
-	 * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
+	 * The cached value of the '{@link #getList() <em>List</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpressions()
+	 * @see #getList()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Expression> expressions;
+	protected Expression list;
 
 	/**
-	 * The cached value of the '{@link #getWeights() <em>Weights</em>}' containment reference list.
+	 * The cached value of the '{@link #getWeights() <em>Weights</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getWeights()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Expression> weights;
+	protected Expression weights;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -79,12 +74,8 @@ public class WeightedSumOpImpl extends MinimalEObjectImpl.Container implements W
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Expression> getExpressions() {
-		if (expressions == null) {
-			expressions = new EObjectContainmentEList<Expression>(Expression.class, this,
-					formulaKPIPackage.WEIGHTED_SUM_OP__EXPRESSIONS);
-		}
-		return expressions;
+	public Expression getList() {
+		return list;
 	}
 
 	/**
@@ -92,12 +83,90 @@ public class WeightedSumOpImpl extends MinimalEObjectImpl.Container implements W
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Expression> getWeights() {
-		if (weights == null) {
-			weights = new EObjectContainmentEList<Expression>(Expression.class, this,
-					formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS);
+	public NotificationChain basicSetList(Expression newList, NotificationChain msgs) {
+		Expression oldList = list;
+		list = newList;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					formulaKPIPackage.WEIGHTED_SUM_OP__LIST, oldList, newList);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setList(Expression newList) {
+		if (newList != list) {
+			NotificationChain msgs = null;
+			if (list != null)
+				msgs = ((InternalEObject) list).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - formulaKPIPackage.WEIGHTED_SUM_OP__LIST, null, msgs);
+			if (newList != null)
+				msgs = ((InternalEObject) newList).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - formulaKPIPackage.WEIGHTED_SUM_OP__LIST, null, msgs);
+			msgs = basicSetList(newList, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, formulaKPIPackage.WEIGHTED_SUM_OP__LIST, newList,
+					newList));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Expression getWeights() {
 		return weights;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetWeights(Expression newWeights, NotificationChain msgs) {
+		Expression oldWeights = weights;
+		weights = newWeights;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS, oldWeights, newWeights);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWeights(Expression newWeights) {
+		if (newWeights != weights) {
+			NotificationChain msgs = null;
+			if (weights != null)
+				msgs = ((InternalEObject) weights).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS, null, msgs);
+			if (newWeights != null)
+				msgs = ((InternalEObject) newWeights).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS, null, msgs);
+			msgs = basicSetWeights(newWeights, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS,
+					newWeights, newWeights));
 	}
 
 	/**
@@ -108,10 +177,10 @@ public class WeightedSumOpImpl extends MinimalEObjectImpl.Container implements W
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case formulaKPIPackage.WEIGHTED_SUM_OP__EXPRESSIONS:
-			return ((InternalEList<?>) getExpressions()).basicRemove(otherEnd, msgs);
+		case formulaKPIPackage.WEIGHTED_SUM_OP__LIST:
+			return basicSetList(null, msgs);
 		case formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS:
-			return ((InternalEList<?>) getWeights()).basicRemove(otherEnd, msgs);
+			return basicSetWeights(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -124,8 +193,8 @@ public class WeightedSumOpImpl extends MinimalEObjectImpl.Container implements W
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case formulaKPIPackage.WEIGHTED_SUM_OP__EXPRESSIONS:
-			return getExpressions();
+		case formulaKPIPackage.WEIGHTED_SUM_OP__LIST:
+			return getList();
 		case formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS:
 			return getWeights();
 		}
@@ -137,17 +206,14 @@ public class WeightedSumOpImpl extends MinimalEObjectImpl.Container implements W
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case formulaKPIPackage.WEIGHTED_SUM_OP__EXPRESSIONS:
-			getExpressions().clear();
-			getExpressions().addAll((Collection<? extends Expression>) newValue);
+		case formulaKPIPackage.WEIGHTED_SUM_OP__LIST:
+			setList((Expression) newValue);
 			return;
 		case formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS:
-			getWeights().clear();
-			getWeights().addAll((Collection<? extends Expression>) newValue);
+			setWeights((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -161,11 +227,11 @@ public class WeightedSumOpImpl extends MinimalEObjectImpl.Container implements W
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case formulaKPIPackage.WEIGHTED_SUM_OP__EXPRESSIONS:
-			getExpressions().clear();
+		case formulaKPIPackage.WEIGHTED_SUM_OP__LIST:
+			setList((Expression) null);
 			return;
 		case formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS:
-			getWeights().clear();
+			setWeights((Expression) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -179,10 +245,10 @@ public class WeightedSumOpImpl extends MinimalEObjectImpl.Container implements W
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case formulaKPIPackage.WEIGHTED_SUM_OP__EXPRESSIONS:
-			return expressions != null && !expressions.isEmpty();
+		case formulaKPIPackage.WEIGHTED_SUM_OP__LIST:
+			return list != null;
 		case formulaKPIPackage.WEIGHTED_SUM_OP__WEIGHTS:
-			return weights != null && !weights.isEmpty();
+			return weights != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -33,12 +33,14 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.ThresholdOp
 import lu.list.swrdi.formulaKPI.model.formulaKPI.UnaryMinus
 import lu.list.swrdi.formulaKPI.model.formulaKPI.UnitConstant
 import lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp
-import java.util.ArrayList
+import lu.list.swrdi.formulaKPI.evaluation.Value.NullValue
+import lu.list.swrdi.formulaKPI.evaluation.Value.ListValue
+import lu.list.swrdi.formulaKPI.evaluation.Value.DoubleValue
 
 class KPIFormulaEvaluator implements lu.list.swrdi.formulaKPI.evaluation.KPIFormula {
 	KPIFormula ast;
-	Map<String, Double> computedValues;
-	Map<String, Double> computedKPIs;
+	Map<String, Value> computedValues;
+	Map<String, Value> computedKPIs;
 	
 	new(KPIFormula ast) {
 		this.ast = ast
@@ -49,189 +51,264 @@ class KPIFormulaEvaluator implements lu.list.swrdi.formulaKPI.evaluation.KPIForm
 	override evaluate(Map<?, Double> metricValues) {
 		ast.interpret(metricValues)
 		for(kpi: this.computedKPIs.keySet){
-			return this.computedKPIs.get(kpi)
+			val value = this.computedKPIs.get(kpi)
+			if(value instanceof DoubleValue){
+				return value.value
+			}
 		}
+		return 0.0
 	}
 	
-	def dispatch double interpret(KPIFormula node, Map<?, Double> metricValues){
+	def dispatch Value interpret(KPIFormula node, Map<?, Double> metricValues){
 		for (declaration : node.declarations) {
 			declaration.interpret(metricValues)
 		}
 		for (computation : node.computations) {
 			computation.interpret(metricValues)
 		}
-		return 0.0
+		return new NullValue()
 	}
 	
-	def dispatch double interpret(Declaration node, Map<?, Double> metricValues){
-		return 0.0
+	def dispatch Value interpret(Declaration node, Map<?, Double> metricValues){
+		return new NullValue()
 	}
 	
-	def dispatch double interpret(Computation node, Map<?, Double> metricValues){
+	def dispatch Value interpret(Computation node, Map<?, Double> metricValues){
 		val value = node.formula.interpret(metricValues)
 		node.computed.interpret(metricValues)
 		this.computedValues.replace(node.computed.name, value)
 		this.computedKPIs.replace(node.computed.name, value)
-		return 0.0
+		return new NullValue()
 	}
 	
-	def dispatch double interpret(KPI node, Map<?, Double> metricValues){
-		this.computedValues.put(node.name, 0.0)
-		this.computedKPIs.put(node.name, 0.0)
-		return 0.0
+	def dispatch Value interpret(KPI node, Map<?, Double> metricValues){
+		this.computedValues.put(node.name, new DoubleValue(0))
+		this.computedKPIs.put(node.name, new DoubleValue(0))
+		return new NullValue()
 	}
 	
-	def dispatch double interpret(Metric node, Map<?, Double> metricValues){
-		this.computedValues.put(node.name, 0.0)
-		return 0.0
+	def dispatch Value interpret(Metric node, Map<?, Double> metricValues){
+		this.computedValues.put(node.name, new DoubleValue(0))
+		return new NullValue()
 	}
 	
-	def dispatch double interpret(ConditionalOp node, Map<?, Double> metricValues){
+	def dispatch Value interpret(ConditionalOp node, Map<?, Double> metricValues){
         // invariant : results.size - condition.size = 1
 		for(var i = 0; i < node.conditions.size; i++){
-			if(node.conditions.get(i).interpret(metricValues) > 0.5){
+			val condValue = node.conditions.get(i).interpret(metricValues).value as Double
+			if(condValue > 0.5){
 				return node.results.get(i).interpret(metricValues)
 			}
 		}
 		return node.results.get(node.results.size - 1).interpret(metricValues)
 	}
 	
-	def dispatch double interpret(Or node, Map<?, Double> metricValues){
-		val left = node.left.interpret(metricValues) > 0.5
-		val right = node.right.interpret(metricValues) > 0.5
-		return left || right ? 1 : 0
+	def dispatch Value interpret(Or node, Map<?, Double> metricValues){
+		val left = node.left.interpret(metricValues)
+		val right = node.right.interpret(metricValues)
+		if(left instanceof ListValue){
+			if(right instanceof ListValue){
+				val out = new ListValue()
+				out.value.addAll(left.value)
+				out.value.addAll(right.value)
+				return out
+			} else {
+				val out = new ListValue()
+				out.value.addAll(left.value)
+				out.value.add(right)
+				return out
+			}
+		} else {
+			if(right instanceof ListValue){
+				val out = new ListValue()
+				out.value.add(left)
+				out.value.addAll(right.value)
+				return out
+			} else {
+				return left.value as Double > 0.5 || right.value as Double > 0.5 ? new DoubleValue(1) : new DoubleValue(0)
+			}
+		}
 	}
 	
-	def dispatch double interpret(And node, Map<?, Double> metricValues){
-		val left = node.left.interpret(metricValues) > 0.5
-		val right = node.right.interpret(metricValues) > 0.5
-		return left && right ? 1 : 0
+	def dispatch Value interpret(And node, Map<?, Double> metricValues){
+		val left = node.left.interpret(metricValues)
+		val right = node.right.interpret(metricValues)
+		if(left instanceof ListValue){
+			if(right instanceof ListValue){
+				val out = new ListValue()
+				out.value.addAll(left.value)
+				out.value.retainAll(right.value)
+				return out
+			} else {
+				val out = new ListValue()
+				if(left.value.contains(right)){
+					out.value.add(right)
+				}
+				return out
+			}
+		} else {
+			if(right instanceof ListValue){
+				val out = new ListValue()
+				if(right.value.contains(left)){
+					out.value.add(left)
+				}
+				return out
+			} else {
+				return left.value as Double > 0.5 && right.value as Double > 0.5 ? new DoubleValue(1) : new DoubleValue(0)
+			}
+		}
 	}
 	
-	def dispatch double interpret(Equality node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) == node.right.interpret(metricValues) ? 1 : 0
+	def dispatch Value interpret(Equality node, Map<?, Double> metricValues){
+		return node.left.interpret(metricValues).equals(node.right.interpret(metricValues)) ? new DoubleValue(1) : new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(Inequality node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) != node.right.interpret(metricValues) ? 1 : 0
+	def dispatch Value interpret(Inequality node, Map<?, Double> metricValues){
+		return !node.left.interpret(metricValues).equals(node.right.interpret(metricValues)) ? new DoubleValue(1) : new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(GreaterEq node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) >= node.right.interpret(metricValues) ? 1 : 0
+	def dispatch Value interpret(GreaterEq node, Map<?, Double> metricValues){
+		return node.left.interpret(metricValues).compareTo(node.right.interpret(metricValues)) >= 0 ? new DoubleValue(1) : new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(LessEq node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) <= node.right.interpret(metricValues) ? 1 : 0
+	def dispatch Value interpret(LessEq node, Map<?, Double> metricValues){
+		return node.left.interpret(metricValues).compareTo(node.right.interpret(metricValues)) <= 0 ? new DoubleValue(1) : new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(Greater node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) > node.right.interpret(metricValues) ? 1 : 0
+	def dispatch Value interpret(Greater node, Map<?, Double> metricValues){
+		return node.left.interpret(metricValues).compareTo(node.right.interpret(metricValues)) > 0 ? new DoubleValue(1) : new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(Less node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) < node.right.interpret(metricValues) ? 1 : 0
+	def dispatch Value interpret(Less node, Map<?, Double> metricValues){
+		return node.left.interpret(metricValues).compareTo(node.right.interpret(metricValues)) < 0 ? new DoubleValue(1) : new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(Plus node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) + node.right.interpret(metricValues)
+	def dispatch Value interpret(Plus node, Map<?, Double> metricValues){
+		val left = node.left.interpret(metricValues)
+		val right = node.right.interpret(metricValues)
+		if(left instanceof ListValue){
+			if(right instanceof ListValue){
+				val out = new ListValue()
+				out.value.addAll(left.value)
+				out.value.addAll(right.value)
+				return out
+			} else {
+				val out = new ListValue()
+				out.value.addAll(left.value)
+				out.value.add(right)
+				return out
+			}
+		} else {
+			if(right instanceof ListValue){
+				val out = new ListValue()
+				out.value.add(left)
+				out.value.addAll(right.value)
+				return out
+			} else {
+				return new DoubleValue(left.value as Double + right.value as Double)
+			}
+		}
 	}
 	
-	def dispatch double interpret(Minus node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) - node.right.interpret(metricValues)
+	def dispatch Value interpret(Minus node, Map<?, Double> metricValues){
+		val left = node.left.interpret(metricValues)
+		val right = node.right.interpret(metricValues)
+		return new DoubleValue(left.value as Double - right.value as Double)
 	}
 	
-	def dispatch double interpret(Multiply node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) * node.right.interpret(metricValues)
+	def dispatch Value interpret(Multiply node, Map<?, Double> metricValues){
+		val left = node.left.interpret(metricValues)
+		val right = node.right.interpret(metricValues)
+		return new DoubleValue(left.value as Double * right.value as Double)
 	}
 	
-	def dispatch double interpret(Divide node, Map<?, Double> metricValues){
-		return node.left.interpret(metricValues) / node.right.interpret(metricValues)
+	def dispatch Value interpret(Divide node, Map<?, Double> metricValues){
+		val left = node.left.interpret(metricValues)
+		val right = node.right.interpret(metricValues)
+		return new DoubleValue(left.value as Double / right.value as Double)
 	}
 	
-	def dispatch double interpret(Not node, Map<?, Double> metricValues){
-		return node.expression.interpret(metricValues) > 0.5 ? 0 : 1
+	def dispatch Value interpret(Not node, Map<?, Double> metricValues){
+		return node.expression.interpret(metricValues) > 0.5 ? new DoubleValue(1) : new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(UnaryMinus node, Map<?, Double> metricValues){
-		return - node.expression.interpret(metricValues)
+	def dispatch Value interpret(UnaryMinus node, Map<?, Double> metricValues){
+		val value = node.expression.interpret(metricValues)
+		return new DoubleValue(- value.value as Double)
 	}
 	
-	def dispatch double interpret(AvgOp node, Map<?, Double> metricValues){
+	def dispatch Value interpret(AvgOp node, Map<?, Double> metricValues){
 		var sum = 0.0
 		var count = 0
-		for(expr: node.expressions){
-			sum += expr.interpret(metricValues)
+		val list = (node.list.interpret(metricValues) as ListValue).value
+		for(elem: list){
+			sum += (elem as DoubleValue).value
 			count++
 		}
 		if(count <= 0){
-			return 0.0
+			return new DoubleValue(0)
 		}
-		return sum / count
+		return new DoubleValue(sum / count)
 	}
 	
-	def dispatch double interpret(WeightedSumOp node, Map<?, Double> metricValues){
+	def dispatch Value interpret(WeightedSumOp node, Map<?, Double> metricValues){
 		var sum = 0.0
-		var count = 0
-		for(var i = 0; i < node.expressions.size; i++){
-			sum += node.expressions.get(i).interpret(metricValues) * node.weights.get(i).interpret(metricValues)
+		val elements = (node.list.interpret(metricValues) as ListValue).value
+		val weights = (node.weights.interpret(metricValues) as ListValue).value
+		for(var i = 0; i < elements.size; i++){
+			sum += (elements.get(i) as DoubleValue).value * (weights.get(i) as DoubleValue).value
 		}
-		return sum
+		return new DoubleValue(sum)
 	}
 	
-	def dispatch double interpret(MinOp node, Map<?, Double> metricValues){
-		val results = new ArrayList()
-		for(expr: node.expressions){
-			results.add(expr.interpret(metricValues))
-		}
-		return results.min
+	def dispatch Value interpret(MinOp node, Map<?, Double> metricValues){
+		val elements = (node.list.interpret(metricValues) as ListValue<Value>).value
+		return elements.min
 	}
 	
-	def dispatch double interpret(MaxOp node, Map<?, Double> metricValues){
-		val results = new ArrayList()
-		for(expr: node.expressions){
-			results.add(expr.interpret(metricValues))
-		}
-		return results.max
+	def dispatch Value interpret(MaxOp node, Map<?, Double> metricValues){
+		val elements = (node.list.interpret(metricValues) as ListValue<Value>).value
+		return elements.max
 	}
 	
-	def dispatch double interpret(ThresholdOp node, Map<?, Double> metricValues){
+	def dispatch Value interpret(ThresholdOp node, Map<?, Double> metricValues){
 		val value = node.expression.interpret(metricValues)
 		val thresh = node.threshold.interpret(metricValues)
-		return value >= thresh ? 1 : 0
+		return value >= thresh ? new DoubleValue(1) : new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(IntConstant node, Map<?, Double> metricValues){
-		return node.value
+	def dispatch Value interpret(IntConstant node, Map<?, Double> metricValues){
+		return new DoubleValue(node.value)
 	}
 	
-	def dispatch double interpret(RealConstant node, Map<?, Double> metricValues){
-		return node.value
+	def dispatch Value interpret(RealConstant node, Map<?, Double> metricValues){
+		return new DoubleValue(node.value)
 	}
 	
-	def dispatch double interpret(TextConstant node, Map<?, Double> metricValues){
-		return 0.0
+	def dispatch Value interpret(TextConstant node, Map<?, Double> metricValues){
+		return new DoubleValue(node.value.length)
 	}
 	
-	def dispatch double interpret(BoolConstant node, Map<?, Double> metricValues){
-		return node.value == "true" ? 1 : 0
+	def dispatch Value interpret(BoolConstant node, Map<?, Double> metricValues){
+		return node.value == "true" ? new DoubleValue(1) : new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(UnitConstant node, Map<?, Double> metricValues){
-		return node.value
+	def dispatch Value interpret(UnitConstant node, Map<?, Double> metricValues){
+		return new DoubleValue(node.value)
 	}
 	
-	def dispatch double interpret(EnumLiteralRef node, Map<?, Double> metricValues){
-		return 0.0
+	def dispatch Value interpret(EnumLiteralRef node, Map<?, Double> metricValues){
+		return new DoubleValue(0)
 	}
 	
-	def dispatch double interpret(ComputableRef node, Map<?, Double> metricValues){
+	def dispatch Value interpret(ComputableRef node, Map<?, Double> metricValues){
 		if(metricValues.containsKey(node.computable.name)){
-			return metricValues.get(node.computable.name)
+			return new DoubleValue(metricValues.get(node.computable.name))
 		}
 		if(this.computedValues.containsKey(node.computable.name)){
-			return metricValues.get(node.computable.name)
+			return this.computedValues.get(node.computable.name)
 		}
-		return 0.0
+		return new DoubleValue(0)
 		
 	}
 	

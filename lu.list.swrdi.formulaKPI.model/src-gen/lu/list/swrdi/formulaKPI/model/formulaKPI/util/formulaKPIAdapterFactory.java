@@ -292,6 +292,16 @@ public class formulaKPIAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseListSize(ListSize object) {
+			return createListSizeAdapter();
+		}
+
+		@Override
+		public Adapter caseListLiteral(ListLiteral object) {
+			return createListLiteralAdapter();
+		}
+
+		@Override
 		public Adapter caseMinOp(MinOp object) {
 			return createMinOpAdapter();
 		}
@@ -322,6 +332,31 @@ public class formulaKPIAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseListOperation(ListOperation object) {
+			return createListOperationAdapter();
+		}
+
+		@Override
+		public Adapter caseListIteration(ListIteration object) {
+			return createListIterationAdapter();
+		}
+
+		@Override
+		public Adapter caseListReduce(ListReduce object) {
+			return createListReduceAdapter();
+		}
+
+		@Override
+		public Adapter caseListFilter(ListFilter object) {
+			return createListFilterAdapter();
+		}
+
+		@Override
+		public Adapter caseListIterator(ListIterator object) {
+			return createListIteratorAdapter();
+		}
+
+		@Override
 		public Adapter caseTextConstant(TextConstant object) {
 			return createTextConstantAdapter();
 		}
@@ -349,6 +384,11 @@ public class formulaKPIAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseComputableRef(ComputableRef object) {
 			return createComputableRefAdapter();
+		}
+
+		@Override
+		public Adapter caseAccumulator(Accumulator object) {
+			return createAccumulatorAdapter();
 		}
 
 		@Override
@@ -1001,6 +1041,34 @@ public class formulaKPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize <em>List Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize
+	 * @generated
+	 */
+	public Adapter createListSizeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral <em>List Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral
+	 * @generated
+	 */
+	public Adapter createListLiteralAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp <em>Min Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1085,6 +1153,76 @@ public class formulaKPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation <em>List Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation
+	 * @generated
+	 */
+	public Adapter createListOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListIteration <em>List Iteration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListIteration
+	 * @generated
+	 */
+	public Adapter createListIterationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce <em>List Reduce</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce
+	 * @generated
+	 */
+	public Adapter createListReduceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListFilter <em>List Filter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListFilter
+	 * @generated
+	 */
+	public Adapter createListFilterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListIterator <em>List Iterator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListIterator
+	 * @generated
+	 */
+	public Adapter createListIteratorAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.TextConstant <em>Text Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1165,6 +1303,20 @@ public class formulaKPIAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComputableRefAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.Accumulator <em>Accumulator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.Accumulator
+	 * @generated
+	 */
+	public Adapter createAccumulatorAdapter() {
 		return null;
 	}
 

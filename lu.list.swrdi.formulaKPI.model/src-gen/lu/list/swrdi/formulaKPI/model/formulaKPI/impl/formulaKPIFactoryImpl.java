@@ -133,6 +133,10 @@ public class formulaKPIFactoryImpl extends EFactoryImpl implements formulaKPIFac
 			return createEquality();
 		case formulaKPIPackage.OR:
 			return createOr();
+		case formulaKPIPackage.LIST_SIZE:
+			return createListSize();
+		case formulaKPIPackage.LIST_LITERAL:
+			return createListLiteral();
 		case formulaKPIPackage.MIN_OP:
 			return createMinOp();
 		case formulaKPIPackage.CONDITIONAL_OP:
@@ -145,6 +149,16 @@ public class formulaKPIFactoryImpl extends EFactoryImpl implements formulaKPIFac
 			return createAvgOp();
 		case formulaKPIPackage.MAX_OP:
 			return createMaxOp();
+		case formulaKPIPackage.LIST_OPERATION:
+			return createListOperation();
+		case formulaKPIPackage.LIST_ITERATION:
+			return createListIteration();
+		case formulaKPIPackage.LIST_REDUCE:
+			return createListReduce();
+		case formulaKPIPackage.LIST_FILTER:
+			return createListFilter();
+		case formulaKPIPackage.LIST_ITERATOR:
+			return createListIterator();
 		case formulaKPIPackage.TEXT_CONSTANT:
 			return createTextConstant();
 		case formulaKPIPackage.ENUM_LITERAL_REF:
@@ -157,6 +171,8 @@ public class formulaKPIFactoryImpl extends EFactoryImpl implements formulaKPIFac
 			return createBoolConstant();
 		case formulaKPIPackage.COMPUTABLE_REF:
 			return createComputableRef();
+		case formulaKPIPackage.ACCUMULATOR:
+			return createAccumulator();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -581,6 +597,26 @@ public class formulaKPIFactoryImpl extends EFactoryImpl implements formulaKPIFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ListSize createListSize() {
+		ListSizeImpl listSize = new ListSizeImpl();
+		return listSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ListLiteral createListLiteral() {
+		ListLiteralImpl listLiteral = new ListLiteralImpl();
+		return listLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public MinOp createMinOp() {
 		MinOpImpl minOp = new MinOpImpl();
 		return minOp;
@@ -641,6 +677,56 @@ public class formulaKPIFactoryImpl extends EFactoryImpl implements formulaKPIFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ListOperation createListOperation() {
+		ListOperationImpl listOperation = new ListOperationImpl();
+		return listOperation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ListIteration createListIteration() {
+		ListIterationImpl listIteration = new ListIterationImpl();
+		return listIteration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ListReduce createListReduce() {
+		ListReduceImpl listReduce = new ListReduceImpl();
+		return listReduce;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ListFilter createListFilter() {
+		ListFilterImpl listFilter = new ListFilterImpl();
+		return listFilter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ListIterator createListIterator() {
+		ListIteratorImpl listIterator = new ListIteratorImpl();
+		return listIterator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TextConstant createTextConstant() {
 		TextConstantImpl textConstant = new TextConstantImpl();
 		return textConstant;
@@ -694,6 +780,16 @@ public class formulaKPIFactoryImpl extends EFactoryImpl implements formulaKPIFac
 	public ComputableRef createComputableRef() {
 		ComputableRefImpl computableRef = new ComputableRefImpl();
 		return computableRef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Accumulator createAccumulator() {
+		AccumulatorImpl accumulator = new AccumulatorImpl();
+		return accumulator;
 	}
 
 	/**

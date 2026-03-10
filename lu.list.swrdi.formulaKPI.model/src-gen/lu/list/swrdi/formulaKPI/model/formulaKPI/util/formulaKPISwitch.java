@@ -481,6 +481,26 @@ public class formulaKPISwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case formulaKPIPackage.LIST_SIZE: {
+			ListSize listSize = (ListSize) theEObject;
+			T result = caseListSize(listSize);
+			if (result == null)
+				result = caseExpression(listSize);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case formulaKPIPackage.LIST_LITERAL: {
+			ListLiteral listLiteral = (ListLiteral) theEObject;
+			T result = caseListLiteral(listLiteral);
+			if (result == null)
+				result = caseLiteral(listLiteral);
+			if (result == null)
+				result = caseExpression(listLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case formulaKPIPackage.MIN_OP: {
 			MinOp minOp = (MinOp) theEObject;
 			T result = caseMinOp(minOp);
@@ -531,6 +551,57 @@ public class formulaKPISwitch<T> extends Switch<T> {
 			T result = caseMaxOp(maxOp);
 			if (result == null)
 				result = caseExpression(maxOp);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case formulaKPIPackage.LIST_OPERATION: {
+			ListOperation listOperation = (ListOperation) theEObject;
+			T result = caseListOperation(listOperation);
+			if (result == null)
+				result = caseExpression(listOperation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case formulaKPIPackage.LIST_ITERATION: {
+			ListIteration listIteration = (ListIteration) theEObject;
+			T result = caseListIteration(listIteration);
+			if (result == null)
+				result = caseListOperation(listIteration);
+			if (result == null)
+				result = caseExpression(listIteration);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case formulaKPIPackage.LIST_REDUCE: {
+			ListReduce listReduce = (ListReduce) theEObject;
+			T result = caseListReduce(listReduce);
+			if (result == null)
+				result = caseListOperation(listReduce);
+			if (result == null)
+				result = caseExpression(listReduce);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case formulaKPIPackage.LIST_FILTER: {
+			ListFilter listFilter = (ListFilter) theEObject;
+			T result = caseListFilter(listFilter);
+			if (result == null)
+				result = caseListOperation(listFilter);
+			if (result == null)
+				result = caseExpression(listFilter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case formulaKPIPackage.LIST_ITERATOR: {
+			ListIterator listIterator = (ListIterator) theEObject;
+			T result = caseListIterator(listIterator);
+			if (result == null)
+				result = caseComputable(listIterator);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -593,6 +664,15 @@ public class formulaKPISwitch<T> extends Switch<T> {
 			T result = caseComputableRef(computableRef);
 			if (result == null)
 				result = caseExpression(computableRef);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case formulaKPIPackage.ACCUMULATOR: {
+			Accumulator accumulator = (Accumulator) theEObject;
+			T result = caseAccumulator(accumulator);
+			if (result == null)
+				result = caseExpression(accumulator);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1278,6 +1358,36 @@ public class formulaKPISwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List Size</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List Size</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseListSize(ListSize object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseListLiteral(ListLiteral object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Min Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1368,6 +1478,81 @@ public class formulaKPISwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseListOperation(ListOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List Iteration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List Iteration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseListIteration(ListIteration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List Reduce</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List Reduce</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseListReduce(ListReduce object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List Filter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List Filter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseListFilter(ListFilter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List Iterator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List Iterator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseListIterator(ListIterator object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Text Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1454,6 +1639,21 @@ public class formulaKPISwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseComputableRef(ComputableRef object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Accumulator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Accumulator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAccumulator(Accumulator object) {
 		return null;
 	}
 

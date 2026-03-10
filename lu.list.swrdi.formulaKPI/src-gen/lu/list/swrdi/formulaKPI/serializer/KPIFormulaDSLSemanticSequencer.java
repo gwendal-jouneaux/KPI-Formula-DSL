@@ -5,6 +5,7 @@ package lu.list.swrdi.formulaKPI.serializer;
 
 import com.google.inject.Inject;
 import java.util.Set;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.Accumulator;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.AggregationValue;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.And;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Average;
@@ -30,6 +31,12 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.KPI;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.KPIFormula;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Less;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.LessEq;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListFilter;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListIteration;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListIterator;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Maximum;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Median;
@@ -77,6 +84,9 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == formulaKPIPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case formulaKPIPackage.ACCUMULATOR:
+				sequence_Atomic(context, (Accumulator) semanticObject); 
+				return; 
 			case formulaKPIPackage.AGGREGATION_VALUE:
 				sequence_AggregationValue(context, (AggregationValue) semanticObject); 
 				return; 
@@ -87,7 +97,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				sequence_Average(context, (Average) semanticObject); 
 				return; 
 			case formulaKPIPackage.AVG_OP:
-				sequence_Primary(context, (AvgOp) semanticObject); 
+				sequence_Operator(context, (AvgOp) semanticObject); 
 				return; 
 			case formulaKPIPackage.BOOL_CONSTANT:
 				sequence_Atomic(context, (BoolConstant) semanticObject); 
@@ -152,8 +162,26 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 			case formulaKPIPackage.LESS_EQ:
 				sequence_Comparison(context, (LessEq) semanticObject); 
 				return; 
+			case formulaKPIPackage.LIST_FILTER:
+				sequence_Operator(context, (ListFilter) semanticObject); 
+				return; 
+			case formulaKPIPackage.LIST_ITERATION:
+				sequence_Operator(context, (ListIteration) semanticObject); 
+				return; 
+			case formulaKPIPackage.LIST_ITERATOR:
+				sequence_ListIterator(context, (ListIterator) semanticObject); 
+				return; 
+			case formulaKPIPackage.LIST_LITERAL:
+				sequence_Operator(context, (ListLiteral) semanticObject); 
+				return; 
+			case formulaKPIPackage.LIST_REDUCE:
+				sequence_Operator(context, (ListReduce) semanticObject); 
+				return; 
+			case formulaKPIPackage.LIST_SIZE:
+				sequence_Operator(context, (ListSize) semanticObject); 
+				return; 
 			case formulaKPIPackage.MAX_OP:
-				sequence_Primary(context, (MaxOp) semanticObject); 
+				sequence_Operator(context, (MaxOp) semanticObject); 
 				return; 
 			case formulaKPIPackage.MAXIMUM:
 				sequence_Maximum(context, (Maximum) semanticObject); 
@@ -165,7 +193,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				sequence_Metric(context, (Metric) semanticObject); 
 				return; 
 			case formulaKPIPackage.MIN_OP:
-				sequence_Primary(context, (MinOp) semanticObject); 
+				sequence_Operator(context, (MinOp) semanticObject); 
 				return; 
 			case formulaKPIPackage.MINIMUM:
 				sequence_Minimum(context, (Minimum) semanticObject); 
@@ -201,7 +229,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				sequence_TextualValue(context, (TextualValue) semanticObject); 
 				return; 
 			case formulaKPIPackage.THRESHOLD_OP:
-				sequence_Primary(context, (ThresholdOp) semanticObject); 
+				sequence_Operator(context, (ThresholdOp) semanticObject); 
 				return; 
 			case formulaKPIPackage.UNARY_MINUS:
 				sequence_Primary(context, (UnaryMinus) semanticObject); 
@@ -213,7 +241,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				sequence_UnitValue(context, (UnitValue) semanticObject); 
 				return; 
 			case formulaKPIPackage.WEIGHTED_SUM_OP:
-				sequence_Primary(context, (WeightedSumOp) semanticObject); 
+				sequence_Operator(context, (WeightedSumOp) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -250,6 +278,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns And
 	 *     Expression returns And
 	 *     Or returns And
 	 *     Or.Or_1_0 returns And
@@ -269,6 +298,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns And
 	 *     MulOrDiv.Multiply_1_0_0_0 returns And
 	 *     MulOrDiv.Divide_1_0_1_0 returns And
+	 *     Operator returns And
 	 *     Primary returns And
 	 *
 	 * Constraint:
@@ -292,6 +322,43 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns Accumulator
+	 *     Expression returns Accumulator
+	 *     Or returns Accumulator
+	 *     Or.Or_1_0 returns Accumulator
+	 *     And returns Accumulator
+	 *     And.And_1_0 returns Accumulator
+	 *     Equality returns Accumulator
+	 *     Equality.Equality_1_0_0_0 returns Accumulator
+	 *     Equality.Inequality_1_0_1_0 returns Accumulator
+	 *     Comparison returns Accumulator
+	 *     Comparison.GreaterEq_1_0_0_0 returns Accumulator
+	 *     Comparison.LessEq_1_0_1_0 returns Accumulator
+	 *     Comparison.Greater_1_0_2_0 returns Accumulator
+	 *     Comparison.Less_1_0_3_0 returns Accumulator
+	 *     PlusOrMinus returns Accumulator
+	 *     PlusOrMinus.Plus_1_0_0_0 returns Accumulator
+	 *     PlusOrMinus.Minus_1_0_1_0 returns Accumulator
+	 *     MulOrDiv returns Accumulator
+	 *     MulOrDiv.Multiply_1_0_0_0 returns Accumulator
+	 *     MulOrDiv.Divide_1_0_1_0 returns Accumulator
+	 *     Operator returns Accumulator
+	 *     Primary returns Accumulator
+	 *     Atomic returns Accumulator
+	 *
+	 * Constraint:
+	 *     {Accumulator}
+	 * </pre>
+	 */
+	protected void sequence_Atomic(ISerializationContext context, Accumulator semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns BoolConstant
 	 *     Expression returns BoolConstant
 	 *     Or returns BoolConstant
 	 *     Or.Or_1_0 returns BoolConstant
@@ -311,6 +378,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns BoolConstant
 	 *     MulOrDiv.Multiply_1_0_0_0 returns BoolConstant
 	 *     MulOrDiv.Divide_1_0_1_0 returns BoolConstant
+	 *     Operator returns BoolConstant
 	 *     Primary returns BoolConstant
 	 *     Atomic returns BoolConstant
 	 *
@@ -326,6 +394,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns ComputableRef
 	 *     Expression returns ComputableRef
 	 *     Or returns ComputableRef
 	 *     Or.Or_1_0 returns ComputableRef
@@ -345,6 +414,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns ComputableRef
 	 *     MulOrDiv.Multiply_1_0_0_0 returns ComputableRef
 	 *     MulOrDiv.Divide_1_0_1_0 returns ComputableRef
+	 *     Operator returns ComputableRef
 	 *     Primary returns ComputableRef
 	 *     Atomic returns ComputableRef
 	 *
@@ -358,7 +428,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.COMPUTABLE_REF__COMPUTABLE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getComputableComputableIDTerminalRuleCall_6_1_0_1(), semanticObject.eGet(formulaKPIPackage.Literals.COMPUTABLE_REF__COMPUTABLE, false));
+		feeder.accept(grammarAccess.getAtomicAccess().getComputableComputableIDTerminalRuleCall_7_1_0_1(), semanticObject.eGet(formulaKPIPackage.Literals.COMPUTABLE_REF__COMPUTABLE, false));
 		feeder.finish();
 	}
 	
@@ -366,6 +436,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns EnumLiteralRef
 	 *     Expression returns EnumLiteralRef
 	 *     Or returns EnumLiteralRef
 	 *     Or.Or_1_0 returns EnumLiteralRef
@@ -385,6 +456,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns EnumLiteralRef
 	 *     MulOrDiv.Multiply_1_0_0_0 returns EnumLiteralRef
 	 *     MulOrDiv.Divide_1_0_1_0 returns EnumLiteralRef
+	 *     Operator returns EnumLiteralRef
 	 *     Primary returns EnumLiteralRef
 	 *     Atomic returns EnumLiteralRef
 	 *
@@ -398,7 +470,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.ENUM_LITERAL_REF__LITERAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getLiteralEnumerationLiteralFQNTerminalRuleCall_5_1_0_1(), semanticObject.eGet(formulaKPIPackage.Literals.ENUM_LITERAL_REF__LITERAL, false));
+		feeder.accept(grammarAccess.getAtomicAccess().getLiteralEnumerationLiteralFQNTerminalRuleCall_6_1_0_1(), semanticObject.eGet(formulaKPIPackage.Literals.ENUM_LITERAL_REF__LITERAL, false));
 		feeder.finish();
 	}
 	
@@ -406,6 +478,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns IntConstant
 	 *     Expression returns IntConstant
 	 *     Or returns IntConstant
 	 *     Or.Or_1_0 returns IntConstant
@@ -425,6 +498,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns IntConstant
 	 *     MulOrDiv.Multiply_1_0_0_0 returns IntConstant
 	 *     MulOrDiv.Divide_1_0_1_0 returns IntConstant
+	 *     Operator returns IntConstant
 	 *     Primary returns IntConstant
 	 *     Atomic returns IntConstant
 	 *
@@ -438,7 +512,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.INT_CONSTANT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_0_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_1_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -446,6 +520,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns RealConstant
 	 *     Expression returns RealConstant
 	 *     Or returns RealConstant
 	 *     Or.Or_1_0 returns RealConstant
@@ -465,6 +540,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns RealConstant
 	 *     MulOrDiv.Multiply_1_0_0_0 returns RealConstant
 	 *     MulOrDiv.Divide_1_0_1_0 returns RealConstant
+	 *     Operator returns RealConstant
 	 *     Primary returns RealConstant
 	 *     Atomic returns RealConstant
 	 *
@@ -478,7 +554,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.REAL_CONSTANT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_1_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_2_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -486,6 +562,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns TextConstant
 	 *     Expression returns TextConstant
 	 *     Or returns TextConstant
 	 *     Or.Or_1_0 returns TextConstant
@@ -505,6 +582,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns TextConstant
 	 *     MulOrDiv.Multiply_1_0_0_0 returns TextConstant
 	 *     MulOrDiv.Divide_1_0_1_0 returns TextConstant
+	 *     Operator returns TextConstant
 	 *     Primary returns TextConstant
 	 *     Atomic returns TextConstant
 	 *
@@ -518,7 +596,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.TEXT_CONSTANT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_3_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -526,6 +604,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns UnitConstant
 	 *     Expression returns UnitConstant
 	 *     Or returns UnitConstant
 	 *     Or.Or_1_0 returns UnitConstant
@@ -545,6 +624,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns UnitConstant
 	 *     MulOrDiv.Multiply_1_0_0_0 returns UnitConstant
 	 *     MulOrDiv.Divide_1_0_1_0 returns UnitConstant
+	 *     Operator returns UnitConstant
 	 *     Primary returns UnitConstant
 	 *     Atomic returns UnitConstant
 	 *
@@ -560,8 +640,8 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.UNIT_CONSTANT__UNIT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_4_1_0(), semanticObject.getValue());
-		feeder.accept(grammarAccess.getAtomicAccess().getUnitValueUnitEnumRuleCall_4_2_0(), semanticObject.getUnit());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_5_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getUnitValueUnitEnumRuleCall_5_2_0(), semanticObject.getUnit());
 		feeder.finish();
 	}
 	
@@ -599,6 +679,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns Greater
 	 *     Expression returns Greater
 	 *     Or returns Greater
 	 *     Or.Or_1_0 returns Greater
@@ -618,6 +699,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Greater
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Greater
 	 *     MulOrDiv.Divide_1_0_1_0 returns Greater
+	 *     Operator returns Greater
 	 *     Primary returns Greater
 	 *
 	 * Constraint:
@@ -641,6 +723,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns GreaterEq
 	 *     Expression returns GreaterEq
 	 *     Or returns GreaterEq
 	 *     Or.Or_1_0 returns GreaterEq
@@ -660,6 +743,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns GreaterEq
 	 *     MulOrDiv.Multiply_1_0_0_0 returns GreaterEq
 	 *     MulOrDiv.Divide_1_0_1_0 returns GreaterEq
+	 *     Operator returns GreaterEq
 	 *     Primary returns GreaterEq
 	 *
 	 * Constraint:
@@ -683,6 +767,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns Less
 	 *     Expression returns Less
 	 *     Or returns Less
 	 *     Or.Or_1_0 returns Less
@@ -702,6 +787,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Less
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Less
 	 *     MulOrDiv.Divide_1_0_1_0 returns Less
+	 *     Operator returns Less
 	 *     Primary returns Less
 	 *
 	 * Constraint:
@@ -725,6 +811,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns LessEq
 	 *     Expression returns LessEq
 	 *     Or returns LessEq
 	 *     Or.Or_1_0 returns LessEq
@@ -744,6 +831,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns LessEq
 	 *     MulOrDiv.Multiply_1_0_0_0 returns LessEq
 	 *     MulOrDiv.Divide_1_0_1_0 returns LessEq
+	 *     Operator returns LessEq
 	 *     Primary returns LessEq
 	 *
 	 * Constraint:
@@ -770,17 +858,27 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Computation returns Computation
 	 *
 	 * Constraint:
-	 *     (computed=[Computable|ID] (formula=Expression | formula=Condition))
+	 *     (computed=[Computable|ID] formula=TopLevelExpression)
 	 * </pre>
 	 */
 	protected void sequence_Computation(ISerializationContext context, Computation semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.COMPUTATION__COMPUTED) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.COMPUTATION__COMPUTED));
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.COMPUTATION__FORMULA) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.COMPUTATION__FORMULA));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getComputationAccess().getComputedComputableIDTerminalRuleCall_0_0_1(), semanticObject.eGet(formulaKPIPackage.Literals.COMPUTATION__COMPUTED, false));
+		feeder.accept(grammarAccess.getComputationAccess().getFormulaTopLevelExpressionParserRuleCall_2_0(), semanticObject.getFormula());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns ConditionalOp
 	 *     Condition returns ConditionalOp
 	 *
 	 * Constraint:
@@ -877,6 +975,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns Equality
 	 *     Expression returns Equality
 	 *     Or returns Equality
 	 *     Or.Or_1_0 returns Equality
@@ -896,6 +995,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Equality
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Equality
 	 *     MulOrDiv.Divide_1_0_1_0 returns Equality
+	 *     Operator returns Equality
 	 *     Primary returns Equality
 	 *
 	 * Constraint:
@@ -919,6 +1019,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns Inequality
 	 *     Expression returns Inequality
 	 *     Or returns Inequality
 	 *     Or.Or_1_0 returns Inequality
@@ -938,6 +1039,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Inequality
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Inequality
 	 *     MulOrDiv.Divide_1_0_1_0 returns Inequality
+	 *     Operator returns Inequality
 	 *     Primary returns Inequality
 	 *
 	 * Constraint:
@@ -979,7 +1081,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     KPIFormulaDSL returns KPIFormula
 	 *
 	 * Constraint:
-	 *     (declarations+=Declaration+ computations+=Computation+)
+	 *     (declarations+=Declaration | computations+=Computation)+
 	 * </pre>
 	 */
 	protected void sequence_KPIFormulaDSL(ISerializationContext context, KPIFormula semanticObject) {
@@ -1007,6 +1109,26 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getKPIAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getKPIAccess().getTypeValueTypeParserRuleCall_4_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     ListIterator returns ListIterator
+	 *
+	 * Constraint:
+	 *     name=ID
+	 * </pre>
+	 */
+	protected void sequence_ListIterator(ISerializationContext context, ListIterator semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.COMPUTABLE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.COMPUTABLE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getListIteratorAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -1083,6 +1205,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns Divide
 	 *     Expression returns Divide
 	 *     Or returns Divide
 	 *     Or.Or_1_0 returns Divide
@@ -1102,10 +1225,11 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Divide
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Divide
 	 *     MulOrDiv.Divide_1_0_1_0 returns Divide
+	 *     Operator returns Divide
 	 *     Primary returns Divide
 	 *
 	 * Constraint:
-	 *     (left=MulOrDiv_Divide_1_0_1_0 right=Primary)
+	 *     (left=MulOrDiv_Divide_1_0_1_0 right=Operator)
 	 * </pre>
 	 */
 	protected void sequence_MulOrDiv(ISerializationContext context, Divide semanticObject) {
@@ -1117,7 +1241,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getMulOrDivAccess().getDivideLeftAction_1_0_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getMulOrDivAccess().getRightPrimaryParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getMulOrDivAccess().getRightOperatorParserRuleCall_1_1_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -1125,6 +1249,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns Multiply
 	 *     Expression returns Multiply
 	 *     Or returns Multiply
 	 *     Or.Or_1_0 returns Multiply
@@ -1144,10 +1269,11 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Multiply
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Multiply
 	 *     MulOrDiv.Divide_1_0_1_0 returns Multiply
+	 *     Operator returns Multiply
 	 *     Primary returns Multiply
 	 *
 	 * Constraint:
-	 *     (left=MulOrDiv_Multiply_1_0_0_0 right=Primary)
+	 *     (left=MulOrDiv_Multiply_1_0_0_0 right=Operator)
 	 * </pre>
 	 */
 	protected void sequence_MulOrDiv(ISerializationContext context, Multiply semanticObject) {
@@ -1159,7 +1285,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getMulOrDivAccess().getMultiplyLeftAction_1_0_0_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getMulOrDivAccess().getRightPrimaryParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getMulOrDivAccess().getRightOperatorParserRuleCall_1_1_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -1167,6 +1293,399 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns AvgOp
+	 *     Expression returns AvgOp
+	 *     Or returns AvgOp
+	 *     Or.Or_1_0 returns AvgOp
+	 *     And returns AvgOp
+	 *     And.And_1_0 returns AvgOp
+	 *     Equality returns AvgOp
+	 *     Equality.Equality_1_0_0_0 returns AvgOp
+	 *     Equality.Inequality_1_0_1_0 returns AvgOp
+	 *     Comparison returns AvgOp
+	 *     Comparison.GreaterEq_1_0_0_0 returns AvgOp
+	 *     Comparison.LessEq_1_0_1_0 returns AvgOp
+	 *     Comparison.Greater_1_0_2_0 returns AvgOp
+	 *     Comparison.Less_1_0_3_0 returns AvgOp
+	 *     PlusOrMinus returns AvgOp
+	 *     PlusOrMinus.Plus_1_0_0_0 returns AvgOp
+	 *     PlusOrMinus.Minus_1_0_1_0 returns AvgOp
+	 *     MulOrDiv returns AvgOp
+	 *     MulOrDiv.Multiply_1_0_0_0 returns AvgOp
+	 *     MulOrDiv.Divide_1_0_1_0 returns AvgOp
+	 *     Operator returns AvgOp
+	 *     Primary returns AvgOp
+	 *
+	 * Constraint:
+	 *     list=Expression
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, AvgOp semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.AVG_OP__LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.AVG_OP__LIST));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_2_3_0(), semanticObject.getList());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns ListFilter
+	 *     Expression returns ListFilter
+	 *     Or returns ListFilter
+	 *     Or.Or_1_0 returns ListFilter
+	 *     And returns ListFilter
+	 *     And.And_1_0 returns ListFilter
+	 *     Equality returns ListFilter
+	 *     Equality.Equality_1_0_0_0 returns ListFilter
+	 *     Equality.Inequality_1_0_1_0 returns ListFilter
+	 *     Comparison returns ListFilter
+	 *     Comparison.GreaterEq_1_0_0_0 returns ListFilter
+	 *     Comparison.LessEq_1_0_1_0 returns ListFilter
+	 *     Comparison.Greater_1_0_2_0 returns ListFilter
+	 *     Comparison.Less_1_0_3_0 returns ListFilter
+	 *     PlusOrMinus returns ListFilter
+	 *     PlusOrMinus.Plus_1_0_0_0 returns ListFilter
+	 *     PlusOrMinus.Minus_1_0_1_0 returns ListFilter
+	 *     MulOrDiv returns ListFilter
+	 *     MulOrDiv.Multiply_1_0_0_0 returns ListFilter
+	 *     MulOrDiv.Divide_1_0_1_0 returns ListFilter
+	 *     Operator returns ListFilter
+	 *     Primary returns ListFilter
+	 *
+	 * Constraint:
+	 *     (expression=TopLevelExpression iterators+=ListIterator lists+=Primary (iterators+=ListIterator lists+=Primary)*)
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, ListFilter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns ListIteration
+	 *     Expression returns ListIteration
+	 *     Or returns ListIteration
+	 *     Or.Or_1_0 returns ListIteration
+	 *     And returns ListIteration
+	 *     And.And_1_0 returns ListIteration
+	 *     Equality returns ListIteration
+	 *     Equality.Equality_1_0_0_0 returns ListIteration
+	 *     Equality.Inequality_1_0_1_0 returns ListIteration
+	 *     Comparison returns ListIteration
+	 *     Comparison.GreaterEq_1_0_0_0 returns ListIteration
+	 *     Comparison.LessEq_1_0_1_0 returns ListIteration
+	 *     Comparison.Greater_1_0_2_0 returns ListIteration
+	 *     Comparison.Less_1_0_3_0 returns ListIteration
+	 *     PlusOrMinus returns ListIteration
+	 *     PlusOrMinus.Plus_1_0_0_0 returns ListIteration
+	 *     PlusOrMinus.Minus_1_0_1_0 returns ListIteration
+	 *     MulOrDiv returns ListIteration
+	 *     MulOrDiv.Multiply_1_0_0_0 returns ListIteration
+	 *     MulOrDiv.Divide_1_0_1_0 returns ListIteration
+	 *     Operator returns ListIteration
+	 *     Primary returns ListIteration
+	 *
+	 * Constraint:
+	 *     (expression=TopLevelExpression iterators+=ListIterator lists+=Primary (iterators+=ListIterator lists+=Primary)*)
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, ListIteration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns ListLiteral
+	 *     Expression returns ListLiteral
+	 *     Or returns ListLiteral
+	 *     Or.Or_1_0 returns ListLiteral
+	 *     And returns ListLiteral
+	 *     And.And_1_0 returns ListLiteral
+	 *     Equality returns ListLiteral
+	 *     Equality.Equality_1_0_0_0 returns ListLiteral
+	 *     Equality.Inequality_1_0_1_0 returns ListLiteral
+	 *     Comparison returns ListLiteral
+	 *     Comparison.GreaterEq_1_0_0_0 returns ListLiteral
+	 *     Comparison.LessEq_1_0_1_0 returns ListLiteral
+	 *     Comparison.Greater_1_0_2_0 returns ListLiteral
+	 *     Comparison.Less_1_0_3_0 returns ListLiteral
+	 *     PlusOrMinus returns ListLiteral
+	 *     PlusOrMinus.Plus_1_0_0_0 returns ListLiteral
+	 *     PlusOrMinus.Minus_1_0_1_0 returns ListLiteral
+	 *     MulOrDiv returns ListLiteral
+	 *     MulOrDiv.Multiply_1_0_0_0 returns ListLiteral
+	 *     MulOrDiv.Divide_1_0_1_0 returns ListLiteral
+	 *     Operator returns ListLiteral
+	 *     Primary returns ListLiteral
+	 *
+	 * Constraint:
+	 *     (elements+=Expression elements+=Expression*)
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, ListLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns ListReduce
+	 *     Expression returns ListReduce
+	 *     Or returns ListReduce
+	 *     Or.Or_1_0 returns ListReduce
+	 *     And returns ListReduce
+	 *     And.And_1_0 returns ListReduce
+	 *     Equality returns ListReduce
+	 *     Equality.Equality_1_0_0_0 returns ListReduce
+	 *     Equality.Inequality_1_0_1_0 returns ListReduce
+	 *     Comparison returns ListReduce
+	 *     Comparison.GreaterEq_1_0_0_0 returns ListReduce
+	 *     Comparison.LessEq_1_0_1_0 returns ListReduce
+	 *     Comparison.Greater_1_0_2_0 returns ListReduce
+	 *     Comparison.Less_1_0_3_0 returns ListReduce
+	 *     PlusOrMinus returns ListReduce
+	 *     PlusOrMinus.Plus_1_0_0_0 returns ListReduce
+	 *     PlusOrMinus.Minus_1_0_1_0 returns ListReduce
+	 *     MulOrDiv returns ListReduce
+	 *     MulOrDiv.Multiply_1_0_0_0 returns ListReduce
+	 *     MulOrDiv.Divide_1_0_1_0 returns ListReduce
+	 *     Operator returns ListReduce
+	 *     Primary returns ListReduce
+	 *
+	 * Constraint:
+	 *     (expression=TopLevelExpression accumulator=Primary iterators+=ListIterator lists+=Primary (iterators+=ListIterator lists+=Primary)*)
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, ListReduce semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns ListSize
+	 *     Expression returns ListSize
+	 *     Or returns ListSize
+	 *     Or.Or_1_0 returns ListSize
+	 *     And returns ListSize
+	 *     And.And_1_0 returns ListSize
+	 *     Equality returns ListSize
+	 *     Equality.Equality_1_0_0_0 returns ListSize
+	 *     Equality.Inequality_1_0_1_0 returns ListSize
+	 *     Comparison returns ListSize
+	 *     Comparison.GreaterEq_1_0_0_0 returns ListSize
+	 *     Comparison.LessEq_1_0_1_0 returns ListSize
+	 *     Comparison.Greater_1_0_2_0 returns ListSize
+	 *     Comparison.Less_1_0_3_0 returns ListSize
+	 *     PlusOrMinus returns ListSize
+	 *     PlusOrMinus.Plus_1_0_0_0 returns ListSize
+	 *     PlusOrMinus.Minus_1_0_1_0 returns ListSize
+	 *     MulOrDiv returns ListSize
+	 *     MulOrDiv.Multiply_1_0_0_0 returns ListSize
+	 *     MulOrDiv.Divide_1_0_1_0 returns ListSize
+	 *     Operator returns ListSize
+	 *     Primary returns ListSize
+	 *
+	 * Constraint:
+	 *     expression=Expression
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, ListSize semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.LIST_SIZE__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.LIST_SIZE__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOperatorAccess().getExpressionExpressionParserRuleCall_0_2_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns MaxOp
+	 *     Expression returns MaxOp
+	 *     Or returns MaxOp
+	 *     Or.Or_1_0 returns MaxOp
+	 *     And returns MaxOp
+	 *     And.And_1_0 returns MaxOp
+	 *     Equality returns MaxOp
+	 *     Equality.Equality_1_0_0_0 returns MaxOp
+	 *     Equality.Inequality_1_0_1_0 returns MaxOp
+	 *     Comparison returns MaxOp
+	 *     Comparison.GreaterEq_1_0_0_0 returns MaxOp
+	 *     Comparison.LessEq_1_0_1_0 returns MaxOp
+	 *     Comparison.Greater_1_0_2_0 returns MaxOp
+	 *     Comparison.Less_1_0_3_0 returns MaxOp
+	 *     PlusOrMinus returns MaxOp
+	 *     PlusOrMinus.Plus_1_0_0_0 returns MaxOp
+	 *     PlusOrMinus.Minus_1_0_1_0 returns MaxOp
+	 *     MulOrDiv returns MaxOp
+	 *     MulOrDiv.Multiply_1_0_0_0 returns MaxOp
+	 *     MulOrDiv.Divide_1_0_1_0 returns MaxOp
+	 *     Operator returns MaxOp
+	 *     Primary returns MaxOp
+	 *
+	 * Constraint:
+	 *     list=Expression
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, MaxOp semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.MAX_OP__LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.MAX_OP__LIST));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_5_3_0(), semanticObject.getList());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns MinOp
+	 *     Expression returns MinOp
+	 *     Or returns MinOp
+	 *     Or.Or_1_0 returns MinOp
+	 *     And returns MinOp
+	 *     And.And_1_0 returns MinOp
+	 *     Equality returns MinOp
+	 *     Equality.Equality_1_0_0_0 returns MinOp
+	 *     Equality.Inequality_1_0_1_0 returns MinOp
+	 *     Comparison returns MinOp
+	 *     Comparison.GreaterEq_1_0_0_0 returns MinOp
+	 *     Comparison.LessEq_1_0_1_0 returns MinOp
+	 *     Comparison.Greater_1_0_2_0 returns MinOp
+	 *     Comparison.Less_1_0_3_0 returns MinOp
+	 *     PlusOrMinus returns MinOp
+	 *     PlusOrMinus.Plus_1_0_0_0 returns MinOp
+	 *     PlusOrMinus.Minus_1_0_1_0 returns MinOp
+	 *     MulOrDiv returns MinOp
+	 *     MulOrDiv.Multiply_1_0_0_0 returns MinOp
+	 *     MulOrDiv.Divide_1_0_1_0 returns MinOp
+	 *     Operator returns MinOp
+	 *     Primary returns MinOp
+	 *
+	 * Constraint:
+	 *     list=Expression
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, MinOp semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.MIN_OP__LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.MIN_OP__LIST));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_4_3_0(), semanticObject.getList());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns ThresholdOp
+	 *     Expression returns ThresholdOp
+	 *     Or returns ThresholdOp
+	 *     Or.Or_1_0 returns ThresholdOp
+	 *     And returns ThresholdOp
+	 *     And.And_1_0 returns ThresholdOp
+	 *     Equality returns ThresholdOp
+	 *     Equality.Equality_1_0_0_0 returns ThresholdOp
+	 *     Equality.Inequality_1_0_1_0 returns ThresholdOp
+	 *     Comparison returns ThresholdOp
+	 *     Comparison.GreaterEq_1_0_0_0 returns ThresholdOp
+	 *     Comparison.LessEq_1_0_1_0 returns ThresholdOp
+	 *     Comparison.Greater_1_0_2_0 returns ThresholdOp
+	 *     Comparison.Less_1_0_3_0 returns ThresholdOp
+	 *     PlusOrMinus returns ThresholdOp
+	 *     PlusOrMinus.Plus_1_0_0_0 returns ThresholdOp
+	 *     PlusOrMinus.Minus_1_0_1_0 returns ThresholdOp
+	 *     MulOrDiv returns ThresholdOp
+	 *     MulOrDiv.Multiply_1_0_0_0 returns ThresholdOp
+	 *     MulOrDiv.Divide_1_0_1_0 returns ThresholdOp
+	 *     Operator returns ThresholdOp
+	 *     Primary returns ThresholdOp
+	 *
+	 * Constraint:
+	 *     (expression=Expression threshold=Expression)
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, ThresholdOp semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.THRESHOLD_OP__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.THRESHOLD_OP__EXPRESSION));
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.THRESHOLD_OP__THRESHOLD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.THRESHOLD_OP__THRESHOLD));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOperatorAccess().getExpressionExpressionParserRuleCall_6_3_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getOperatorAccess().getThresholdExpressionParserRuleCall_6_5_0(), semanticObject.getThreshold());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns WeightedSumOp
+	 *     Expression returns WeightedSumOp
+	 *     Or returns WeightedSumOp
+	 *     Or.Or_1_0 returns WeightedSumOp
+	 *     And returns WeightedSumOp
+	 *     And.And_1_0 returns WeightedSumOp
+	 *     Equality returns WeightedSumOp
+	 *     Equality.Equality_1_0_0_0 returns WeightedSumOp
+	 *     Equality.Inequality_1_0_1_0 returns WeightedSumOp
+	 *     Comparison returns WeightedSumOp
+	 *     Comparison.GreaterEq_1_0_0_0 returns WeightedSumOp
+	 *     Comparison.LessEq_1_0_1_0 returns WeightedSumOp
+	 *     Comparison.Greater_1_0_2_0 returns WeightedSumOp
+	 *     Comparison.Less_1_0_3_0 returns WeightedSumOp
+	 *     PlusOrMinus returns WeightedSumOp
+	 *     PlusOrMinus.Plus_1_0_0_0 returns WeightedSumOp
+	 *     PlusOrMinus.Minus_1_0_1_0 returns WeightedSumOp
+	 *     MulOrDiv returns WeightedSumOp
+	 *     MulOrDiv.Multiply_1_0_0_0 returns WeightedSumOp
+	 *     MulOrDiv.Divide_1_0_1_0 returns WeightedSumOp
+	 *     Operator returns WeightedSumOp
+	 *     Primary returns WeightedSumOp
+	 *
+	 * Constraint:
+	 *     (list=Expression weights=Expression)
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, WeightedSumOp semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.WEIGHTED_SUM_OP__LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.WEIGHTED_SUM_OP__LIST));
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.WEIGHTED_SUM_OP__WEIGHTS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.WEIGHTED_SUM_OP__WEIGHTS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_3_3_0(), semanticObject.getList());
+		feeder.accept(grammarAccess.getOperatorAccess().getWeightsExpressionParserRuleCall_3_5_0(), semanticObject.getWeights());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns Or
 	 *     Expression returns Or
 	 *     Or returns Or
 	 *     Or.Or_1_0 returns Or
@@ -1186,6 +1705,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Or
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Or
 	 *     MulOrDiv.Divide_1_0_1_0 returns Or
+	 *     Operator returns Or
 	 *     Primary returns Or
 	 *
 	 * Constraint:
@@ -1209,6 +1729,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns Minus
 	 *     Expression returns Minus
 	 *     Or returns Minus
 	 *     Or.Or_1_0 returns Minus
@@ -1228,6 +1749,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Minus
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Minus
 	 *     MulOrDiv.Divide_1_0_1_0 returns Minus
+	 *     Operator returns Minus
 	 *     Primary returns Minus
 	 *
 	 * Constraint:
@@ -1251,6 +1773,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelExpression returns Plus
 	 *     Expression returns Plus
 	 *     Or returns Plus
 	 *     Or.Or_1_0 returns Plus
@@ -1270,6 +1793,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Plus
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Plus
 	 *     MulOrDiv.Divide_1_0_1_0 returns Plus
+	 *     Operator returns Plus
 	 *     Primary returns Plus
 	 *
 	 * Constraint:
@@ -1293,105 +1817,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Expression returns AvgOp
-	 *     Or returns AvgOp
-	 *     Or.Or_1_0 returns AvgOp
-	 *     And returns AvgOp
-	 *     And.And_1_0 returns AvgOp
-	 *     Equality returns AvgOp
-	 *     Equality.Equality_1_0_0_0 returns AvgOp
-	 *     Equality.Inequality_1_0_1_0 returns AvgOp
-	 *     Comparison returns AvgOp
-	 *     Comparison.GreaterEq_1_0_0_0 returns AvgOp
-	 *     Comparison.LessEq_1_0_1_0 returns AvgOp
-	 *     Comparison.Greater_1_0_2_0 returns AvgOp
-	 *     Comparison.Less_1_0_3_0 returns AvgOp
-	 *     PlusOrMinus returns AvgOp
-	 *     PlusOrMinus.Plus_1_0_0_0 returns AvgOp
-	 *     PlusOrMinus.Minus_1_0_1_0 returns AvgOp
-	 *     MulOrDiv returns AvgOp
-	 *     MulOrDiv.Multiply_1_0_0_0 returns AvgOp
-	 *     MulOrDiv.Divide_1_0_1_0 returns AvgOp
-	 *     Primary returns AvgOp
-	 *
-	 * Constraint:
-	 *     (expressions+=Expression expressions+=Expression*)
-	 * </pre>
-	 */
-	protected void sequence_Primary(ISerializationContext context, AvgOp semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Expression returns MaxOp
-	 *     Or returns MaxOp
-	 *     Or.Or_1_0 returns MaxOp
-	 *     And returns MaxOp
-	 *     And.And_1_0 returns MaxOp
-	 *     Equality returns MaxOp
-	 *     Equality.Equality_1_0_0_0 returns MaxOp
-	 *     Equality.Inequality_1_0_1_0 returns MaxOp
-	 *     Comparison returns MaxOp
-	 *     Comparison.GreaterEq_1_0_0_0 returns MaxOp
-	 *     Comparison.LessEq_1_0_1_0 returns MaxOp
-	 *     Comparison.Greater_1_0_2_0 returns MaxOp
-	 *     Comparison.Less_1_0_3_0 returns MaxOp
-	 *     PlusOrMinus returns MaxOp
-	 *     PlusOrMinus.Plus_1_0_0_0 returns MaxOp
-	 *     PlusOrMinus.Minus_1_0_1_0 returns MaxOp
-	 *     MulOrDiv returns MaxOp
-	 *     MulOrDiv.Multiply_1_0_0_0 returns MaxOp
-	 *     MulOrDiv.Divide_1_0_1_0 returns MaxOp
-	 *     Primary returns MaxOp
-	 *
-	 * Constraint:
-	 *     (expressions+=Expression expressions+=Expression*)
-	 * </pre>
-	 */
-	protected void sequence_Primary(ISerializationContext context, MaxOp semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Expression returns MinOp
-	 *     Or returns MinOp
-	 *     Or.Or_1_0 returns MinOp
-	 *     And returns MinOp
-	 *     And.And_1_0 returns MinOp
-	 *     Equality returns MinOp
-	 *     Equality.Equality_1_0_0_0 returns MinOp
-	 *     Equality.Inequality_1_0_1_0 returns MinOp
-	 *     Comparison returns MinOp
-	 *     Comparison.GreaterEq_1_0_0_0 returns MinOp
-	 *     Comparison.LessEq_1_0_1_0 returns MinOp
-	 *     Comparison.Greater_1_0_2_0 returns MinOp
-	 *     Comparison.Less_1_0_3_0 returns MinOp
-	 *     PlusOrMinus returns MinOp
-	 *     PlusOrMinus.Plus_1_0_0_0 returns MinOp
-	 *     PlusOrMinus.Minus_1_0_1_0 returns MinOp
-	 *     MulOrDiv returns MinOp
-	 *     MulOrDiv.Multiply_1_0_0_0 returns MinOp
-	 *     MulOrDiv.Divide_1_0_1_0 returns MinOp
-	 *     Primary returns MinOp
-	 *
-	 * Constraint:
-	 *     (expressions+=Expression expressions+=Expression*)
-	 * </pre>
-	 */
-	protected void sequence_Primary(ISerializationContext context, MinOp semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
+	 *     TopLevelExpression returns Not
 	 *     Expression returns Not
 	 *     Or returns Not
 	 *     Or.Or_1_0 returns Not
@@ -1411,6 +1837,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns Not
 	 *     MulOrDiv.Multiply_1_0_0_0 returns Not
 	 *     MulOrDiv.Divide_1_0_1_0 returns Not
+	 *     Operator returns Not
 	 *     Primary returns Not
 	 *
 	 * Constraint:
@@ -1431,48 +1858,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Expression returns ThresholdOp
-	 *     Or returns ThresholdOp
-	 *     Or.Or_1_0 returns ThresholdOp
-	 *     And returns ThresholdOp
-	 *     And.And_1_0 returns ThresholdOp
-	 *     Equality returns ThresholdOp
-	 *     Equality.Equality_1_0_0_0 returns ThresholdOp
-	 *     Equality.Inequality_1_0_1_0 returns ThresholdOp
-	 *     Comparison returns ThresholdOp
-	 *     Comparison.GreaterEq_1_0_0_0 returns ThresholdOp
-	 *     Comparison.LessEq_1_0_1_0 returns ThresholdOp
-	 *     Comparison.Greater_1_0_2_0 returns ThresholdOp
-	 *     Comparison.Less_1_0_3_0 returns ThresholdOp
-	 *     PlusOrMinus returns ThresholdOp
-	 *     PlusOrMinus.Plus_1_0_0_0 returns ThresholdOp
-	 *     PlusOrMinus.Minus_1_0_1_0 returns ThresholdOp
-	 *     MulOrDiv returns ThresholdOp
-	 *     MulOrDiv.Multiply_1_0_0_0 returns ThresholdOp
-	 *     MulOrDiv.Divide_1_0_1_0 returns ThresholdOp
-	 *     Primary returns ThresholdOp
-	 *
-	 * Constraint:
-	 *     (expression=Expression threshold=Expression)
-	 * </pre>
-	 */
-	protected void sequence_Primary(ISerializationContext context, ThresholdOp semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.THRESHOLD_OP__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.THRESHOLD_OP__EXPRESSION));
-			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.THRESHOLD_OP__THRESHOLD) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.THRESHOLD_OP__THRESHOLD));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionExpressionParserRuleCall_7_3_0(), semanticObject.getExpression());
-		feeder.accept(grammarAccess.getPrimaryAccess().getThresholdExpressionParserRuleCall_7_5_0(), semanticObject.getThreshold());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
+	 *     TopLevelExpression returns UnaryMinus
 	 *     Expression returns UnaryMinus
 	 *     Or returns UnaryMinus
 	 *     Or.Or_1_0 returns UnaryMinus
@@ -1492,6 +1878,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MulOrDiv returns UnaryMinus
 	 *     MulOrDiv.Multiply_1_0_0_0 returns UnaryMinus
 	 *     MulOrDiv.Divide_1_0_1_0 returns UnaryMinus
+	 *     Operator returns UnaryMinus
 	 *     Primary returns UnaryMinus
 	 *
 	 * Constraint:
@@ -1506,39 +1893,6 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionPrimaryParserRuleCall_2_2_0(), semanticObject.getExpression());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Expression returns WeightedSumOp
-	 *     Or returns WeightedSumOp
-	 *     Or.Or_1_0 returns WeightedSumOp
-	 *     And returns WeightedSumOp
-	 *     And.And_1_0 returns WeightedSumOp
-	 *     Equality returns WeightedSumOp
-	 *     Equality.Equality_1_0_0_0 returns WeightedSumOp
-	 *     Equality.Inequality_1_0_1_0 returns WeightedSumOp
-	 *     Comparison returns WeightedSumOp
-	 *     Comparison.GreaterEq_1_0_0_0 returns WeightedSumOp
-	 *     Comparison.LessEq_1_0_1_0 returns WeightedSumOp
-	 *     Comparison.Greater_1_0_2_0 returns WeightedSumOp
-	 *     Comparison.Less_1_0_3_0 returns WeightedSumOp
-	 *     PlusOrMinus returns WeightedSumOp
-	 *     PlusOrMinus.Plus_1_0_0_0 returns WeightedSumOp
-	 *     PlusOrMinus.Minus_1_0_1_0 returns WeightedSumOp
-	 *     MulOrDiv returns WeightedSumOp
-	 *     MulOrDiv.Multiply_1_0_0_0 returns WeightedSumOp
-	 *     MulOrDiv.Divide_1_0_1_0 returns WeightedSumOp
-	 *     Primary returns WeightedSumOp
-	 *
-	 * Constraint:
-	 *     (expressions+=Expression weights+=Expression (expressions+=Expression weights+=Expression)*)
-	 * </pre>
-	 */
-	protected void sequence_Primary(ISerializationContext context, WeightedSumOp semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

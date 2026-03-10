@@ -2,8 +2,6 @@
  */
 package lu.list.swrdi.formulaKPI.model.formulaKPI;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Weighted Sum Op</b></em>'.
@@ -13,7 +11,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getExpressions <em>Expressions</em>}</li>
+ *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getList <em>List</em>}</li>
  *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getWeights <em>Weights</em>}</li>
  * </ul>
  *
@@ -23,27 +21,47 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface WeightedSumOp extends Expression {
 	/**
-	 * Returns the value of the '<em><b>Expressions</b></em>' containment reference list.
-	 * The list contents are of type {@link lu.list.swrdi.formulaKPI.model.formulaKPI.Expression}.
+	 * Returns the value of the '<em><b>List</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expressions</em>' containment reference list.
-	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage#getWeightedSumOp_Expressions()
-	 * @model containment="true"
+	 * @return the value of the '<em>List</em>' containment reference.
+	 * @see #setList(Expression)
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage#getWeightedSumOp_List()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Expression> getExpressions();
+	Expression getList();
 
 	/**
-	 * Returns the value of the '<em><b>Weights</b></em>' containment reference list.
-	 * The list contents are of type {@link lu.list.swrdi.formulaKPI.model.formulaKPI.Expression}.
+	 * Sets the value of the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getList <em>List</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Weights</em>' containment reference list.
-	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage#getWeightedSumOp_Weights()
-	 * @model containment="true"
+	 * @param value the new value of the '<em>List</em>' containment reference.
+	 * @see #getList()
 	 * @generated
 	 */
-	EList<Expression> getWeights();
+	void setList(Expression value);
+
+	/**
+	 * Returns the value of the '<em><b>Weights</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Weights</em>' containment reference.
+	 * @see #setWeights(Expression)
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage#getWeightedSumOp_Weights()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Expression getWeights();
+
+	/**
+	 * Sets the value of the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getWeights <em>Weights</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Weights</em>' containment reference.
+	 * @see #getWeights()
+	 * @generated
+	 */
+	void setWeights(Expression value);
 
 } // WeightedSumOp

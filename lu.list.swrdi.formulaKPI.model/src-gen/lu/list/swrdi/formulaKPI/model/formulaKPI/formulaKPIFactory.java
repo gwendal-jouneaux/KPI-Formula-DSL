@@ -364,6 +364,24 @@ public interface formulaKPIFactory extends EFactory {
 	Or createOr();
 
 	/**
+	 * Returns a new object of class '<em>List Size</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Size</em>'.
+	 * @generated
+	 */
+	ListSize createListSize();
+
+	/**
+	 * Returns a new object of class '<em>List Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Literal</em>'.
+	 * @generated
+	 */
+	ListLiteral createListLiteral();
+
+	/**
 	 * Returns a new object of class '<em>Min Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,6 +436,51 @@ public interface formulaKPIFactory extends EFactory {
 	MaxOp createMaxOp();
 
 	/**
+	 * Returns a new object of class '<em>List Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Operation</em>'.
+	 * @generated
+	 */
+	ListOperation createListOperation();
+
+	/**
+	 * Returns a new object of class '<em>List Iteration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Iteration</em>'.
+	 * @generated
+	 */
+	ListIteration createListIteration();
+
+	/**
+	 * Returns a new object of class '<em>List Reduce</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Reduce</em>'.
+	 * @generated
+	 */
+	ListReduce createListReduce();
+
+	/**
+	 * Returns a new object of class '<em>List Filter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Filter</em>'.
+	 * @generated
+	 */
+	ListFilter createListFilter();
+
+	/**
+	 * Returns a new object of class '<em>List Iterator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Iterator</em>'.
+	 * @generated
+	 */
+	ListIterator createListIterator();
+
+	/**
 	 * Returns a new object of class '<em>Text Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -470,6 +533,15 @@ public interface formulaKPIFactory extends EFactory {
 	 * @generated
 	 */
 	ComputableRef createComputableRef();
+
+	/**
+	 * Returns a new object of class '<em>Accumulator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Accumulator</em>'.
+	 * @generated
+	 */
+	Accumulator createAccumulator();
 
 	/**
 	 * Returns the package supported by this factory.

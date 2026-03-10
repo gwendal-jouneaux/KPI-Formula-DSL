@@ -7,12 +7,14 @@ import java.util.Collection;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.EnumerationLiteral;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.EnumerationValue;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;

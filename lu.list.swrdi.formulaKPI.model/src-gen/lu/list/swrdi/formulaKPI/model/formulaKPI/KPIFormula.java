@@ -31,7 +31,7 @@ public interface KPIFormula extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Declarations</em>' containment reference list.
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage#getKPIFormula_Declarations()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Declaration> getDeclarations();
@@ -43,7 +43,7 @@ public interface KPIFormula extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Computations</em>' containment reference list.
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage#getKPIFormula_Computations()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Computation> getComputations();

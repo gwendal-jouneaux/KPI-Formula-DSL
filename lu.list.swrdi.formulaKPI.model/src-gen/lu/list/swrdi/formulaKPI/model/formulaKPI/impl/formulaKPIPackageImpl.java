@@ -2,6 +2,7 @@
  */
 package lu.list.swrdi.formulaKPI.model.formulaKPI.impl;
 
+import lu.list.swrdi.formulaKPI.model.formulaKPI.Accumulator;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.AggregationValue;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.And;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Average;
@@ -30,6 +31,13 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.IntegerValue;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.KPIFormula;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Less;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.LessEq;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListFilter;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListIteration;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListIterator;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Literal;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Maximum;
@@ -398,6 +406,20 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass listSizeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass minOpEClass = null;
 
 	/**
@@ -440,6 +462,41 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass listOperationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listIterationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listReduceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listFilterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listIteratorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass textConstantEClass = null;
 
 	/**
@@ -476,6 +533,13 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * @generated
 	 */
 	private EClass computableRefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass accumulatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1208,6 +1272,42 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getListSize() {
+		return listSizeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getListSize_Expression() {
+		return (EReference) listSizeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getListLiteral() {
+		return listLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getListLiteral_Elements() {
+		return (EReference) listLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMinOp() {
 		return minOpEClass;
 	}
@@ -1217,7 +1317,7 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMinOp_Expressions() {
+	public EReference getMinOp_List() {
 		return (EReference) minOpEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1289,7 +1389,7 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWeightedSumOp_Expressions() {
+	public EReference getWeightedSumOp_List() {
 		return (EReference) weightedSumOpEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1316,7 +1416,7 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAvgOp_Expressions() {
+	public EReference getAvgOp_List() {
 		return (EReference) avgOpEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1334,8 +1434,89 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMaxOp_Expressions() {
+	public EReference getMaxOp_List() {
 		return (EReference) maxOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getListOperation() {
+		return listOperationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getListOperation_Lists() {
+		return (EReference) listOperationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getListOperation_Iterators() {
+		return (EReference) listOperationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getListOperation_Expression() {
+		return (EReference) listOperationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getListIteration() {
+		return listIterationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getListReduce() {
+		return listReduceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getListReduce_Accumulator() {
+		return (EReference) listReduceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getListFilter() {
+		return listFilterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getListIterator() {
+		return listIteratorEClass;
 	}
 
 	/**
@@ -1453,6 +1634,15 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 */
 	public EReference getComputableRef_Computable() {
 		return (EReference) computableRefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAccumulator() {
+		return accumulatorEClass;
 	}
 
 	/**
@@ -1619,8 +1809,14 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 
 		orEClass = createEClass(OR);
 
+		listSizeEClass = createEClass(LIST_SIZE);
+		createEReference(listSizeEClass, LIST_SIZE__EXPRESSION);
+
+		listLiteralEClass = createEClass(LIST_LITERAL);
+		createEReference(listLiteralEClass, LIST_LITERAL__ELEMENTS);
+
 		minOpEClass = createEClass(MIN_OP);
-		createEReference(minOpEClass, MIN_OP__EXPRESSIONS);
+		createEReference(minOpEClass, MIN_OP__LIST);
 
 		conditionalOpEClass = createEClass(CONDITIONAL_OP);
 		createEReference(conditionalOpEClass, CONDITIONAL_OP__RESULTS);
@@ -1631,14 +1827,28 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 		createEReference(thresholdOpEClass, THRESHOLD_OP__THRESHOLD);
 
 		weightedSumOpEClass = createEClass(WEIGHTED_SUM_OP);
-		createEReference(weightedSumOpEClass, WEIGHTED_SUM_OP__EXPRESSIONS);
+		createEReference(weightedSumOpEClass, WEIGHTED_SUM_OP__LIST);
 		createEReference(weightedSumOpEClass, WEIGHTED_SUM_OP__WEIGHTS);
 
 		avgOpEClass = createEClass(AVG_OP);
-		createEReference(avgOpEClass, AVG_OP__EXPRESSIONS);
+		createEReference(avgOpEClass, AVG_OP__LIST);
 
 		maxOpEClass = createEClass(MAX_OP);
-		createEReference(maxOpEClass, MAX_OP__EXPRESSIONS);
+		createEReference(maxOpEClass, MAX_OP__LIST);
+
+		listOperationEClass = createEClass(LIST_OPERATION);
+		createEReference(listOperationEClass, LIST_OPERATION__LISTS);
+		createEReference(listOperationEClass, LIST_OPERATION__ITERATORS);
+		createEReference(listOperationEClass, LIST_OPERATION__EXPRESSION);
+
+		listIterationEClass = createEClass(LIST_ITERATION);
+
+		listReduceEClass = createEClass(LIST_REDUCE);
+		createEReference(listReduceEClass, LIST_REDUCE__ACCUMULATOR);
+
+		listFilterEClass = createEClass(LIST_FILTER);
+
+		listIteratorEClass = createEClass(LIST_ITERATOR);
 
 		textConstantEClass = createEClass(TEXT_CONSTANT);
 		createEAttribute(textConstantEClass, TEXT_CONSTANT__VALUE);
@@ -1658,6 +1868,8 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 
 		computableRefEClass = createEClass(COMPUTABLE_REF);
 		createEReference(computableRefEClass, COMPUTABLE_REF__COMPUTABLE);
+
+		accumulatorEClass = createEClass(ACCUMULATOR);
 
 		// Create enums
 		windowUnitEEnum = createEEnum(WINDOW_UNIT);
@@ -1728,18 +1940,26 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 		inequalityEClass.getESuperTypes().add(this.getBinOp());
 		equalityEClass.getESuperTypes().add(this.getBinOp());
 		orEClass.getESuperTypes().add(this.getBinOp());
+		listSizeEClass.getESuperTypes().add(this.getExpression());
+		listLiteralEClass.getESuperTypes().add(this.getLiteral());
 		minOpEClass.getESuperTypes().add(this.getExpression());
 		conditionalOpEClass.getESuperTypes().add(this.getExpression());
 		thresholdOpEClass.getESuperTypes().add(this.getExpression());
 		weightedSumOpEClass.getESuperTypes().add(this.getExpression());
 		avgOpEClass.getESuperTypes().add(this.getExpression());
 		maxOpEClass.getESuperTypes().add(this.getExpression());
+		listOperationEClass.getESuperTypes().add(this.getExpression());
+		listIterationEClass.getESuperTypes().add(this.getListOperation());
+		listReduceEClass.getESuperTypes().add(this.getListOperation());
+		listFilterEClass.getESuperTypes().add(this.getListOperation());
+		listIteratorEClass.getESuperTypes().add(this.getComputable());
 		textConstantEClass.getESuperTypes().add(this.getLiteral());
 		enumLiteralRefEClass.getESuperTypes().add(this.getExpression());
 		intConstantEClass.getESuperTypes().add(this.getLiteral());
 		unitConstantEClass.getESuperTypes().add(this.getLiteral());
 		boolConstantEClass.getESuperTypes().add(this.getLiteral());
 		computableRefEClass.getESuperTypes().add(this.getExpression());
+		accumulatorEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(computationEClass, Computation.class, "Computation", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1770,10 +1990,10 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 
 		initEClass(kpiFormulaEClass, KPIFormula.class, "KPIFormula", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getKPIFormula_Declarations(), this.getDeclaration(), null, "declarations", null, 1, -1,
+		initEReference(getKPIFormula_Declarations(), this.getDeclaration(), null, "declarations", null, 0, -1,
 				KPIFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getKPIFormula_Computations(), this.getComputation(), null, "computations", null, 1, -1,
+		initEReference(getKPIFormula_Computations(), this.getComputation(), null, "computations", null, 0, -1,
 				KPIFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1935,10 +2155,22 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 
 		initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(minOpEClass, MinOp.class, "MinOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMinOp_Expressions(), this.getExpression(), null, "expressions", null, 0, -1, MinOp.class,
+		initEClass(listSizeEClass, ListSize.class, "ListSize", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getListSize_Expression(), this.getExpression(), null, "expression", null, 1, 1, ListSize.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listLiteralEClass, ListLiteral.class, "ListLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getListLiteral_Elements(), this.getExpression(), null, "elements", null, 0, -1,
+				ListLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(minOpEClass, MinOp.class, "MinOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMinOp_List(), this.getExpression(), null, "list", null, 1, 1, MinOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(conditionalOpEClass, ConditionalOp.class, "ConditionalOp", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1960,22 +2192,49 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 
 		initEClass(weightedSumOpEClass, WeightedSumOp.class, "WeightedSumOp", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWeightedSumOp_Expressions(), this.getExpression(), null, "expressions", null, 0, -1,
-				WeightedSumOp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWeightedSumOp_Weights(), this.getExpression(), null, "weights", null, 0, -1,
+		initEReference(getWeightedSumOp_List(), this.getExpression(), null, "list", null, 1, 1, WeightedSumOp.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWeightedSumOp_Weights(), this.getExpression(), null, "weights", null, 1, 1,
 				WeightedSumOp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(avgOpEClass, AvgOp.class, "AvgOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAvgOp_Expressions(), this.getExpression(), null, "expressions", null, 0, -1, AvgOp.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAvgOp_List(), this.getExpression(), null, "list", null, 1, 1, AvgOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(maxOpEClass, MaxOp.class, "MaxOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMaxOp_Expressions(), this.getExpression(), null, "expressions", null, 0, -1, MaxOp.class,
+		initEReference(getMaxOp_List(), this.getExpression(), null, "list", null, 1, 1, MaxOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(listOperationEClass, ListOperation.class, "ListOperation", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getListOperation_Lists(), this.getExpression(), null, "lists", null, 1, -1, ListOperation.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getListOperation_Iterators(), this.getListIterator(), null, "iterators", null, 1, -1,
+				ListOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getListOperation_Expression(), this.getExpression(), null, "expression", null, 1, 1,
+				ListOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listIterationEClass, ListIteration.class, "ListIteration", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(listReduceEClass, ListReduce.class, "ListReduce", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getListReduce_Accumulator(), this.getExpression(), null, "accumulator", null, 1, 1,
+				ListReduce.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listFilterEClass, ListFilter.class, "ListFilter", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(listIteratorEClass, ListIterator.class, "ListIterator", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(textConstantEClass, TextConstant.class, "TextConstant", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2010,6 +2269,9 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 		initEReference(getComputableRef_Computable(), this.getComputable(), null, "computable", null, 1, 1,
 				ComputableRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(accumulatorEClass, Accumulator.class, "Accumulator", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(windowUnitEEnum, WindowUnit.class, "WindowUnit");

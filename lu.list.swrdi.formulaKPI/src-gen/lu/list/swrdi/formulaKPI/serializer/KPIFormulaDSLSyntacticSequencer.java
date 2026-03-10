@@ -58,11 +58,17 @@ public class KPIFormulaDSLSyntacticSequencer extends AbstractSyntacticSequencer 
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) '!' expression=Primary
 	 *     (rule start) (ambiguity) '-' expression=Primary
-	 *     (rule start) (ambiguity) 'AVERAGE' '(' expressions+=Expression
-	 *     (rule start) (ambiguity) 'MAX' '(' expressions+=Expression
-	 *     (rule start) (ambiguity) 'MIN' '(' expressions+=Expression
+	 *     (rule start) (ambiguity) 'AVERAGE' '(' list=Expression
+	 *     (rule start) (ambiguity) 'MAX' '(' list=Expression
+	 *     (rule start) (ambiguity) 'MIN' '(' list=Expression
 	 *     (rule start) (ambiguity) 'THRESHOLD' '(' expression=Expression
-	 *     (rule start) (ambiguity) 'WEIGHTED_SUM' '(' expressions+=Expression
+	 *     (rule start) (ambiguity) 'WEIGHTED_SUM' '(' list=Expression
+	 *     (rule start) (ambiguity) '[' elements+=Expression
+	 *     (rule start) (ambiguity) 'accumulator' (rule start)
+	 *     (rule start) (ambiguity) 'do' expression=TopLevelExpression
+	 *     (rule start) (ambiguity) 'filter' expression=TopLevelExpression
+	 *     (rule start) (ambiguity) 'reduce' expression=TopLevelExpression
+	 *     (rule start) (ambiguity) '|' expression=Expression
 	 *     (rule start) (ambiguity) computable=[Computable|ID]
 	 *     (rule start) (ambiguity) literal=[EnumerationLiteral|FQN]
 	 *     (rule start) (ambiguity) value='false'
@@ -95,6 +101,16 @@ public class KPIFormulaDSLSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     '('+
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'AVERAGE' '(' list=Expression
+	 *     (rule start) (ambiguity) 'MAX' '(' list=Expression
+	 *     (rule start) (ambiguity) 'MIN' '(' list=Expression
+	 *     (rule start) (ambiguity) 'THRESHOLD' '(' expression=Expression
+	 *     (rule start) (ambiguity) 'WEIGHTED_SUM' '(' list=Expression
+	 *     (rule start) (ambiguity) '[' elements+=Expression
+	 *     (rule start) (ambiguity) 'do' expression=TopLevelExpression
+	 *     (rule start) (ambiguity) 'filter' expression=TopLevelExpression
+	 *     (rule start) (ambiguity) 'reduce' expression=TopLevelExpression
+	 *     (rule start) (ambiguity) '|' expression=Expression
 	 *     (rule start) (ambiguity) {And.left=}
 	 *     (rule start) (ambiguity) {Divide.left=}
 	 *     (rule start) (ambiguity) {Equality.left=}

@@ -2,8 +2,6 @@
  */
 package lu.list.swrdi.formulaKPI.model.formulaKPI;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Avg Op</b></em>'.
@@ -13,7 +11,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp#getExpressions <em>Expressions</em>}</li>
+ *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp#getList <em>List</em>}</li>
  * </ul>
  *
  * @see lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage#getAvgOp()
@@ -22,15 +20,25 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface AvgOp extends Expression {
 	/**
-	 * Returns the value of the '<em><b>Expressions</b></em>' containment reference list.
-	 * The list contents are of type {@link lu.list.swrdi.formulaKPI.model.formulaKPI.Expression}.
+	 * Returns the value of the '<em><b>List</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expressions</em>' containment reference list.
-	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage#getAvgOp_Expressions()
-	 * @model containment="true"
+	 * @return the value of the '<em>List</em>' containment reference.
+	 * @see #setList(Expression)
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage#getAvgOp_List()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Expression> getExpressions();
+	Expression getList();
+
+	/**
+	 * Sets the value of the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp#getList <em>List</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>List</em>' containment reference.
+	 * @see #getList()
+	 * @generated
+	 */
+	void setList(Expression value);
 
 } // AvgOp

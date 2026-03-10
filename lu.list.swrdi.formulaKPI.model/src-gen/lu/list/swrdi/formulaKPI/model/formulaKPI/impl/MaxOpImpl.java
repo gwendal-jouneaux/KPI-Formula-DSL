@@ -2,23 +2,18 @@
  */
 package lu.list.swrdi.formulaKPI.model.formulaKPI.impl;
 
-import java.util.Collection;
-
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Expression;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIPackage;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,21 +23,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.MaxOpImpl#getExpressions <em>Expressions</em>}</li>
+ *   <li>{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.MaxOpImpl#getList <em>List</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class MaxOpImpl extends MinimalEObjectImpl.Container implements MaxOp {
 	/**
-	 * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
+	 * The cached value of the '{@link #getList() <em>List</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpressions()
+	 * @see #getList()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Expression> expressions;
+	protected Expression list;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,12 +63,48 @@ public class MaxOpImpl extends MinimalEObjectImpl.Container implements MaxOp {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Expression> getExpressions() {
-		if (expressions == null) {
-			expressions = new EObjectContainmentEList<Expression>(Expression.class, this,
-					formulaKPIPackage.MAX_OP__EXPRESSIONS);
+	public Expression getList() {
+		return list;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetList(Expression newList, NotificationChain msgs) {
+		Expression oldList = list;
+		list = newList;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					formulaKPIPackage.MAX_OP__LIST, oldList, newList);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
-		return expressions;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setList(Expression newList) {
+		if (newList != list) {
+			NotificationChain msgs = null;
+			if (list != null)
+				msgs = ((InternalEObject) list).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - formulaKPIPackage.MAX_OP__LIST, null, msgs);
+			if (newList != null)
+				msgs = ((InternalEObject) newList).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - formulaKPIPackage.MAX_OP__LIST, null, msgs);
+			msgs = basicSetList(newList, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, formulaKPIPackage.MAX_OP__LIST, newList, newList));
 	}
 
 	/**
@@ -84,8 +115,8 @@ public class MaxOpImpl extends MinimalEObjectImpl.Container implements MaxOp {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case formulaKPIPackage.MAX_OP__EXPRESSIONS:
-			return ((InternalEList<?>) getExpressions()).basicRemove(otherEnd, msgs);
+		case formulaKPIPackage.MAX_OP__LIST:
+			return basicSetList(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -98,8 +129,8 @@ public class MaxOpImpl extends MinimalEObjectImpl.Container implements MaxOp {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case formulaKPIPackage.MAX_OP__EXPRESSIONS:
-			return getExpressions();
+		case formulaKPIPackage.MAX_OP__LIST:
+			return getList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -109,13 +140,11 @@ public class MaxOpImpl extends MinimalEObjectImpl.Container implements MaxOp {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case formulaKPIPackage.MAX_OP__EXPRESSIONS:
-			getExpressions().clear();
-			getExpressions().addAll((Collection<? extends Expression>) newValue);
+		case formulaKPIPackage.MAX_OP__LIST:
+			setList((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -129,8 +158,8 @@ public class MaxOpImpl extends MinimalEObjectImpl.Container implements MaxOp {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case formulaKPIPackage.MAX_OP__EXPRESSIONS:
-			getExpressions().clear();
+		case formulaKPIPackage.MAX_OP__LIST:
+			setList((Expression) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -144,8 +173,8 @@ public class MaxOpImpl extends MinimalEObjectImpl.Container implements MaxOp {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case formulaKPIPackage.MAX_OP__EXPRESSIONS:
-			return expressions != null && !expressions.isEmpty();
+		case formulaKPIPackage.MAX_OP__LIST:
+			return list != null;
 		}
 		return super.eIsSet(featureID);
 	}

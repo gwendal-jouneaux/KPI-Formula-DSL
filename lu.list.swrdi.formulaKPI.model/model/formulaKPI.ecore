@@ -19,10 +19,10 @@
         eType="#//Declarable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="KPIFormula">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" lowerBound="1"
-        upperBound="-1" eType="#//Declaration" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="computations" lowerBound="1"
-        upperBound="-1" eType="#//Computation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" upperBound="-1"
+        eType="#//Declaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="computations" upperBound="-1"
+        eType="#//Computation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QualityAttribute" eSuperTypes="#//Computable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="metrics" upperBound="-1"
@@ -130,9 +130,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="Inequality" eSuperTypes="#//BinOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="Equality" eSuperTypes="#//BinOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//BinOp"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MinOp" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
+  <eClassifiers xsi:type="ecore:EClass" name="ListSize" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
         eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MinOp" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="list" lowerBound="1" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalOp" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
@@ -147,19 +155,34 @@
         eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WeightedSumOp" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="weights" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="list" lowerBound="1" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="weights" lowerBound="1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AvgOp" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
-        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="list" lowerBound="1" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MaxOp" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="list" lowerBound="1" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListOperation" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lists" lowerBound="1" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="iterators" lowerBound="1"
+        upperBound="-1" eType="#//ListIterator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListIteration" eSuperTypes="#//ListOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ListReduce" eSuperTypes="#//ListOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accumulator" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListFilter" eSuperTypes="#//ListOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ListIterator" eSuperTypes="#//Computable"/>
   <eClassifiers xsi:type="ecore:EClass" name="TextConstant" eSuperTypes="#//Literal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -181,4 +204,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="computable" lowerBound="1"
         eType="#//Computable"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Accumulator" eSuperTypes="#//Expression"/>
 </ecore:EPackage>

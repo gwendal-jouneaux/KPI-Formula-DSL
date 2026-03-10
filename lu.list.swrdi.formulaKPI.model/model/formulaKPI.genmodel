@@ -120,8 +120,14 @@
     <genClasses ecoreClass="formulaKPI.ecore#//Inequality"/>
     <genClasses ecoreClass="formulaKPI.ecore#//Equality"/>
     <genClasses ecoreClass="formulaKPI.ecore#//Or"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//ListSize">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ListSize/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//ListLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ListLiteral/elements"/>
+    </genClasses>
     <genClasses ecoreClass="formulaKPI.ecore#//MinOp">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//MinOp/expressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//MinOp/list"/>
     </genClasses>
     <genClasses ecoreClass="formulaKPI.ecore#//ConditionalOp">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ConditionalOp/results"/>
@@ -132,15 +138,26 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ThresholdOp/threshold"/>
     </genClasses>
     <genClasses ecoreClass="formulaKPI.ecore#//WeightedSumOp">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//WeightedSumOp/expressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//WeightedSumOp/list"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//WeightedSumOp/weights"/>
     </genClasses>
     <genClasses ecoreClass="formulaKPI.ecore#//AvgOp">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//AvgOp/expressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//AvgOp/list"/>
     </genClasses>
     <genClasses ecoreClass="formulaKPI.ecore#//MaxOp">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//MaxOp/expressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//MaxOp/list"/>
     </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//ListOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ListOperation/lists"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ListOperation/iterators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ListOperation/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//ListIteration"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//ListReduce">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ListReduce/accumulator"/>
+    </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//ListFilter"/>
+    <genClasses ecoreClass="formulaKPI.ecore#//ListIterator"/>
     <genClasses ecoreClass="formulaKPI.ecore#//TextConstant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute formulaKPI.ecore#//TextConstant/value"/>
     </genClasses>
@@ -160,5 +177,6 @@
     <genClasses ecoreClass="formulaKPI.ecore#//ComputableRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//ComputableRef/computable"/>
     </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//Accumulator"/>
   </genPackages>
 </genmodel:GenModel>

@@ -1840,6 +1840,80 @@ public interface formulaKPIPackage extends EPackage {
 	int OR_OPERATION_COUNT = BIN_OP_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListSizeImpl <em>List Size</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListSizeImpl
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListSize()
+	 * @generated
+	 */
+	int LIST_SIZE = 45;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_SIZE__EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>List Size</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_SIZE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>List Size</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_SIZE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListLiteralImpl <em>List Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListLiteralImpl
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListLiteral()
+	 * @generated
+	 */
+	int LIST_LITERAL = 46;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL__ELEMENTS = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>List Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>List Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.MinOpImpl <em>Min Op</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1847,16 +1921,16 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getMinOp()
 	 * @generated
 	 */
-	int MIN_OP = 45;
+	int MIN_OP = 47;
 
 	/**
-	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>List</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MIN_OP__EXPRESSIONS = EXPRESSION_FEATURE_COUNT + 0;
+	int MIN_OP__LIST = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Min Op</em>' class.
@@ -1884,7 +1958,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getConditionalOp()
 	 * @generated
 	 */
-	int CONDITIONAL_OP = 46;
+	int CONDITIONAL_OP = 48;
 
 	/**
 	 * The feature id for the '<em><b>Results</b></em>' containment reference list.
@@ -1930,7 +2004,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getThresholdOp()
 	 * @generated
 	 */
-	int THRESHOLD_OP = 47;
+	int THRESHOLD_OP = 49;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1976,19 +2050,19 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getWeightedSumOp()
 	 * @generated
 	 */
-	int WEIGHTED_SUM_OP = 48;
+	int WEIGHTED_SUM_OP = 50;
 
 	/**
-	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>List</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WEIGHTED_SUM_OP__EXPRESSIONS = EXPRESSION_FEATURE_COUNT + 0;
+	int WEIGHTED_SUM_OP__LIST = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Weights</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Weights</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2022,16 +2096,16 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getAvgOp()
 	 * @generated
 	 */
-	int AVG_OP = 49;
+	int AVG_OP = 51;
 
 	/**
-	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>List</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AVG_OP__EXPRESSIONS = EXPRESSION_FEATURE_COUNT + 0;
+	int AVG_OP__LIST = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Avg Op</em>' class.
@@ -2059,16 +2133,16 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getMaxOp()
 	 * @generated
 	 */
-	int MAX_OP = 50;
+	int MAX_OP = 52;
 
 	/**
-	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>List</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAX_OP__EXPRESSIONS = EXPRESSION_FEATURE_COUNT + 0;
+	int MAX_OP__LIST = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Max Op</em>' class.
@@ -2089,6 +2163,272 @@ public interface formulaKPIPackage extends EPackage {
 	int MAX_OP_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListOperationImpl <em>List Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListOperationImpl
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListOperation()
+	 * @generated
+	 */
+	int LIST_OPERATION = 53;
+
+	/**
+	 * The feature id for the '<em><b>Lists</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_OPERATION__LISTS = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Iterators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_OPERATION__ITERATORS = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_OPERATION__EXPRESSION = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>List Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_OPERATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>List Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_OPERATION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListIterationImpl <em>List Iteration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListIterationImpl
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListIteration()
+	 * @generated
+	 */
+	int LIST_ITERATION = 54;
+
+	/**
+	 * The feature id for the '<em><b>Lists</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_ITERATION__LISTS = LIST_OPERATION__LISTS;
+
+	/**
+	 * The feature id for the '<em><b>Iterators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_ITERATION__ITERATORS = LIST_OPERATION__ITERATORS;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_ITERATION__EXPRESSION = LIST_OPERATION__EXPRESSION;
+
+	/**
+	 * The number of structural features of the '<em>List Iteration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_ITERATION_FEATURE_COUNT = LIST_OPERATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>List Iteration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_ITERATION_OPERATION_COUNT = LIST_OPERATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListReduceImpl <em>List Reduce</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListReduceImpl
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListReduce()
+	 * @generated
+	 */
+	int LIST_REDUCE = 55;
+
+	/**
+	 * The feature id for the '<em><b>Lists</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_REDUCE__LISTS = LIST_OPERATION__LISTS;
+
+	/**
+	 * The feature id for the '<em><b>Iterators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_REDUCE__ITERATORS = LIST_OPERATION__ITERATORS;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_REDUCE__EXPRESSION = LIST_OPERATION__EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Accumulator</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_REDUCE__ACCUMULATOR = LIST_OPERATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>List Reduce</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_REDUCE_FEATURE_COUNT = LIST_OPERATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>List Reduce</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_REDUCE_OPERATION_COUNT = LIST_OPERATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListFilterImpl <em>List Filter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListFilterImpl
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListFilter()
+	 * @generated
+	 */
+	int LIST_FILTER = 56;
+
+	/**
+	 * The feature id for the '<em><b>Lists</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_FILTER__LISTS = LIST_OPERATION__LISTS;
+
+	/**
+	 * The feature id for the '<em><b>Iterators</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_FILTER__ITERATORS = LIST_OPERATION__ITERATORS;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_FILTER__EXPRESSION = LIST_OPERATION__EXPRESSION;
+
+	/**
+	 * The number of structural features of the '<em>List Filter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_FILTER_FEATURE_COUNT = LIST_OPERATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>List Filter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_FILTER_OPERATION_COUNT = LIST_OPERATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListIteratorImpl <em>List Iterator</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListIteratorImpl
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListIterator()
+	 * @generated
+	 */
+	int LIST_ITERATOR = 57;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_ITERATOR__NAME = COMPUTABLE__NAME;
+
+	/**
+	 * The number of structural features of the '<em>List Iterator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_ITERATOR_FEATURE_COUNT = COMPUTABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>List Iterator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_ITERATOR_OPERATION_COUNT = COMPUTABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.TextConstantImpl <em>Text Constant</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2096,7 +2436,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getTextConstant()
 	 * @generated
 	 */
-	int TEXT_CONSTANT = 51;
+	int TEXT_CONSTANT = 58;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2133,7 +2473,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getEnumLiteralRef()
 	 * @generated
 	 */
-	int ENUM_LITERAL_REF = 52;
+	int ENUM_LITERAL_REF = 59;
 
 	/**
 	 * The feature id for the '<em><b>Literal</b></em>' reference.
@@ -2170,7 +2510,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getIntConstant()
 	 * @generated
 	 */
-	int INT_CONSTANT = 53;
+	int INT_CONSTANT = 60;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2207,7 +2547,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getUnitConstant()
 	 * @generated
 	 */
-	int UNIT_CONSTANT = 54;
+	int UNIT_CONSTANT = 61;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2253,7 +2593,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getBoolConstant()
 	 * @generated
 	 */
-	int BOOL_CONSTANT = 55;
+	int BOOL_CONSTANT = 62;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2290,7 +2630,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getComputableRef()
 	 * @generated
 	 */
-	int COMPUTABLE_REF = 56;
+	int COMPUTABLE_REF = 63;
 
 	/**
 	 * The feature id for the '<em><b>Computable</b></em>' reference.
@@ -2320,6 +2660,34 @@ public interface formulaKPIPackage extends EPackage {
 	int COMPUTABLE_REF_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.AccumulatorImpl <em>Accumulator</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.AccumulatorImpl
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getAccumulator()
+	 * @generated
+	 */
+	int ACCUMULATOR = 64;
+
+	/**
+	 * The number of structural features of the '<em>Accumulator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCUMULATOR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Accumulator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCUMULATOR_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WindowUnit <em>Window Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2327,7 +2695,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getWindowUnit()
 	 * @generated
 	 */
-	int WINDOW_UNIT = 57;
+	int WINDOW_UNIT = 65;
 
 	/**
 	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ValueUnit <em>Value Unit</em>}' enum.
@@ -2337,7 +2705,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getValueUnit()
 	 * @generated
 	 */
-	int VALUE_UNIT = 58;
+	int VALUE_UNIT = 66;
 
 	/**
 	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.Computation <em>Computation</em>}'.
@@ -3087,6 +3455,48 @@ public interface formulaKPIPackage extends EPackage {
 	EClass getOr();
 
 	/**
+	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize <em>List Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Size</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize
+	 * @generated
+	 */
+	EClass getListSize();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize#getExpression()
+	 * @see #getListSize()
+	 * @generated
+	 */
+	EReference getListSize_Expression();
+
+	/**
+	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral <em>List Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Literal</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral
+	 * @generated
+	 */
+	EClass getListLiteral();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Elements</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral#getElements()
+	 * @see #getListLiteral()
+	 * @generated
+	 */
+	EReference getListLiteral_Elements();
+
+	/**
 	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp <em>Min Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3097,15 +3507,15 @@ public interface formulaKPIPackage extends EPackage {
 	EClass getMinOp();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp#getExpressions <em>Expressions</em>}'.
+	 * Returns the meta object for the containment reference '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp#getList <em>List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
-	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp#getExpressions()
+	 * @return the meta object for the containment reference '<em>List</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp#getList()
 	 * @see #getMinOp()
 	 * @generated
 	 */
-	EReference getMinOp_Expressions();
+	EReference getMinOp_List();
 
 	/**
 	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ConditionalOp <em>Conditional Op</em>}'.
@@ -3182,21 +3592,21 @@ public interface formulaKPIPackage extends EPackage {
 	EClass getWeightedSumOp();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getExpressions <em>Expressions</em>}'.
+	 * Returns the meta object for the containment reference '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getList <em>List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
-	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getExpressions()
+	 * @return the meta object for the containment reference '<em>List</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getList()
 	 * @see #getWeightedSumOp()
 	 * @generated
 	 */
-	EReference getWeightedSumOp_Expressions();
+	EReference getWeightedSumOp_List();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getWeights <em>Weights</em>}'.
+	 * Returns the meta object for the containment reference '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getWeights <em>Weights</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Weights</em>'.
+	 * @return the meta object for the containment reference '<em>Weights</em>'.
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp#getWeights()
 	 * @see #getWeightedSumOp()
 	 * @generated
@@ -3214,15 +3624,15 @@ public interface formulaKPIPackage extends EPackage {
 	EClass getAvgOp();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp#getExpressions <em>Expressions</em>}'.
+	 * Returns the meta object for the containment reference '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp#getList <em>List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
-	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp#getExpressions()
+	 * @return the meta object for the containment reference '<em>List</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp#getList()
 	 * @see #getAvgOp()
 	 * @generated
 	 */
-	EReference getAvgOp_Expressions();
+	EReference getAvgOp_List();
 
 	/**
 	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp <em>Max Op</em>}'.
@@ -3235,15 +3645,109 @@ public interface formulaKPIPackage extends EPackage {
 	EClass getMaxOp();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp#getExpressions <em>Expressions</em>}'.
+	 * Returns the meta object for the containment reference '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp#getList <em>List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
-	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp#getExpressions()
+	 * @return the meta object for the containment reference '<em>List</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp#getList()
 	 * @see #getMaxOp()
 	 * @generated
 	 */
-	EReference getMaxOp_Expressions();
+	EReference getMaxOp_List();
+
+	/**
+	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation <em>List Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Operation</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation
+	 * @generated
+	 */
+	EClass getListOperation();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation#getLists <em>Lists</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Lists</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation#getLists()
+	 * @see #getListOperation()
+	 * @generated
+	 */
+	EReference getListOperation_Lists();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation#getIterators <em>Iterators</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Iterators</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation#getIterators()
+	 * @see #getListOperation()
+	 * @generated
+	 */
+	EReference getListOperation_Iterators();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListOperation#getExpression()
+	 * @see #getListOperation()
+	 * @generated
+	 */
+	EReference getListOperation_Expression();
+
+	/**
+	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListIteration <em>List Iteration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Iteration</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListIteration
+	 * @generated
+	 */
+	EClass getListIteration();
+
+	/**
+	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce <em>List Reduce</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Reduce</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce
+	 * @generated
+	 */
+	EClass getListReduce();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce#getAccumulator <em>Accumulator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Accumulator</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce#getAccumulator()
+	 * @see #getListReduce()
+	 * @generated
+	 */
+	EReference getListReduce_Accumulator();
+
+	/**
+	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListFilter <em>List Filter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Filter</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListFilter
+	 * @generated
+	 */
+	EClass getListFilter();
+
+	/**
+	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ListIterator <em>List Iterator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Iterator</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.ListIterator
+	 * @generated
+	 */
+	EClass getListIterator();
 
 	/**
 	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.TextConstant <em>Text Constant</em>}'.
@@ -3381,6 +3885,16 @@ public interface formulaKPIPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getComputableRef_Computable();
+
+	/**
+	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.Accumulator <em>Accumulator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Accumulator</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.Accumulator
+	 * @generated
+	 */
+	EClass getAccumulator();
 
 	/**
 	 * Returns the meta object for enum '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WindowUnit <em>Window Unit</em>}'.
@@ -4092,6 +4606,42 @@ public interface formulaKPIPackage extends EPackage {
 		EClass OR = eINSTANCE.getOr();
 
 		/**
+		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListSizeImpl <em>List Size</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListSizeImpl
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListSize()
+		 * @generated
+		 */
+		EClass LIST_SIZE = eINSTANCE.getListSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIST_SIZE__EXPRESSION = eINSTANCE.getListSize_Expression();
+
+		/**
+		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListLiteralImpl <em>List Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListLiteralImpl
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListLiteral()
+		 * @generated
+		 */
+		EClass LIST_LITERAL = eINSTANCE.getListLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIST_LITERAL__ELEMENTS = eINSTANCE.getListLiteral_Elements();
+
+		/**
 		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.MinOpImpl <em>Min Op</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4102,12 +4652,12 @@ public interface formulaKPIPackage extends EPackage {
 		EClass MIN_OP = eINSTANCE.getMinOp();
 
 		/**
-		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MIN_OP__EXPRESSIONS = eINSTANCE.getMinOp_Expressions();
+		EReference MIN_OP__LIST = eINSTANCE.getMinOp_List();
 
 		/**
 		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ConditionalOpImpl <em>Conditional Op</em>}' class.
@@ -4172,15 +4722,15 @@ public interface formulaKPIPackage extends EPackage {
 		EClass WEIGHTED_SUM_OP = eINSTANCE.getWeightedSumOp();
 
 		/**
-		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WEIGHTED_SUM_OP__EXPRESSIONS = eINSTANCE.getWeightedSumOp_Expressions();
+		EReference WEIGHTED_SUM_OP__LIST = eINSTANCE.getWeightedSumOp_List();
 
 		/**
-		 * The meta object literal for the '<em><b>Weights</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Weights</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4198,12 +4748,12 @@ public interface formulaKPIPackage extends EPackage {
 		EClass AVG_OP = eINSTANCE.getAvgOp();
 
 		/**
-		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference AVG_OP__EXPRESSIONS = eINSTANCE.getAvgOp_Expressions();
+		EReference AVG_OP__LIST = eINSTANCE.getAvgOp_List();
 
 		/**
 		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.MaxOpImpl <em>Max Op</em>}' class.
@@ -4216,12 +4766,94 @@ public interface formulaKPIPackage extends EPackage {
 		EClass MAX_OP = eINSTANCE.getMaxOp();
 
 		/**
-		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MAX_OP__EXPRESSIONS = eINSTANCE.getMaxOp_Expressions();
+		EReference MAX_OP__LIST = eINSTANCE.getMaxOp_List();
+
+		/**
+		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListOperationImpl <em>List Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListOperationImpl
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListOperation()
+		 * @generated
+		 */
+		EClass LIST_OPERATION = eINSTANCE.getListOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Lists</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIST_OPERATION__LISTS = eINSTANCE.getListOperation_Lists();
+
+		/**
+		 * The meta object literal for the '<em><b>Iterators</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIST_OPERATION__ITERATORS = eINSTANCE.getListOperation_Iterators();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIST_OPERATION__EXPRESSION = eINSTANCE.getListOperation_Expression();
+
+		/**
+		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListIterationImpl <em>List Iteration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListIterationImpl
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListIteration()
+		 * @generated
+		 */
+		EClass LIST_ITERATION = eINSTANCE.getListIteration();
+
+		/**
+		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListReduceImpl <em>List Reduce</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListReduceImpl
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListReduce()
+		 * @generated
+		 */
+		EClass LIST_REDUCE = eINSTANCE.getListReduce();
+
+		/**
+		 * The meta object literal for the '<em><b>Accumulator</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIST_REDUCE__ACCUMULATOR = eINSTANCE.getListReduce_Accumulator();
+
+		/**
+		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListFilterImpl <em>List Filter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListFilterImpl
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListFilter()
+		 * @generated
+		 */
+		EClass LIST_FILTER = eINSTANCE.getListFilter();
+
+		/**
+		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListIteratorImpl <em>List Iterator</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.ListIteratorImpl
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListIterator()
+		 * @generated
+		 */
+		EClass LIST_ITERATOR = eINSTANCE.getListIterator();
 
 		/**
 		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.TextConstantImpl <em>Text Constant</em>}' class.
@@ -4338,6 +4970,16 @@ public interface formulaKPIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPUTABLE_REF__COMPUTABLE = eINSTANCE.getComputableRef_Computable();
+
+		/**
+		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.AccumulatorImpl <em>Accumulator</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.AccumulatorImpl
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getAccumulator()
+		 * @generated
+		 */
+		EClass ACCUMULATOR = eINSTANCE.getAccumulator();
 
 		/**
 		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.WindowUnit <em>Window Unit</em>}' enum.
