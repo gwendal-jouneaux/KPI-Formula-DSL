@@ -5,7 +5,8 @@ import java.util.List;
 
 import com.google.common.math.DoubleMath;
 
-public interface Value<T> extends Comparable<T>{
+@SuppressWarnings("rawtypes")
+public interface Value<T> extends Comparable{
 	public T getValue();
 	
 	public class NullValue implements Value<Object>{
@@ -44,11 +45,19 @@ public interface Value<T> extends Comparable<T>{
 		}
 
 		@Override
-		public int compareTo(Double o) {
-			if(DoubleMath.fuzzyEquals(this.value, o, 0.0001)) {
+		public int compareTo(Object o) {
+			Double other;
+			if (o instanceof DoubleValue) {
+				other = ((DoubleValue) o).getValue();
+			} else if (o instanceof Double) {
+				other = (Double) o;
+			} else {
 				return 0;
 			}
-			return this.value < o ? -1 : 1;
+			if(DoubleMath.fuzzyEquals(this.value, other, 0.0001)) {
+				return 0;
+			}
+			return this.value < other ? -1 : 1;
 		}
 	}
 	
@@ -77,7 +86,16 @@ public interface Value<T> extends Comparable<T>{
 		}
 
 		@Override
-		public int compareTo(List<Value<T>> o) {
+		@SuppressWarnings("unchecked")
+		public int compareTo(Object obj) {
+			List<Value<T>> o;
+			if (obj instanceof ListValue) {
+				o = ((ListValue<T>) obj).getValue();
+			} else if (obj instanceof List) {
+				o = (List<Value<T>>) obj;
+			} else {
+				return 0;
+			}
 			boolean equal = true;
 			for(int i = 0; i<this.values.size(); i++) {
 				if(!this.values.get(i).equals(o.get(i))) {

@@ -19,6 +19,7 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.KPI
 import lu.list.swrdi.formulaKPI.model.formulaKPI.KPIFormula
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Less
 import lu.list.swrdi.formulaKPI.model.formulaKPI.LessEq
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Metric
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp
@@ -44,8 +45,8 @@ class KPIFormulaEvaluator implements lu.list.swrdi.formulaKPI.evaluation.KPIForm
 	
 	new(KPIFormula ast) {
 		this.ast = ast
-		this.computedValues = {}
-		this.computedKPIs = {}
+		this.computedValues = newHashMap()
+		this.computedKPIs = newHashMap()
 	}	
 	
 	override evaluate(Map<?, Double> metricValues) {
@@ -53,7 +54,7 @@ class KPIFormulaEvaluator implements lu.list.swrdi.formulaKPI.evaluation.KPIForm
 		for(kpi: this.computedKPIs.keySet){
 			val value = this.computedKPIs.get(kpi)
 			if(value instanceof DoubleValue){
-				return value.value
+				return (value as DoubleValue).getValue()
 			}
 		}
 		return 0.0
@@ -70,7 +71,7 @@ class KPIFormulaEvaluator implements lu.list.swrdi.formulaKPI.evaluation.KPIForm
 	}
 	
 	def dispatch Value interpret(Declaration node, Map<?, Double> metricValues){
-		return new NullValue()
+		return node.declared.interpret(metricValues)
 	}
 	
 	def dispatch Value interpret(Computation node, Map<?, Double> metricValues){
@@ -310,6 +311,14 @@ class KPIFormulaEvaluator implements lu.list.swrdi.formulaKPI.evaluation.KPIForm
 		}
 		return new DoubleValue(0)
 		
+	}
+	
+	def dispatch Value interpret(ListLiteral node, Map<?, Double> metricValues){
+		val result = new ListValue()
+		for(elem: node.elements){
+			result.value.add(elem.interpret(metricValues))
+		}
+		return result
 	}
 	
 }

@@ -1,0 +1,49 @@
+# ------------------------------
+# OS files
+# ------------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# Generic logs and temp files
+# ------------------------------
+*.log
+*.tmp
+*.swp
+*.swo
+
+# ------------------------------
+# Build output (Maven/Tycho/PDE)
+# ------------------------------
+**/target/
+**/bin/
+**/tmp/
+
+# ------------------------------
+# Xtext/Xtend generated sources
+# ------------------------------
+**/src-gen/
+**/xtend-gen/
+
+# ------------------------------
+# Eclipse workspace metadata
+# ------------------------------
+.metadata/
+*.launch
+
+# ------------------------------
+# IDE-specific files
+# ------------------------------
+.idea/
+*.iml
+.vscode/
+
+# ------------------------------
+# Maven helper files
+# ------------------------------
+.releaseBackup
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
