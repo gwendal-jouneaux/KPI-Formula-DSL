@@ -67,10 +67,15 @@ public class KPIFormulaXtextParser implements KPIFormulaParser {
 		}
 	}
 	
+	private static Injector parserInjector = null;
+	
 	private Resource getResourceFor(String code) throws IOException {
-		Injector injector = new KPIFormulaDSLStandaloneSetup().createInjectorAndDoEMFRegistration();
-		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
-		Resource resource = resourceSet.createResource(URI.createURI("temp"));
+		if (parserInjector == null) {
+			parserInjector = new KPIFormulaDSLStandaloneSetup().createInjectorAndDoEMFRegistration();
+		}
+		XtextResourceSet resourceSet = parserInjector.getInstance(XtextResourceSet.class);
+		// IMPORTANT: use .kpi extension as registered in StandaloneSetupGenerated
+		Resource resource = resourceSet.createResource(URI.createURI("temp.kpi"));
 		resource.load(new ByteArrayInputStream(code.getBytes()), null);
 		return resource;
 	}
