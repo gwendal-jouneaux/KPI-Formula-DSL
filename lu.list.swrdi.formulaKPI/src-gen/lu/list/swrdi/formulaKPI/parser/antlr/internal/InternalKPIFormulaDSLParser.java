@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_DOUBLE", "RULE_STRING", "RULE_FQN", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'of'", "'type'", "'KPI'", "'int'", "'real'", "'text'", "'bool'", "'{'", "'}'", "'aggregate'", "'for'", "'drift'", "'Minimum'", "'Maximum'", "'Average'", "'Median'", "'Standard'", "'deviation'", "'->'", "';'", "'otherwise'", "'or'", "'and'", "'=='", "'!='", "'>='", "'<='", "'>'", "'<'", "'+'", "'-'", "'*'", "'/'", "'|'", "'['", "','", "']'", "'AVERAGE'", "'('", "')'", "'WEIGHTED_SUM'", "'MIN'", "'MAX'", "'THRESHOLD'", "'do'", "'in'", "'reduce'", "'starting'", "'filter'", "'!'", "'accumulator'", "'true'", "'false'", "'seconds'", "'minutes'", "'hours'", "'days'", "'measurements'", "'milliseconds'", "'liters'", "'cubic meter'", "'Wh'", "'kWh'", "'gCO2eq'", "'kgCO2eq'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_DOUBLE", "RULE_STRING", "RULE_FQN", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'of'", "'type'", "'KPI'", "'int'", "'real'", "'text'", "'bool'", "'{'", "'}'", "'aggregate'", "'for'", "'drift'", "'Minimum'", "'Maximum'", "'Average'", "'Median'", "'Standard'", "'deviation'", "'->'", "';'", "'otherwise'", "'or'", "'and'", "'=='", "'!='", "'>='", "'<='", "'>'", "'<'", "'+'", "'-'", "'*'", "'/'", "'|'", "'['", "','", "']'", "'AVERAGE'", "'('", "')'", "'WEIGHTED_SUM'", "'SUM'", "'MIN'", "'MAX'", "'THRESHOLD'", "'map'", "'in'", "'reduce'", "'starting'", "'filter'", "'!'", "'accumulator'", "'true'", "'false'", "'seconds'", "'minutes'", "'hours'", "'days'", "'measurements'", "'milliseconds'", "'liters'", "'cubic meter'", "'Wh'", "'kWh'", "'gCO2eq'", "'kgCO2eq'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -80,6 +80,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
     public static final int T__34=34;
     public static final int T__78=78;
     public static final int T__35=35;
+    public static final int T__79=79;
     public static final int T__36=36;
     public static final int T__73=73;
     public static final int EOF=-1;
@@ -1173,16 +1174,16 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                 alt3=7;
                 }
                 break;
-            case 67:
             case 68:
             case 69:
-            case 72:
+            case 70:
             case 73:
             case 74:
             case 75:
             case 76:
             case 77:
             case 78:
+            case 79:
                 {
                 alt3=8;
                 }
@@ -3377,7 +3378,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
             if ( (LA6_0==21) && (synpred1_InternalKPIFormulaDSL())) {
                 alt6=1;
             }
-            else if ( ((LA6_0>=RULE_ID && LA6_0<=RULE_FQN)||LA6_0==44||(LA6_0>=47 && LA6_0<=48)||(LA6_0>=51 && LA6_0<=52)||(LA6_0>=54 && LA6_0<=58)||LA6_0==60||(LA6_0>=62 && LA6_0<=66)) ) {
+            else if ( ((LA6_0>=RULE_ID && LA6_0<=RULE_FQN)||LA6_0==44||(LA6_0>=47 && LA6_0<=48)||(LA6_0>=51 && LA6_0<=52)||(LA6_0>=54 && LA6_0<=59)||LA6_0==61||(LA6_0>=63 && LA6_0<=67)) ) {
                 alt6=2;
             }
             else {
@@ -3556,7 +3557,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( ((LA7_0>=RULE_ID && LA7_0<=RULE_FQN)||LA7_0==44||(LA7_0>=47 && LA7_0<=48)||(LA7_0>=51 && LA7_0<=52)||(LA7_0>=54 && LA7_0<=58)||LA7_0==60||(LA7_0>=62 && LA7_0<=66)) ) {
+                if ( ((LA7_0>=RULE_ID && LA7_0<=RULE_FQN)||LA7_0==44||(LA7_0>=47 && LA7_0<=48)||(LA7_0>=51 && LA7_0<=52)||(LA7_0>=54 && LA7_0<=59)||LA7_0==61||(LA7_0>=63 && LA7_0<=67)) ) {
                     alt7=1;
                 }
 
@@ -5289,7 +5290,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOperator"
-    // InternalKPIFormulaDSL.g:1733:1: ruleOperator returns [EObject current=null] : ( ( () otherlv_1= '|' ( (lv_expression_2_0= ruleExpression ) ) otherlv_3= '|' ) | ( () otherlv_5= '[' ( (lv_elements_6_0= ruleExpression ) ) (otherlv_7= ',' ( (lv_elements_8_0= ruleExpression ) ) )* otherlv_9= ']' ) | ( () otherlv_11= 'AVERAGE' otherlv_12= '(' ( (lv_list_13_0= ruleExpression ) ) otherlv_14= ')' ) | ( () otherlv_16= 'WEIGHTED_SUM' otherlv_17= '(' ( (lv_list_18_0= ruleExpression ) ) otherlv_19= ',' ( (lv_weights_20_0= ruleExpression ) ) otherlv_21= ')' ) | ( () otherlv_23= 'MIN' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' ) | ( () otherlv_28= 'MAX' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' ) | ( () otherlv_33= 'THRESHOLD' otherlv_34= '(' ( (lv_expression_35_0= ruleExpression ) ) otherlv_36= ',' ( (lv_threshold_37_0= ruleExpression ) ) otherlv_38= ')' ) | ( () otherlv_40= 'do' ( (lv_expression_41_0= ruleTopLevelExpression ) ) otherlv_42= 'for' ( (lv_iterators_43_0= ruleListIterator ) ) otherlv_44= 'in' ( (lv_lists_45_0= rulePrimary ) ) (otherlv_46= ',' ( (lv_iterators_47_0= ruleListIterator ) ) otherlv_48= 'in' ( (lv_lists_49_0= rulePrimary ) ) )* ) | ( () otherlv_51= 'reduce' ( (lv_expression_52_0= ruleTopLevelExpression ) ) otherlv_53= 'starting' ( (lv_accumulator_54_0= rulePrimary ) ) otherlv_55= 'for' ( (lv_iterators_56_0= ruleListIterator ) ) otherlv_57= 'in' ( (lv_lists_58_0= rulePrimary ) ) (otherlv_59= ',' ( (lv_iterators_60_0= ruleListIterator ) ) otherlv_61= 'in' ( (lv_lists_62_0= rulePrimary ) ) )* ) | ( () otherlv_64= 'filter' ( (lv_expression_65_0= ruleTopLevelExpression ) ) otherlv_66= 'for' ( (lv_iterators_67_0= ruleListIterator ) ) otherlv_68= 'in' ( (lv_lists_69_0= rulePrimary ) ) (otherlv_70= ',' ( (lv_iterators_71_0= ruleListIterator ) ) otherlv_72= 'in' ( (lv_lists_73_0= rulePrimary ) ) )* ) | this_Primary_74= rulePrimary ) ;
+    // InternalKPIFormulaDSL.g:1733:1: ruleOperator returns [EObject current=null] : ( ( () otherlv_1= '|' ( (lv_expression_2_0= ruleExpression ) ) otherlv_3= '|' ) | ( () otherlv_5= '[' ( (lv_elements_6_0= ruleExpression ) ) (otherlv_7= ',' ( (lv_elements_8_0= ruleExpression ) ) )* otherlv_9= ']' ) | ( () otherlv_11= 'AVERAGE' otherlv_12= '(' ( (lv_list_13_0= ruleExpression ) ) otherlv_14= ')' ) | ( () otherlv_16= 'WEIGHTED_SUM' otherlv_17= '(' ( (lv_list_18_0= ruleExpression ) ) otherlv_19= ',' ( (lv_weights_20_0= ruleExpression ) ) otherlv_21= ')' ) | ( () otherlv_23= 'SUM' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' ) | ( () otherlv_28= 'MIN' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' ) | ( () otherlv_33= 'MAX' otherlv_34= '(' ( (lv_list_35_0= ruleExpression ) ) otherlv_36= ')' ) | ( () otherlv_38= 'THRESHOLD' otherlv_39= '(' ( (lv_expression_40_0= ruleExpression ) ) otherlv_41= ',' ( (lv_threshold_42_0= ruleExpression ) ) otherlv_43= ')' ) | ( () otherlv_45= 'map' ( (lv_expression_46_0= ruleTopLevelExpression ) ) otherlv_47= 'for' ( (lv_iterators_48_0= ruleListIterator ) ) otherlv_49= 'in' ( (lv_lists_50_0= rulePrimary ) ) (otherlv_51= ',' ( (lv_iterators_52_0= ruleListIterator ) ) otherlv_53= 'in' ( (lv_lists_54_0= rulePrimary ) ) )* ) | ( () otherlv_56= 'reduce' ( (lv_expression_57_0= ruleTopLevelExpression ) ) otherlv_58= 'starting' ( (lv_accumulator_59_0= rulePrimary ) ) otherlv_60= 'for' ( (lv_iterators_61_0= ruleListIterator ) ) otherlv_62= 'in' ( (lv_lists_63_0= rulePrimary ) ) (otherlv_64= ',' ( (lv_iterators_65_0= ruleListIterator ) ) otherlv_66= 'in' ( (lv_lists_67_0= rulePrimary ) ) )* ) | ( () otherlv_69= 'filter' ( (lv_expression_70_0= ruleTopLevelExpression ) ) otherlv_71= 'for' ( (lv_iterators_72_0= ruleListIterator ) ) otherlv_73= 'in' ( (lv_lists_74_0= rulePrimary ) ) (otherlv_75= ',' ( (lv_iterators_76_0= ruleListIterator ) ) otherlv_77= 'in' ( (lv_lists_78_0= rulePrimary ) ) )* ) | this_Primary_79= rulePrimary ) ;
     public final EObject ruleOperator() throws RecognitionException {
         EObject current = null;
 
@@ -5315,22 +5316,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
         Token otherlv_34=null;
         Token otherlv_36=null;
         Token otherlv_38=null;
-        Token otherlv_40=null;
-        Token otherlv_42=null;
-        Token otherlv_44=null;
-        Token otherlv_46=null;
-        Token otherlv_48=null;
+        Token otherlv_39=null;
+        Token otherlv_41=null;
+        Token otherlv_43=null;
+        Token otherlv_45=null;
+        Token otherlv_47=null;
+        Token otherlv_49=null;
         Token otherlv_51=null;
         Token otherlv_53=null;
-        Token otherlv_55=null;
-        Token otherlv_57=null;
-        Token otherlv_59=null;
-        Token otherlv_61=null;
+        Token otherlv_56=null;
+        Token otherlv_58=null;
+        Token otherlv_60=null;
+        Token otherlv_62=null;
         Token otherlv_64=null;
         Token otherlv_66=null;
-        Token otherlv_68=null;
-        Token otherlv_70=null;
-        Token otherlv_72=null;
+        Token otherlv_69=null;
+        Token otherlv_71=null;
+        Token otherlv_73=null;
+        Token otherlv_75=null;
+        Token otherlv_77=null;
         EObject lv_expression_2_0 = null;
 
         EObject lv_elements_6_0 = null;
@@ -5347,54 +5351,56 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
         EObject lv_list_30_0 = null;
 
-        EObject lv_expression_35_0 = null;
+        EObject lv_list_35_0 = null;
 
-        EObject lv_threshold_37_0 = null;
+        EObject lv_expression_40_0 = null;
 
-        EObject lv_expression_41_0 = null;
+        EObject lv_threshold_42_0 = null;
 
-        EObject lv_iterators_43_0 = null;
+        EObject lv_expression_46_0 = null;
 
-        EObject lv_lists_45_0 = null;
+        EObject lv_iterators_48_0 = null;
 
-        EObject lv_iterators_47_0 = null;
+        EObject lv_lists_50_0 = null;
 
-        EObject lv_lists_49_0 = null;
+        EObject lv_iterators_52_0 = null;
 
-        EObject lv_expression_52_0 = null;
+        EObject lv_lists_54_0 = null;
 
-        EObject lv_accumulator_54_0 = null;
+        EObject lv_expression_57_0 = null;
 
-        EObject lv_iterators_56_0 = null;
+        EObject lv_accumulator_59_0 = null;
 
-        EObject lv_lists_58_0 = null;
+        EObject lv_iterators_61_0 = null;
 
-        EObject lv_iterators_60_0 = null;
+        EObject lv_lists_63_0 = null;
 
-        EObject lv_lists_62_0 = null;
+        EObject lv_iterators_65_0 = null;
 
-        EObject lv_expression_65_0 = null;
+        EObject lv_lists_67_0 = null;
 
-        EObject lv_iterators_67_0 = null;
+        EObject lv_expression_70_0 = null;
 
-        EObject lv_lists_69_0 = null;
+        EObject lv_iterators_72_0 = null;
 
-        EObject lv_iterators_71_0 = null;
+        EObject lv_lists_74_0 = null;
 
-        EObject lv_lists_73_0 = null;
+        EObject lv_iterators_76_0 = null;
 
-        EObject this_Primary_74 = null;
+        EObject lv_lists_78_0 = null;
+
+        EObject this_Primary_79 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalKPIFormulaDSL.g:1739:2: ( ( ( () otherlv_1= '|' ( (lv_expression_2_0= ruleExpression ) ) otherlv_3= '|' ) | ( () otherlv_5= '[' ( (lv_elements_6_0= ruleExpression ) ) (otherlv_7= ',' ( (lv_elements_8_0= ruleExpression ) ) )* otherlv_9= ']' ) | ( () otherlv_11= 'AVERAGE' otherlv_12= '(' ( (lv_list_13_0= ruleExpression ) ) otherlv_14= ')' ) | ( () otherlv_16= 'WEIGHTED_SUM' otherlv_17= '(' ( (lv_list_18_0= ruleExpression ) ) otherlv_19= ',' ( (lv_weights_20_0= ruleExpression ) ) otherlv_21= ')' ) | ( () otherlv_23= 'MIN' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' ) | ( () otherlv_28= 'MAX' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' ) | ( () otherlv_33= 'THRESHOLD' otherlv_34= '(' ( (lv_expression_35_0= ruleExpression ) ) otherlv_36= ',' ( (lv_threshold_37_0= ruleExpression ) ) otherlv_38= ')' ) | ( () otherlv_40= 'do' ( (lv_expression_41_0= ruleTopLevelExpression ) ) otherlv_42= 'for' ( (lv_iterators_43_0= ruleListIterator ) ) otherlv_44= 'in' ( (lv_lists_45_0= rulePrimary ) ) (otherlv_46= ',' ( (lv_iterators_47_0= ruleListIterator ) ) otherlv_48= 'in' ( (lv_lists_49_0= rulePrimary ) ) )* ) | ( () otherlv_51= 'reduce' ( (lv_expression_52_0= ruleTopLevelExpression ) ) otherlv_53= 'starting' ( (lv_accumulator_54_0= rulePrimary ) ) otherlv_55= 'for' ( (lv_iterators_56_0= ruleListIterator ) ) otherlv_57= 'in' ( (lv_lists_58_0= rulePrimary ) ) (otherlv_59= ',' ( (lv_iterators_60_0= ruleListIterator ) ) otherlv_61= 'in' ( (lv_lists_62_0= rulePrimary ) ) )* ) | ( () otherlv_64= 'filter' ( (lv_expression_65_0= ruleTopLevelExpression ) ) otherlv_66= 'for' ( (lv_iterators_67_0= ruleListIterator ) ) otherlv_68= 'in' ( (lv_lists_69_0= rulePrimary ) ) (otherlv_70= ',' ( (lv_iterators_71_0= ruleListIterator ) ) otherlv_72= 'in' ( (lv_lists_73_0= rulePrimary ) ) )* ) | this_Primary_74= rulePrimary ) )
-            // InternalKPIFormulaDSL.g:1740:2: ( ( () otherlv_1= '|' ( (lv_expression_2_0= ruleExpression ) ) otherlv_3= '|' ) | ( () otherlv_5= '[' ( (lv_elements_6_0= ruleExpression ) ) (otherlv_7= ',' ( (lv_elements_8_0= ruleExpression ) ) )* otherlv_9= ']' ) | ( () otherlv_11= 'AVERAGE' otherlv_12= '(' ( (lv_list_13_0= ruleExpression ) ) otherlv_14= ')' ) | ( () otherlv_16= 'WEIGHTED_SUM' otherlv_17= '(' ( (lv_list_18_0= ruleExpression ) ) otherlv_19= ',' ( (lv_weights_20_0= ruleExpression ) ) otherlv_21= ')' ) | ( () otherlv_23= 'MIN' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' ) | ( () otherlv_28= 'MAX' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' ) | ( () otherlv_33= 'THRESHOLD' otherlv_34= '(' ( (lv_expression_35_0= ruleExpression ) ) otherlv_36= ',' ( (lv_threshold_37_0= ruleExpression ) ) otherlv_38= ')' ) | ( () otherlv_40= 'do' ( (lv_expression_41_0= ruleTopLevelExpression ) ) otherlv_42= 'for' ( (lv_iterators_43_0= ruleListIterator ) ) otherlv_44= 'in' ( (lv_lists_45_0= rulePrimary ) ) (otherlv_46= ',' ( (lv_iterators_47_0= ruleListIterator ) ) otherlv_48= 'in' ( (lv_lists_49_0= rulePrimary ) ) )* ) | ( () otherlv_51= 'reduce' ( (lv_expression_52_0= ruleTopLevelExpression ) ) otherlv_53= 'starting' ( (lv_accumulator_54_0= rulePrimary ) ) otherlv_55= 'for' ( (lv_iterators_56_0= ruleListIterator ) ) otherlv_57= 'in' ( (lv_lists_58_0= rulePrimary ) ) (otherlv_59= ',' ( (lv_iterators_60_0= ruleListIterator ) ) otherlv_61= 'in' ( (lv_lists_62_0= rulePrimary ) ) )* ) | ( () otherlv_64= 'filter' ( (lv_expression_65_0= ruleTopLevelExpression ) ) otherlv_66= 'for' ( (lv_iterators_67_0= ruleListIterator ) ) otherlv_68= 'in' ( (lv_lists_69_0= rulePrimary ) ) (otherlv_70= ',' ( (lv_iterators_71_0= ruleListIterator ) ) otherlv_72= 'in' ( (lv_lists_73_0= rulePrimary ) ) )* ) | this_Primary_74= rulePrimary )
+            // InternalKPIFormulaDSL.g:1739:2: ( ( ( () otherlv_1= '|' ( (lv_expression_2_0= ruleExpression ) ) otherlv_3= '|' ) | ( () otherlv_5= '[' ( (lv_elements_6_0= ruleExpression ) ) (otherlv_7= ',' ( (lv_elements_8_0= ruleExpression ) ) )* otherlv_9= ']' ) | ( () otherlv_11= 'AVERAGE' otherlv_12= '(' ( (lv_list_13_0= ruleExpression ) ) otherlv_14= ')' ) | ( () otherlv_16= 'WEIGHTED_SUM' otherlv_17= '(' ( (lv_list_18_0= ruleExpression ) ) otherlv_19= ',' ( (lv_weights_20_0= ruleExpression ) ) otherlv_21= ')' ) | ( () otherlv_23= 'SUM' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' ) | ( () otherlv_28= 'MIN' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' ) | ( () otherlv_33= 'MAX' otherlv_34= '(' ( (lv_list_35_0= ruleExpression ) ) otherlv_36= ')' ) | ( () otherlv_38= 'THRESHOLD' otherlv_39= '(' ( (lv_expression_40_0= ruleExpression ) ) otherlv_41= ',' ( (lv_threshold_42_0= ruleExpression ) ) otherlv_43= ')' ) | ( () otherlv_45= 'map' ( (lv_expression_46_0= ruleTopLevelExpression ) ) otherlv_47= 'for' ( (lv_iterators_48_0= ruleListIterator ) ) otherlv_49= 'in' ( (lv_lists_50_0= rulePrimary ) ) (otherlv_51= ',' ( (lv_iterators_52_0= ruleListIterator ) ) otherlv_53= 'in' ( (lv_lists_54_0= rulePrimary ) ) )* ) | ( () otherlv_56= 'reduce' ( (lv_expression_57_0= ruleTopLevelExpression ) ) otherlv_58= 'starting' ( (lv_accumulator_59_0= rulePrimary ) ) otherlv_60= 'for' ( (lv_iterators_61_0= ruleListIterator ) ) otherlv_62= 'in' ( (lv_lists_63_0= rulePrimary ) ) (otherlv_64= ',' ( (lv_iterators_65_0= ruleListIterator ) ) otherlv_66= 'in' ( (lv_lists_67_0= rulePrimary ) ) )* ) | ( () otherlv_69= 'filter' ( (lv_expression_70_0= ruleTopLevelExpression ) ) otherlv_71= 'for' ( (lv_iterators_72_0= ruleListIterator ) ) otherlv_73= 'in' ( (lv_lists_74_0= rulePrimary ) ) (otherlv_75= ',' ( (lv_iterators_76_0= ruleListIterator ) ) otherlv_77= 'in' ( (lv_lists_78_0= rulePrimary ) ) )* ) | this_Primary_79= rulePrimary ) )
+            // InternalKPIFormulaDSL.g:1740:2: ( ( () otherlv_1= '|' ( (lv_expression_2_0= ruleExpression ) ) otherlv_3= '|' ) | ( () otherlv_5= '[' ( (lv_elements_6_0= ruleExpression ) ) (otherlv_7= ',' ( (lv_elements_8_0= ruleExpression ) ) )* otherlv_9= ']' ) | ( () otherlv_11= 'AVERAGE' otherlv_12= '(' ( (lv_list_13_0= ruleExpression ) ) otherlv_14= ')' ) | ( () otherlv_16= 'WEIGHTED_SUM' otherlv_17= '(' ( (lv_list_18_0= ruleExpression ) ) otherlv_19= ',' ( (lv_weights_20_0= ruleExpression ) ) otherlv_21= ')' ) | ( () otherlv_23= 'SUM' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' ) | ( () otherlv_28= 'MIN' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' ) | ( () otherlv_33= 'MAX' otherlv_34= '(' ( (lv_list_35_0= ruleExpression ) ) otherlv_36= ')' ) | ( () otherlv_38= 'THRESHOLD' otherlv_39= '(' ( (lv_expression_40_0= ruleExpression ) ) otherlv_41= ',' ( (lv_threshold_42_0= ruleExpression ) ) otherlv_43= ')' ) | ( () otherlv_45= 'map' ( (lv_expression_46_0= ruleTopLevelExpression ) ) otherlv_47= 'for' ( (lv_iterators_48_0= ruleListIterator ) ) otherlv_49= 'in' ( (lv_lists_50_0= rulePrimary ) ) (otherlv_51= ',' ( (lv_iterators_52_0= ruleListIterator ) ) otherlv_53= 'in' ( (lv_lists_54_0= rulePrimary ) ) )* ) | ( () otherlv_56= 'reduce' ( (lv_expression_57_0= ruleTopLevelExpression ) ) otherlv_58= 'starting' ( (lv_accumulator_59_0= rulePrimary ) ) otherlv_60= 'for' ( (lv_iterators_61_0= ruleListIterator ) ) otherlv_62= 'in' ( (lv_lists_63_0= rulePrimary ) ) (otherlv_64= ',' ( (lv_iterators_65_0= ruleListIterator ) ) otherlv_66= 'in' ( (lv_lists_67_0= rulePrimary ) ) )* ) | ( () otherlv_69= 'filter' ( (lv_expression_70_0= ruleTopLevelExpression ) ) otherlv_71= 'for' ( (lv_iterators_72_0= ruleListIterator ) ) otherlv_73= 'in' ( (lv_lists_74_0= rulePrimary ) ) (otherlv_75= ',' ( (lv_iterators_76_0= ruleListIterator ) ) otherlv_77= 'in' ( (lv_lists_78_0= rulePrimary ) ) )* ) | this_Primary_79= rulePrimary )
             {
-            // InternalKPIFormulaDSL.g:1740:2: ( ( () otherlv_1= '|' ( (lv_expression_2_0= ruleExpression ) ) otherlv_3= '|' ) | ( () otherlv_5= '[' ( (lv_elements_6_0= ruleExpression ) ) (otherlv_7= ',' ( (lv_elements_8_0= ruleExpression ) ) )* otherlv_9= ']' ) | ( () otherlv_11= 'AVERAGE' otherlv_12= '(' ( (lv_list_13_0= ruleExpression ) ) otherlv_14= ')' ) | ( () otherlv_16= 'WEIGHTED_SUM' otherlv_17= '(' ( (lv_list_18_0= ruleExpression ) ) otherlv_19= ',' ( (lv_weights_20_0= ruleExpression ) ) otherlv_21= ')' ) | ( () otherlv_23= 'MIN' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' ) | ( () otherlv_28= 'MAX' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' ) | ( () otherlv_33= 'THRESHOLD' otherlv_34= '(' ( (lv_expression_35_0= ruleExpression ) ) otherlv_36= ',' ( (lv_threshold_37_0= ruleExpression ) ) otherlv_38= ')' ) | ( () otherlv_40= 'do' ( (lv_expression_41_0= ruleTopLevelExpression ) ) otherlv_42= 'for' ( (lv_iterators_43_0= ruleListIterator ) ) otherlv_44= 'in' ( (lv_lists_45_0= rulePrimary ) ) (otherlv_46= ',' ( (lv_iterators_47_0= ruleListIterator ) ) otherlv_48= 'in' ( (lv_lists_49_0= rulePrimary ) ) )* ) | ( () otherlv_51= 'reduce' ( (lv_expression_52_0= ruleTopLevelExpression ) ) otherlv_53= 'starting' ( (lv_accumulator_54_0= rulePrimary ) ) otherlv_55= 'for' ( (lv_iterators_56_0= ruleListIterator ) ) otherlv_57= 'in' ( (lv_lists_58_0= rulePrimary ) ) (otherlv_59= ',' ( (lv_iterators_60_0= ruleListIterator ) ) otherlv_61= 'in' ( (lv_lists_62_0= rulePrimary ) ) )* ) | ( () otherlv_64= 'filter' ( (lv_expression_65_0= ruleTopLevelExpression ) ) otherlv_66= 'for' ( (lv_iterators_67_0= ruleListIterator ) ) otherlv_68= 'in' ( (lv_lists_69_0= rulePrimary ) ) (otherlv_70= ',' ( (lv_iterators_71_0= ruleListIterator ) ) otherlv_72= 'in' ( (lv_lists_73_0= rulePrimary ) ) )* ) | this_Primary_74= rulePrimary )
-            int alt22=11;
+            // InternalKPIFormulaDSL.g:1740:2: ( ( () otherlv_1= '|' ( (lv_expression_2_0= ruleExpression ) ) otherlv_3= '|' ) | ( () otherlv_5= '[' ( (lv_elements_6_0= ruleExpression ) ) (otherlv_7= ',' ( (lv_elements_8_0= ruleExpression ) ) )* otherlv_9= ']' ) | ( () otherlv_11= 'AVERAGE' otherlv_12= '(' ( (lv_list_13_0= ruleExpression ) ) otherlv_14= ')' ) | ( () otherlv_16= 'WEIGHTED_SUM' otherlv_17= '(' ( (lv_list_18_0= ruleExpression ) ) otherlv_19= ',' ( (lv_weights_20_0= ruleExpression ) ) otherlv_21= ')' ) | ( () otherlv_23= 'SUM' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' ) | ( () otherlv_28= 'MIN' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' ) | ( () otherlv_33= 'MAX' otherlv_34= '(' ( (lv_list_35_0= ruleExpression ) ) otherlv_36= ')' ) | ( () otherlv_38= 'THRESHOLD' otherlv_39= '(' ( (lv_expression_40_0= ruleExpression ) ) otherlv_41= ',' ( (lv_threshold_42_0= ruleExpression ) ) otherlv_43= ')' ) | ( () otherlv_45= 'map' ( (lv_expression_46_0= ruleTopLevelExpression ) ) otherlv_47= 'for' ( (lv_iterators_48_0= ruleListIterator ) ) otherlv_49= 'in' ( (lv_lists_50_0= rulePrimary ) ) (otherlv_51= ',' ( (lv_iterators_52_0= ruleListIterator ) ) otherlv_53= 'in' ( (lv_lists_54_0= rulePrimary ) ) )* ) | ( () otherlv_56= 'reduce' ( (lv_expression_57_0= ruleTopLevelExpression ) ) otherlv_58= 'starting' ( (lv_accumulator_59_0= rulePrimary ) ) otherlv_60= 'for' ( (lv_iterators_61_0= ruleListIterator ) ) otherlv_62= 'in' ( (lv_lists_63_0= rulePrimary ) ) (otherlv_64= ',' ( (lv_iterators_65_0= ruleListIterator ) ) otherlv_66= 'in' ( (lv_lists_67_0= rulePrimary ) ) )* ) | ( () otherlv_69= 'filter' ( (lv_expression_70_0= ruleTopLevelExpression ) ) otherlv_71= 'for' ( (lv_iterators_72_0= ruleListIterator ) ) otherlv_73= 'in' ( (lv_lists_74_0= rulePrimary ) ) (otherlv_75= ',' ( (lv_iterators_76_0= ruleListIterator ) ) otherlv_77= 'in' ( (lv_lists_78_0= rulePrimary ) ) )* ) | this_Primary_79= rulePrimary )
+            int alt22=12;
             switch ( input.LA(1) ) {
             case 47:
                 {
@@ -5436,14 +5442,19 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                 alt22=8;
                 }
                 break;
-            case 60:
+            case 59:
                 {
                 alt22=9;
                 }
                 break;
-            case 62:
+            case 61:
                 {
                 alt22=10;
+                }
+                break;
+            case 63:
+                {
+                alt22=11;
                 }
                 break;
             case RULE_ID:
@@ -5453,12 +5464,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
             case RULE_FQN:
             case 44:
             case 52:
-            case 63:
             case 64:
             case 65:
             case 66:
+            case 67:
                 {
-                alt22=11;
+                alt22=12;
                 }
                 break;
             default:
@@ -5877,10 +5888,10 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalKPIFormulaDSL.g:1945:3: ( () otherlv_23= 'MIN' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' )
+                    // InternalKPIFormulaDSL.g:1945:3: ( () otherlv_23= 'SUM' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' )
                     {
-                    // InternalKPIFormulaDSL.g:1945:3: ( () otherlv_23= 'MIN' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' )
-                    // InternalKPIFormulaDSL.g:1946:4: () otherlv_23= 'MIN' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')'
+                    // InternalKPIFormulaDSL.g:1945:3: ( () otherlv_23= 'SUM' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')' )
+                    // InternalKPIFormulaDSL.g:1946:4: () otherlv_23= 'SUM' otherlv_24= '(' ( (lv_list_25_0= ruleExpression ) ) otherlv_26= ')'
                     {
                     // InternalKPIFormulaDSL.g:1946:4: ()
                     // InternalKPIFormulaDSL.g:1947:5: 
@@ -5888,7 +5899,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
-                      						grammarAccess.getOperatorAccess().getMinOpAction_4_0(),
+                      						grammarAccess.getOperatorAccess().getSumOpAction_4_0(),
                       						current);
                       				
                     }
@@ -5898,7 +5909,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     otherlv_23=(Token)match(input,55,FOLLOW_28); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_23, grammarAccess.getOperatorAccess().getMINKeyword_4_1());
+                      				newLeafNode(otherlv_23, grammarAccess.getOperatorAccess().getSUMKeyword_4_1());
                       			
                     }
                     otherlv_24=(Token)match(input,52,FOLLOW_5); if (state.failed) return current;
@@ -5955,10 +5966,10 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalKPIFormulaDSL.g:1986:3: ( () otherlv_28= 'MAX' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' )
+                    // InternalKPIFormulaDSL.g:1986:3: ( () otherlv_28= 'MIN' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' )
                     {
-                    // InternalKPIFormulaDSL.g:1986:3: ( () otherlv_28= 'MAX' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' )
-                    // InternalKPIFormulaDSL.g:1987:4: () otherlv_28= 'MAX' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')'
+                    // InternalKPIFormulaDSL.g:1986:3: ( () otherlv_28= 'MIN' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')' )
+                    // InternalKPIFormulaDSL.g:1987:4: () otherlv_28= 'MIN' otherlv_29= '(' ( (lv_list_30_0= ruleExpression ) ) otherlv_31= ')'
                     {
                     // InternalKPIFormulaDSL.g:1987:4: ()
                     // InternalKPIFormulaDSL.g:1988:5: 
@@ -5966,7 +5977,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
-                      						grammarAccess.getOperatorAccess().getMaxOpAction_5_0(),
+                      						grammarAccess.getOperatorAccess().getMinOpAction_5_0(),
                       						current);
                       				
                     }
@@ -5976,7 +5987,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     otherlv_28=(Token)match(input,56,FOLLOW_28); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_28, grammarAccess.getOperatorAccess().getMAXKeyword_5_1());
+                      				newLeafNode(otherlv_28, grammarAccess.getOperatorAccess().getMINKeyword_5_1());
                       			
                     }
                     otherlv_29=(Token)match(input,52,FOLLOW_5); if (state.failed) return current;
@@ -6033,10 +6044,10 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalKPIFormulaDSL.g:2027:3: ( () otherlv_33= 'THRESHOLD' otherlv_34= '(' ( (lv_expression_35_0= ruleExpression ) ) otherlv_36= ',' ( (lv_threshold_37_0= ruleExpression ) ) otherlv_38= ')' )
+                    // InternalKPIFormulaDSL.g:2027:3: ( () otherlv_33= 'MAX' otherlv_34= '(' ( (lv_list_35_0= ruleExpression ) ) otherlv_36= ')' )
                     {
-                    // InternalKPIFormulaDSL.g:2027:3: ( () otherlv_33= 'THRESHOLD' otherlv_34= '(' ( (lv_expression_35_0= ruleExpression ) ) otherlv_36= ',' ( (lv_threshold_37_0= ruleExpression ) ) otherlv_38= ')' )
-                    // InternalKPIFormulaDSL.g:2028:4: () otherlv_33= 'THRESHOLD' otherlv_34= '(' ( (lv_expression_35_0= ruleExpression ) ) otherlv_36= ',' ( (lv_threshold_37_0= ruleExpression ) ) otherlv_38= ')'
+                    // InternalKPIFormulaDSL.g:2027:3: ( () otherlv_33= 'MAX' otherlv_34= '(' ( (lv_list_35_0= ruleExpression ) ) otherlv_36= ')' )
+                    // InternalKPIFormulaDSL.g:2028:4: () otherlv_33= 'MAX' otherlv_34= '(' ( (lv_list_35_0= ruleExpression ) ) otherlv_36= ')'
                     {
                     // InternalKPIFormulaDSL.g:2028:4: ()
                     // InternalKPIFormulaDSL.g:2029:5: 
@@ -6044,7 +6055,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
-                      						grammarAccess.getOperatorAccess().getThresholdOpAction_6_0(),
+                      						grammarAccess.getOperatorAccess().getMaxOpAction_6_0(),
                       						current);
                       				
                     }
@@ -6054,7 +6065,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     otherlv_33=(Token)match(input,57,FOLLOW_28); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_33, grammarAccess.getOperatorAccess().getTHRESHOLDKeyword_6_1());
+                      				newLeafNode(otherlv_33, grammarAccess.getOperatorAccess().getMAXKeyword_6_1());
                       			
                     }
                     otherlv_34=(Token)match(input,52,FOLLOW_5); if (state.failed) return current;
@@ -6063,19 +6074,97 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_34, grammarAccess.getOperatorAccess().getLeftParenthesisKeyword_6_2());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2043:4: ( (lv_expression_35_0= ruleExpression ) )
-                    // InternalKPIFormulaDSL.g:2044:5: (lv_expression_35_0= ruleExpression )
+                    // InternalKPIFormulaDSL.g:2043:4: ( (lv_list_35_0= ruleExpression ) )
+                    // InternalKPIFormulaDSL.g:2044:5: (lv_list_35_0= ruleExpression )
                     {
-                    // InternalKPIFormulaDSL.g:2044:5: (lv_expression_35_0= ruleExpression )
-                    // InternalKPIFormulaDSL.g:2045:6: lv_expression_35_0= ruleExpression
+                    // InternalKPIFormulaDSL.g:2044:5: (lv_list_35_0= ruleExpression )
+                    // InternalKPIFormulaDSL.g:2045:6: lv_list_35_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionExpressionParserRuleCall_6_3_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_6_3_0());
+                      					
+                    }
+                    pushFollow(FOLLOW_29);
+                    lv_list_35_0=ruleExpression();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getOperatorRule());
+                      						}
+                      						set(
+                      							current,
+                      							"list",
+                      							lv_list_35_0,
+                      							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Expression");
+                      						afterParserOrEnumRuleCall();
+                      					
+                    }
+
+                    }
+
+
+                    }
+
+                    otherlv_36=(Token)match(input,53,FOLLOW_2); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      				newLeafNode(otherlv_36, grammarAccess.getOperatorAccess().getRightParenthesisKeyword_6_4());
+                      			
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 8 :
+                    // InternalKPIFormulaDSL.g:2068:3: ( () otherlv_38= 'THRESHOLD' otherlv_39= '(' ( (lv_expression_40_0= ruleExpression ) ) otherlv_41= ',' ( (lv_threshold_42_0= ruleExpression ) ) otherlv_43= ')' )
+                    {
+                    // InternalKPIFormulaDSL.g:2068:3: ( () otherlv_38= 'THRESHOLD' otherlv_39= '(' ( (lv_expression_40_0= ruleExpression ) ) otherlv_41= ',' ( (lv_threshold_42_0= ruleExpression ) ) otherlv_43= ')' )
+                    // InternalKPIFormulaDSL.g:2069:4: () otherlv_38= 'THRESHOLD' otherlv_39= '(' ( (lv_expression_40_0= ruleExpression ) ) otherlv_41= ',' ( (lv_threshold_42_0= ruleExpression ) ) otherlv_43= ')'
+                    {
+                    // InternalKPIFormulaDSL.g:2069:4: ()
+                    // InternalKPIFormulaDSL.g:2070:5: 
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      					current = forceCreateModelElement(
+                      						grammarAccess.getOperatorAccess().getThresholdOpAction_7_0(),
+                      						current);
+                      				
+                    }
+
+                    }
+
+                    otherlv_38=(Token)match(input,58,FOLLOW_28); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      				newLeafNode(otherlv_38, grammarAccess.getOperatorAccess().getTHRESHOLDKeyword_7_1());
+                      			
+                    }
+                    otherlv_39=(Token)match(input,52,FOLLOW_5); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      				newLeafNode(otherlv_39, grammarAccess.getOperatorAccess().getLeftParenthesisKeyword_7_2());
+                      			
+                    }
+                    // InternalKPIFormulaDSL.g:2084:4: ( (lv_expression_40_0= ruleExpression ) )
+                    // InternalKPIFormulaDSL.g:2085:5: (lv_expression_40_0= ruleExpression )
+                    {
+                    // InternalKPIFormulaDSL.g:2085:5: (lv_expression_40_0= ruleExpression )
+                    // InternalKPIFormulaDSL.g:2086:6: lv_expression_40_0= ruleExpression
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionExpressionParserRuleCall_7_3_0());
                       					
                     }
                     pushFollow(FOLLOW_30);
-                    lv_expression_35_0=ruleExpression();
+                    lv_expression_40_0=ruleExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6087,7 +6176,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						set(
                       							current,
                       							"expression",
-                      							lv_expression_35_0,
+                      							lv_expression_40_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Expression");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6098,25 +6187,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_36=(Token)match(input,49,FOLLOW_5); if (state.failed) return current;
+                    otherlv_41=(Token)match(input,49,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_36, grammarAccess.getOperatorAccess().getCommaKeyword_6_4());
+                      				newLeafNode(otherlv_41, grammarAccess.getOperatorAccess().getCommaKeyword_7_4());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2066:4: ( (lv_threshold_37_0= ruleExpression ) )
-                    // InternalKPIFormulaDSL.g:2067:5: (lv_threshold_37_0= ruleExpression )
+                    // InternalKPIFormulaDSL.g:2107:4: ( (lv_threshold_42_0= ruleExpression ) )
+                    // InternalKPIFormulaDSL.g:2108:5: (lv_threshold_42_0= ruleExpression )
                     {
-                    // InternalKPIFormulaDSL.g:2067:5: (lv_threshold_37_0= ruleExpression )
-                    // InternalKPIFormulaDSL.g:2068:6: lv_threshold_37_0= ruleExpression
+                    // InternalKPIFormulaDSL.g:2108:5: (lv_threshold_42_0= ruleExpression )
+                    // InternalKPIFormulaDSL.g:2109:6: lv_threshold_42_0= ruleExpression
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getThresholdExpressionParserRuleCall_6_5_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getThresholdExpressionParserRuleCall_7_5_0());
                       					
                     }
                     pushFollow(FOLLOW_29);
-                    lv_threshold_37_0=ruleExpression();
+                    lv_threshold_42_0=ruleExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6128,7 +6217,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						set(
                       							current,
                       							"threshold",
-                      							lv_threshold_37_0,
+                      							lv_threshold_42_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Expression");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6139,10 +6228,10 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_38=(Token)match(input,53,FOLLOW_2); if (state.failed) return current;
+                    otherlv_43=(Token)match(input,53,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_38, grammarAccess.getOperatorAccess().getRightParenthesisKeyword_6_6());
+                      				newLeafNode(otherlv_43, grammarAccess.getOperatorAccess().getRightParenthesisKeyword_7_6());
                       			
                     }
 
@@ -6151,44 +6240,44 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 8 :
-                    // InternalKPIFormulaDSL.g:2091:3: ( () otherlv_40= 'do' ( (lv_expression_41_0= ruleTopLevelExpression ) ) otherlv_42= 'for' ( (lv_iterators_43_0= ruleListIterator ) ) otherlv_44= 'in' ( (lv_lists_45_0= rulePrimary ) ) (otherlv_46= ',' ( (lv_iterators_47_0= ruleListIterator ) ) otherlv_48= 'in' ( (lv_lists_49_0= rulePrimary ) ) )* )
+                case 9 :
+                    // InternalKPIFormulaDSL.g:2132:3: ( () otherlv_45= 'map' ( (lv_expression_46_0= ruleTopLevelExpression ) ) otherlv_47= 'for' ( (lv_iterators_48_0= ruleListIterator ) ) otherlv_49= 'in' ( (lv_lists_50_0= rulePrimary ) ) (otherlv_51= ',' ( (lv_iterators_52_0= ruleListIterator ) ) otherlv_53= 'in' ( (lv_lists_54_0= rulePrimary ) ) )* )
                     {
-                    // InternalKPIFormulaDSL.g:2091:3: ( () otherlv_40= 'do' ( (lv_expression_41_0= ruleTopLevelExpression ) ) otherlv_42= 'for' ( (lv_iterators_43_0= ruleListIterator ) ) otherlv_44= 'in' ( (lv_lists_45_0= rulePrimary ) ) (otherlv_46= ',' ( (lv_iterators_47_0= ruleListIterator ) ) otherlv_48= 'in' ( (lv_lists_49_0= rulePrimary ) ) )* )
-                    // InternalKPIFormulaDSL.g:2092:4: () otherlv_40= 'do' ( (lv_expression_41_0= ruleTopLevelExpression ) ) otherlv_42= 'for' ( (lv_iterators_43_0= ruleListIterator ) ) otherlv_44= 'in' ( (lv_lists_45_0= rulePrimary ) ) (otherlv_46= ',' ( (lv_iterators_47_0= ruleListIterator ) ) otherlv_48= 'in' ( (lv_lists_49_0= rulePrimary ) ) )*
+                    // InternalKPIFormulaDSL.g:2132:3: ( () otherlv_45= 'map' ( (lv_expression_46_0= ruleTopLevelExpression ) ) otherlv_47= 'for' ( (lv_iterators_48_0= ruleListIterator ) ) otherlv_49= 'in' ( (lv_lists_50_0= rulePrimary ) ) (otherlv_51= ',' ( (lv_iterators_52_0= ruleListIterator ) ) otherlv_53= 'in' ( (lv_lists_54_0= rulePrimary ) ) )* )
+                    // InternalKPIFormulaDSL.g:2133:4: () otherlv_45= 'map' ( (lv_expression_46_0= ruleTopLevelExpression ) ) otherlv_47= 'for' ( (lv_iterators_48_0= ruleListIterator ) ) otherlv_49= 'in' ( (lv_lists_50_0= rulePrimary ) ) (otherlv_51= ',' ( (lv_iterators_52_0= ruleListIterator ) ) otherlv_53= 'in' ( (lv_lists_54_0= rulePrimary ) ) )*
                     {
-                    // InternalKPIFormulaDSL.g:2092:4: ()
-                    // InternalKPIFormulaDSL.g:2093:5: 
+                    // InternalKPIFormulaDSL.g:2133:4: ()
+                    // InternalKPIFormulaDSL.g:2134:5: 
                     {
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
-                      						grammarAccess.getOperatorAccess().getListIterationAction_7_0(),
+                      						grammarAccess.getOperatorAccess().getListIterationAction_8_0(),
                       						current);
                       				
                     }
 
                     }
 
-                    otherlv_40=(Token)match(input,58,FOLLOW_5); if (state.failed) return current;
+                    otherlv_45=(Token)match(input,59,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_40, grammarAccess.getOperatorAccess().getDoKeyword_7_1());
+                      				newLeafNode(otherlv_45, grammarAccess.getOperatorAccess().getMapKeyword_8_1());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2103:4: ( (lv_expression_41_0= ruleTopLevelExpression ) )
-                    // InternalKPIFormulaDSL.g:2104:5: (lv_expression_41_0= ruleTopLevelExpression )
+                    // InternalKPIFormulaDSL.g:2144:4: ( (lv_expression_46_0= ruleTopLevelExpression ) )
+                    // InternalKPIFormulaDSL.g:2145:5: (lv_expression_46_0= ruleTopLevelExpression )
                     {
-                    // InternalKPIFormulaDSL.g:2104:5: (lv_expression_41_0= ruleTopLevelExpression )
-                    // InternalKPIFormulaDSL.g:2105:6: lv_expression_41_0= ruleTopLevelExpression
+                    // InternalKPIFormulaDSL.g:2145:5: (lv_expression_46_0= ruleTopLevelExpression )
+                    // InternalKPIFormulaDSL.g:2146:6: lv_expression_46_0= ruleTopLevelExpression
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_7_2_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_8_2_0());
                       					
                     }
                     pushFollow(FOLLOW_12);
-                    lv_expression_41_0=ruleTopLevelExpression();
+                    lv_expression_46_0=ruleTopLevelExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6200,7 +6289,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						set(
                       							current,
                       							"expression",
-                      							lv_expression_41_0,
+                      							lv_expression_46_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.TopLevelExpression");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6211,25 +6300,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_42=(Token)match(input,24,FOLLOW_9); if (state.failed) return current;
+                    otherlv_47=(Token)match(input,24,FOLLOW_9); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_42, grammarAccess.getOperatorAccess().getForKeyword_7_3());
+                      				newLeafNode(otherlv_47, grammarAccess.getOperatorAccess().getForKeyword_8_3());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2126:4: ( (lv_iterators_43_0= ruleListIterator ) )
-                    // InternalKPIFormulaDSL.g:2127:5: (lv_iterators_43_0= ruleListIterator )
+                    // InternalKPIFormulaDSL.g:2167:4: ( (lv_iterators_48_0= ruleListIterator ) )
+                    // InternalKPIFormulaDSL.g:2168:5: (lv_iterators_48_0= ruleListIterator )
                     {
-                    // InternalKPIFormulaDSL.g:2127:5: (lv_iterators_43_0= ruleListIterator )
-                    // InternalKPIFormulaDSL.g:2128:6: lv_iterators_43_0= ruleListIterator
+                    // InternalKPIFormulaDSL.g:2168:5: (lv_iterators_48_0= ruleListIterator )
+                    // InternalKPIFormulaDSL.g:2169:6: lv_iterators_48_0= ruleListIterator
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_7_4_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_8_4_0());
                       					
                     }
                     pushFollow(FOLLOW_31);
-                    lv_iterators_43_0=ruleListIterator();
+                    lv_iterators_48_0=ruleListIterator();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6241,7 +6330,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						add(
                       							current,
                       							"iterators",
-                      							lv_iterators_43_0,
+                      							lv_iterators_48_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6252,25 +6341,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_44=(Token)match(input,59,FOLLOW_5); if (state.failed) return current;
+                    otherlv_49=(Token)match(input,60,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_44, grammarAccess.getOperatorAccess().getInKeyword_7_5());
+                      				newLeafNode(otherlv_49, grammarAccess.getOperatorAccess().getInKeyword_8_5());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2149:4: ( (lv_lists_45_0= rulePrimary ) )
-                    // InternalKPIFormulaDSL.g:2150:5: (lv_lists_45_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2190:4: ( (lv_lists_50_0= rulePrimary ) )
+                    // InternalKPIFormulaDSL.g:2191:5: (lv_lists_50_0= rulePrimary )
                     {
-                    // InternalKPIFormulaDSL.g:2150:5: (lv_lists_45_0= rulePrimary )
-                    // InternalKPIFormulaDSL.g:2151:6: lv_lists_45_0= rulePrimary
+                    // InternalKPIFormulaDSL.g:2191:5: (lv_lists_50_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2192:6: lv_lists_50_0= rulePrimary
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_7_6_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_8_6_0());
                       					
                     }
                     pushFollow(FOLLOW_32);
-                    lv_lists_45_0=rulePrimary();
+                    lv_lists_50_0=rulePrimary();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6282,7 +6371,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						add(
                       							current,
                       							"lists",
-                      							lv_lists_45_0,
+                      							lv_lists_50_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6293,7 +6382,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2168:4: (otherlv_46= ',' ( (lv_iterators_47_0= ruleListIterator ) ) otherlv_48= 'in' ( (lv_lists_49_0= rulePrimary ) ) )*
+                    // InternalKPIFormulaDSL.g:2209:4: (otherlv_51= ',' ( (lv_iterators_52_0= ruleListIterator ) ) otherlv_53= 'in' ( (lv_lists_54_0= rulePrimary ) ) )*
                     loop19:
                     do {
                         int alt19=2;
@@ -6305,7 +6394,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                             if ( (LA19_2==RULE_ID) ) {
                                 int LA19_3 = input.LA(3);
 
-                                if ( (LA19_3==59) ) {
+                                if ( (LA19_3==60) ) {
                                     alt19=1;
                                 }
 
@@ -6318,27 +6407,27 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                         switch (alt19) {
                     	case 1 :
-                    	    // InternalKPIFormulaDSL.g:2169:5: otherlv_46= ',' ( (lv_iterators_47_0= ruleListIterator ) ) otherlv_48= 'in' ( (lv_lists_49_0= rulePrimary ) )
+                    	    // InternalKPIFormulaDSL.g:2210:5: otherlv_51= ',' ( (lv_iterators_52_0= ruleListIterator ) ) otherlv_53= 'in' ( (lv_lists_54_0= rulePrimary ) )
                     	    {
-                    	    otherlv_46=(Token)match(input,49,FOLLOW_9); if (state.failed) return current;
+                    	    otherlv_51=(Token)match(input,49,FOLLOW_9); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
-                    	      					newLeafNode(otherlv_46, grammarAccess.getOperatorAccess().getCommaKeyword_7_7_0());
+                    	      					newLeafNode(otherlv_51, grammarAccess.getOperatorAccess().getCommaKeyword_8_7_0());
                     	      				
                     	    }
-                    	    // InternalKPIFormulaDSL.g:2173:5: ( (lv_iterators_47_0= ruleListIterator ) )
-                    	    // InternalKPIFormulaDSL.g:2174:6: (lv_iterators_47_0= ruleListIterator )
+                    	    // InternalKPIFormulaDSL.g:2214:5: ( (lv_iterators_52_0= ruleListIterator ) )
+                    	    // InternalKPIFormulaDSL.g:2215:6: (lv_iterators_52_0= ruleListIterator )
                     	    {
-                    	    // InternalKPIFormulaDSL.g:2174:6: (lv_iterators_47_0= ruleListIterator )
-                    	    // InternalKPIFormulaDSL.g:2175:7: lv_iterators_47_0= ruleListIterator
+                    	    // InternalKPIFormulaDSL.g:2215:6: (lv_iterators_52_0= ruleListIterator )
+                    	    // InternalKPIFormulaDSL.g:2216:7: lv_iterators_52_0= ruleListIterator
                     	    {
                     	    if ( state.backtracking==0 ) {
 
-                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_7_7_1_0());
+                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_8_7_1_0());
                     	      						
                     	    }
                     	    pushFollow(FOLLOW_31);
-                    	    lv_iterators_47_0=ruleListIterator();
+                    	    lv_iterators_52_0=ruleListIterator();
 
                     	    state._fsp--;
                     	    if (state.failed) return current;
@@ -6350,7 +6439,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     	      							add(
                     	      								current,
                     	      								"iterators",
-                    	      								lv_iterators_47_0,
+                    	      								lv_iterators_52_0,
                     	      								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
                     	      							afterParserOrEnumRuleCall();
                     	      						
@@ -6361,25 +6450,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    otherlv_48=(Token)match(input,59,FOLLOW_5); if (state.failed) return current;
+                    	    otherlv_53=(Token)match(input,60,FOLLOW_5); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
-                    	      					newLeafNode(otherlv_48, grammarAccess.getOperatorAccess().getInKeyword_7_7_2());
+                    	      					newLeafNode(otherlv_53, grammarAccess.getOperatorAccess().getInKeyword_8_7_2());
                     	      				
                     	    }
-                    	    // InternalKPIFormulaDSL.g:2196:5: ( (lv_lists_49_0= rulePrimary ) )
-                    	    // InternalKPIFormulaDSL.g:2197:6: (lv_lists_49_0= rulePrimary )
+                    	    // InternalKPIFormulaDSL.g:2237:5: ( (lv_lists_54_0= rulePrimary ) )
+                    	    // InternalKPIFormulaDSL.g:2238:6: (lv_lists_54_0= rulePrimary )
                     	    {
-                    	    // InternalKPIFormulaDSL.g:2197:6: (lv_lists_49_0= rulePrimary )
-                    	    // InternalKPIFormulaDSL.g:2198:7: lv_lists_49_0= rulePrimary
+                    	    // InternalKPIFormulaDSL.g:2238:6: (lv_lists_54_0= rulePrimary )
+                    	    // InternalKPIFormulaDSL.g:2239:7: lv_lists_54_0= rulePrimary
                     	    {
                     	    if ( state.backtracking==0 ) {
 
-                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_7_7_3_0());
+                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_8_7_3_0());
                     	      						
                     	    }
                     	    pushFollow(FOLLOW_32);
-                    	    lv_lists_49_0=rulePrimary();
+                    	    lv_lists_54_0=rulePrimary();
 
                     	    state._fsp--;
                     	    if (state.failed) return current;
@@ -6391,7 +6480,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     	      							add(
                     	      								current,
                     	      								"lists",
-                    	      								lv_lists_49_0,
+                    	      								lv_lists_54_0,
                     	      								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
                     	      							afterParserOrEnumRuleCall();
                     	      						
@@ -6417,44 +6506,44 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 9 :
-                    // InternalKPIFormulaDSL.g:2218:3: ( () otherlv_51= 'reduce' ( (lv_expression_52_0= ruleTopLevelExpression ) ) otherlv_53= 'starting' ( (lv_accumulator_54_0= rulePrimary ) ) otherlv_55= 'for' ( (lv_iterators_56_0= ruleListIterator ) ) otherlv_57= 'in' ( (lv_lists_58_0= rulePrimary ) ) (otherlv_59= ',' ( (lv_iterators_60_0= ruleListIterator ) ) otherlv_61= 'in' ( (lv_lists_62_0= rulePrimary ) ) )* )
+                case 10 :
+                    // InternalKPIFormulaDSL.g:2259:3: ( () otherlv_56= 'reduce' ( (lv_expression_57_0= ruleTopLevelExpression ) ) otherlv_58= 'starting' ( (lv_accumulator_59_0= rulePrimary ) ) otherlv_60= 'for' ( (lv_iterators_61_0= ruleListIterator ) ) otherlv_62= 'in' ( (lv_lists_63_0= rulePrimary ) ) (otherlv_64= ',' ( (lv_iterators_65_0= ruleListIterator ) ) otherlv_66= 'in' ( (lv_lists_67_0= rulePrimary ) ) )* )
                     {
-                    // InternalKPIFormulaDSL.g:2218:3: ( () otherlv_51= 'reduce' ( (lv_expression_52_0= ruleTopLevelExpression ) ) otherlv_53= 'starting' ( (lv_accumulator_54_0= rulePrimary ) ) otherlv_55= 'for' ( (lv_iterators_56_0= ruleListIterator ) ) otherlv_57= 'in' ( (lv_lists_58_0= rulePrimary ) ) (otherlv_59= ',' ( (lv_iterators_60_0= ruleListIterator ) ) otherlv_61= 'in' ( (lv_lists_62_0= rulePrimary ) ) )* )
-                    // InternalKPIFormulaDSL.g:2219:4: () otherlv_51= 'reduce' ( (lv_expression_52_0= ruleTopLevelExpression ) ) otherlv_53= 'starting' ( (lv_accumulator_54_0= rulePrimary ) ) otherlv_55= 'for' ( (lv_iterators_56_0= ruleListIterator ) ) otherlv_57= 'in' ( (lv_lists_58_0= rulePrimary ) ) (otherlv_59= ',' ( (lv_iterators_60_0= ruleListIterator ) ) otherlv_61= 'in' ( (lv_lists_62_0= rulePrimary ) ) )*
+                    // InternalKPIFormulaDSL.g:2259:3: ( () otherlv_56= 'reduce' ( (lv_expression_57_0= ruleTopLevelExpression ) ) otherlv_58= 'starting' ( (lv_accumulator_59_0= rulePrimary ) ) otherlv_60= 'for' ( (lv_iterators_61_0= ruleListIterator ) ) otherlv_62= 'in' ( (lv_lists_63_0= rulePrimary ) ) (otherlv_64= ',' ( (lv_iterators_65_0= ruleListIterator ) ) otherlv_66= 'in' ( (lv_lists_67_0= rulePrimary ) ) )* )
+                    // InternalKPIFormulaDSL.g:2260:4: () otherlv_56= 'reduce' ( (lv_expression_57_0= ruleTopLevelExpression ) ) otherlv_58= 'starting' ( (lv_accumulator_59_0= rulePrimary ) ) otherlv_60= 'for' ( (lv_iterators_61_0= ruleListIterator ) ) otherlv_62= 'in' ( (lv_lists_63_0= rulePrimary ) ) (otherlv_64= ',' ( (lv_iterators_65_0= ruleListIterator ) ) otherlv_66= 'in' ( (lv_lists_67_0= rulePrimary ) ) )*
                     {
-                    // InternalKPIFormulaDSL.g:2219:4: ()
-                    // InternalKPIFormulaDSL.g:2220:5: 
+                    // InternalKPIFormulaDSL.g:2260:4: ()
+                    // InternalKPIFormulaDSL.g:2261:5: 
                     {
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
-                      						grammarAccess.getOperatorAccess().getListReduceAction_8_0(),
+                      						grammarAccess.getOperatorAccess().getListReduceAction_9_0(),
                       						current);
                       				
                     }
 
                     }
 
-                    otherlv_51=(Token)match(input,60,FOLLOW_5); if (state.failed) return current;
+                    otherlv_56=(Token)match(input,61,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_51, grammarAccess.getOperatorAccess().getReduceKeyword_8_1());
+                      				newLeafNode(otherlv_56, grammarAccess.getOperatorAccess().getReduceKeyword_9_1());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2230:4: ( (lv_expression_52_0= ruleTopLevelExpression ) )
-                    // InternalKPIFormulaDSL.g:2231:5: (lv_expression_52_0= ruleTopLevelExpression )
+                    // InternalKPIFormulaDSL.g:2271:4: ( (lv_expression_57_0= ruleTopLevelExpression ) )
+                    // InternalKPIFormulaDSL.g:2272:5: (lv_expression_57_0= ruleTopLevelExpression )
                     {
-                    // InternalKPIFormulaDSL.g:2231:5: (lv_expression_52_0= ruleTopLevelExpression )
-                    // InternalKPIFormulaDSL.g:2232:6: lv_expression_52_0= ruleTopLevelExpression
+                    // InternalKPIFormulaDSL.g:2272:5: (lv_expression_57_0= ruleTopLevelExpression )
+                    // InternalKPIFormulaDSL.g:2273:6: lv_expression_57_0= ruleTopLevelExpression
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_8_2_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_9_2_0());
                       					
                     }
                     pushFollow(FOLLOW_33);
-                    lv_expression_52_0=ruleTopLevelExpression();
+                    lv_expression_57_0=ruleTopLevelExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6466,7 +6555,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						set(
                       							current,
                       							"expression",
-                      							lv_expression_52_0,
+                      							lv_expression_57_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.TopLevelExpression");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6477,25 +6566,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_53=(Token)match(input,61,FOLLOW_5); if (state.failed) return current;
+                    otherlv_58=(Token)match(input,62,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_53, grammarAccess.getOperatorAccess().getStartingKeyword_8_3());
+                      				newLeafNode(otherlv_58, grammarAccess.getOperatorAccess().getStartingKeyword_9_3());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2253:4: ( (lv_accumulator_54_0= rulePrimary ) )
-                    // InternalKPIFormulaDSL.g:2254:5: (lv_accumulator_54_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2294:4: ( (lv_accumulator_59_0= rulePrimary ) )
+                    // InternalKPIFormulaDSL.g:2295:5: (lv_accumulator_59_0= rulePrimary )
                     {
-                    // InternalKPIFormulaDSL.g:2254:5: (lv_accumulator_54_0= rulePrimary )
-                    // InternalKPIFormulaDSL.g:2255:6: lv_accumulator_54_0= rulePrimary
+                    // InternalKPIFormulaDSL.g:2295:5: (lv_accumulator_59_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2296:6: lv_accumulator_59_0= rulePrimary
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getAccumulatorPrimaryParserRuleCall_8_4_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getAccumulatorPrimaryParserRuleCall_9_4_0());
                       					
                     }
                     pushFollow(FOLLOW_12);
-                    lv_accumulator_54_0=rulePrimary();
+                    lv_accumulator_59_0=rulePrimary();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6507,7 +6596,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						set(
                       							current,
                       							"accumulator",
-                      							lv_accumulator_54_0,
+                      							lv_accumulator_59_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6518,25 +6607,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_55=(Token)match(input,24,FOLLOW_9); if (state.failed) return current;
+                    otherlv_60=(Token)match(input,24,FOLLOW_9); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_55, grammarAccess.getOperatorAccess().getForKeyword_8_5());
+                      				newLeafNode(otherlv_60, grammarAccess.getOperatorAccess().getForKeyword_9_5());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2276:4: ( (lv_iterators_56_0= ruleListIterator ) )
-                    // InternalKPIFormulaDSL.g:2277:5: (lv_iterators_56_0= ruleListIterator )
+                    // InternalKPIFormulaDSL.g:2317:4: ( (lv_iterators_61_0= ruleListIterator ) )
+                    // InternalKPIFormulaDSL.g:2318:5: (lv_iterators_61_0= ruleListIterator )
                     {
-                    // InternalKPIFormulaDSL.g:2277:5: (lv_iterators_56_0= ruleListIterator )
-                    // InternalKPIFormulaDSL.g:2278:6: lv_iterators_56_0= ruleListIterator
+                    // InternalKPIFormulaDSL.g:2318:5: (lv_iterators_61_0= ruleListIterator )
+                    // InternalKPIFormulaDSL.g:2319:6: lv_iterators_61_0= ruleListIterator
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_8_6_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_9_6_0());
                       					
                     }
                     pushFollow(FOLLOW_31);
-                    lv_iterators_56_0=ruleListIterator();
+                    lv_iterators_61_0=ruleListIterator();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6548,7 +6637,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						add(
                       							current,
                       							"iterators",
-                      							lv_iterators_56_0,
+                      							lv_iterators_61_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6559,25 +6648,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_57=(Token)match(input,59,FOLLOW_5); if (state.failed) return current;
+                    otherlv_62=(Token)match(input,60,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_57, grammarAccess.getOperatorAccess().getInKeyword_8_7());
+                      				newLeafNode(otherlv_62, grammarAccess.getOperatorAccess().getInKeyword_9_7());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2299:4: ( (lv_lists_58_0= rulePrimary ) )
-                    // InternalKPIFormulaDSL.g:2300:5: (lv_lists_58_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2340:4: ( (lv_lists_63_0= rulePrimary ) )
+                    // InternalKPIFormulaDSL.g:2341:5: (lv_lists_63_0= rulePrimary )
                     {
-                    // InternalKPIFormulaDSL.g:2300:5: (lv_lists_58_0= rulePrimary )
-                    // InternalKPIFormulaDSL.g:2301:6: lv_lists_58_0= rulePrimary
+                    // InternalKPIFormulaDSL.g:2341:5: (lv_lists_63_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2342:6: lv_lists_63_0= rulePrimary
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_8_8_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_9_8_0());
                       					
                     }
                     pushFollow(FOLLOW_32);
-                    lv_lists_58_0=rulePrimary();
+                    lv_lists_63_0=rulePrimary();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6589,7 +6678,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						add(
                       							current,
                       							"lists",
-                      							lv_lists_58_0,
+                      							lv_lists_63_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6600,7 +6689,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2318:4: (otherlv_59= ',' ( (lv_iterators_60_0= ruleListIterator ) ) otherlv_61= 'in' ( (lv_lists_62_0= rulePrimary ) ) )*
+                    // InternalKPIFormulaDSL.g:2359:4: (otherlv_64= ',' ( (lv_iterators_65_0= ruleListIterator ) ) otherlv_66= 'in' ( (lv_lists_67_0= rulePrimary ) ) )*
                     loop20:
                     do {
                         int alt20=2;
@@ -6612,7 +6701,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                             if ( (LA20_2==RULE_ID) ) {
                                 int LA20_3 = input.LA(3);
 
-                                if ( (LA20_3==59) ) {
+                                if ( (LA20_3==60) ) {
                                     alt20=1;
                                 }
 
@@ -6625,27 +6714,27 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                         switch (alt20) {
                     	case 1 :
-                    	    // InternalKPIFormulaDSL.g:2319:5: otherlv_59= ',' ( (lv_iterators_60_0= ruleListIterator ) ) otherlv_61= 'in' ( (lv_lists_62_0= rulePrimary ) )
+                    	    // InternalKPIFormulaDSL.g:2360:5: otherlv_64= ',' ( (lv_iterators_65_0= ruleListIterator ) ) otherlv_66= 'in' ( (lv_lists_67_0= rulePrimary ) )
                     	    {
-                    	    otherlv_59=(Token)match(input,49,FOLLOW_9); if (state.failed) return current;
+                    	    otherlv_64=(Token)match(input,49,FOLLOW_9); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
-                    	      					newLeafNode(otherlv_59, grammarAccess.getOperatorAccess().getCommaKeyword_8_9_0());
+                    	      					newLeafNode(otherlv_64, grammarAccess.getOperatorAccess().getCommaKeyword_9_9_0());
                     	      				
                     	    }
-                    	    // InternalKPIFormulaDSL.g:2323:5: ( (lv_iterators_60_0= ruleListIterator ) )
-                    	    // InternalKPIFormulaDSL.g:2324:6: (lv_iterators_60_0= ruleListIterator )
+                    	    // InternalKPIFormulaDSL.g:2364:5: ( (lv_iterators_65_0= ruleListIterator ) )
+                    	    // InternalKPIFormulaDSL.g:2365:6: (lv_iterators_65_0= ruleListIterator )
                     	    {
-                    	    // InternalKPIFormulaDSL.g:2324:6: (lv_iterators_60_0= ruleListIterator )
-                    	    // InternalKPIFormulaDSL.g:2325:7: lv_iterators_60_0= ruleListIterator
+                    	    // InternalKPIFormulaDSL.g:2365:6: (lv_iterators_65_0= ruleListIterator )
+                    	    // InternalKPIFormulaDSL.g:2366:7: lv_iterators_65_0= ruleListIterator
                     	    {
                     	    if ( state.backtracking==0 ) {
 
-                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_8_9_1_0());
+                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_9_9_1_0());
                     	      						
                     	    }
                     	    pushFollow(FOLLOW_31);
-                    	    lv_iterators_60_0=ruleListIterator();
+                    	    lv_iterators_65_0=ruleListIterator();
 
                     	    state._fsp--;
                     	    if (state.failed) return current;
@@ -6657,7 +6746,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     	      							add(
                     	      								current,
                     	      								"iterators",
-                    	      								lv_iterators_60_0,
+                    	      								lv_iterators_65_0,
                     	      								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
                     	      							afterParserOrEnumRuleCall();
                     	      						
@@ -6668,25 +6757,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    otherlv_61=(Token)match(input,59,FOLLOW_5); if (state.failed) return current;
+                    	    otherlv_66=(Token)match(input,60,FOLLOW_5); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
-                    	      					newLeafNode(otherlv_61, grammarAccess.getOperatorAccess().getInKeyword_8_9_2());
+                    	      					newLeafNode(otherlv_66, grammarAccess.getOperatorAccess().getInKeyword_9_9_2());
                     	      				
                     	    }
-                    	    // InternalKPIFormulaDSL.g:2346:5: ( (lv_lists_62_0= rulePrimary ) )
-                    	    // InternalKPIFormulaDSL.g:2347:6: (lv_lists_62_0= rulePrimary )
+                    	    // InternalKPIFormulaDSL.g:2387:5: ( (lv_lists_67_0= rulePrimary ) )
+                    	    // InternalKPIFormulaDSL.g:2388:6: (lv_lists_67_0= rulePrimary )
                     	    {
-                    	    // InternalKPIFormulaDSL.g:2347:6: (lv_lists_62_0= rulePrimary )
-                    	    // InternalKPIFormulaDSL.g:2348:7: lv_lists_62_0= rulePrimary
+                    	    // InternalKPIFormulaDSL.g:2388:6: (lv_lists_67_0= rulePrimary )
+                    	    // InternalKPIFormulaDSL.g:2389:7: lv_lists_67_0= rulePrimary
                     	    {
                     	    if ( state.backtracking==0 ) {
 
-                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_8_9_3_0());
+                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_9_9_3_0());
                     	      						
                     	    }
                     	    pushFollow(FOLLOW_32);
-                    	    lv_lists_62_0=rulePrimary();
+                    	    lv_lists_67_0=rulePrimary();
 
                     	    state._fsp--;
                     	    if (state.failed) return current;
@@ -6698,7 +6787,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     	      							add(
                     	      								current,
                     	      								"lists",
-                    	      								lv_lists_62_0,
+                    	      								lv_lists_67_0,
                     	      								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
                     	      							afterParserOrEnumRuleCall();
                     	      						
@@ -6724,44 +6813,44 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 10 :
-                    // InternalKPIFormulaDSL.g:2368:3: ( () otherlv_64= 'filter' ( (lv_expression_65_0= ruleTopLevelExpression ) ) otherlv_66= 'for' ( (lv_iterators_67_0= ruleListIterator ) ) otherlv_68= 'in' ( (lv_lists_69_0= rulePrimary ) ) (otherlv_70= ',' ( (lv_iterators_71_0= ruleListIterator ) ) otherlv_72= 'in' ( (lv_lists_73_0= rulePrimary ) ) )* )
+                case 11 :
+                    // InternalKPIFormulaDSL.g:2409:3: ( () otherlv_69= 'filter' ( (lv_expression_70_0= ruleTopLevelExpression ) ) otherlv_71= 'for' ( (lv_iterators_72_0= ruleListIterator ) ) otherlv_73= 'in' ( (lv_lists_74_0= rulePrimary ) ) (otherlv_75= ',' ( (lv_iterators_76_0= ruleListIterator ) ) otherlv_77= 'in' ( (lv_lists_78_0= rulePrimary ) ) )* )
                     {
-                    // InternalKPIFormulaDSL.g:2368:3: ( () otherlv_64= 'filter' ( (lv_expression_65_0= ruleTopLevelExpression ) ) otherlv_66= 'for' ( (lv_iterators_67_0= ruleListIterator ) ) otherlv_68= 'in' ( (lv_lists_69_0= rulePrimary ) ) (otherlv_70= ',' ( (lv_iterators_71_0= ruleListIterator ) ) otherlv_72= 'in' ( (lv_lists_73_0= rulePrimary ) ) )* )
-                    // InternalKPIFormulaDSL.g:2369:4: () otherlv_64= 'filter' ( (lv_expression_65_0= ruleTopLevelExpression ) ) otherlv_66= 'for' ( (lv_iterators_67_0= ruleListIterator ) ) otherlv_68= 'in' ( (lv_lists_69_0= rulePrimary ) ) (otherlv_70= ',' ( (lv_iterators_71_0= ruleListIterator ) ) otherlv_72= 'in' ( (lv_lists_73_0= rulePrimary ) ) )*
+                    // InternalKPIFormulaDSL.g:2409:3: ( () otherlv_69= 'filter' ( (lv_expression_70_0= ruleTopLevelExpression ) ) otherlv_71= 'for' ( (lv_iterators_72_0= ruleListIterator ) ) otherlv_73= 'in' ( (lv_lists_74_0= rulePrimary ) ) (otherlv_75= ',' ( (lv_iterators_76_0= ruleListIterator ) ) otherlv_77= 'in' ( (lv_lists_78_0= rulePrimary ) ) )* )
+                    // InternalKPIFormulaDSL.g:2410:4: () otherlv_69= 'filter' ( (lv_expression_70_0= ruleTopLevelExpression ) ) otherlv_71= 'for' ( (lv_iterators_72_0= ruleListIterator ) ) otherlv_73= 'in' ( (lv_lists_74_0= rulePrimary ) ) (otherlv_75= ',' ( (lv_iterators_76_0= ruleListIterator ) ) otherlv_77= 'in' ( (lv_lists_78_0= rulePrimary ) ) )*
                     {
-                    // InternalKPIFormulaDSL.g:2369:4: ()
-                    // InternalKPIFormulaDSL.g:2370:5: 
+                    // InternalKPIFormulaDSL.g:2410:4: ()
+                    // InternalKPIFormulaDSL.g:2411:5: 
                     {
                     if ( state.backtracking==0 ) {
 
                       					current = forceCreateModelElement(
-                      						grammarAccess.getOperatorAccess().getListFilterAction_9_0(),
+                      						grammarAccess.getOperatorAccess().getListFilterAction_10_0(),
                       						current);
                       				
                     }
 
                     }
 
-                    otherlv_64=(Token)match(input,62,FOLLOW_5); if (state.failed) return current;
+                    otherlv_69=(Token)match(input,63,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_64, grammarAccess.getOperatorAccess().getFilterKeyword_9_1());
+                      				newLeafNode(otherlv_69, grammarAccess.getOperatorAccess().getFilterKeyword_10_1());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2380:4: ( (lv_expression_65_0= ruleTopLevelExpression ) )
-                    // InternalKPIFormulaDSL.g:2381:5: (lv_expression_65_0= ruleTopLevelExpression )
+                    // InternalKPIFormulaDSL.g:2421:4: ( (lv_expression_70_0= ruleTopLevelExpression ) )
+                    // InternalKPIFormulaDSL.g:2422:5: (lv_expression_70_0= ruleTopLevelExpression )
                     {
-                    // InternalKPIFormulaDSL.g:2381:5: (lv_expression_65_0= ruleTopLevelExpression )
-                    // InternalKPIFormulaDSL.g:2382:6: lv_expression_65_0= ruleTopLevelExpression
+                    // InternalKPIFormulaDSL.g:2422:5: (lv_expression_70_0= ruleTopLevelExpression )
+                    // InternalKPIFormulaDSL.g:2423:6: lv_expression_70_0= ruleTopLevelExpression
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_9_2_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_10_2_0());
                       					
                     }
                     pushFollow(FOLLOW_12);
-                    lv_expression_65_0=ruleTopLevelExpression();
+                    lv_expression_70_0=ruleTopLevelExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6773,7 +6862,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						set(
                       							current,
                       							"expression",
-                      							lv_expression_65_0,
+                      							lv_expression_70_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.TopLevelExpression");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6784,25 +6873,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_66=(Token)match(input,24,FOLLOW_9); if (state.failed) return current;
+                    otherlv_71=(Token)match(input,24,FOLLOW_9); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_66, grammarAccess.getOperatorAccess().getForKeyword_9_3());
+                      				newLeafNode(otherlv_71, grammarAccess.getOperatorAccess().getForKeyword_10_3());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2403:4: ( (lv_iterators_67_0= ruleListIterator ) )
-                    // InternalKPIFormulaDSL.g:2404:5: (lv_iterators_67_0= ruleListIterator )
+                    // InternalKPIFormulaDSL.g:2444:4: ( (lv_iterators_72_0= ruleListIterator ) )
+                    // InternalKPIFormulaDSL.g:2445:5: (lv_iterators_72_0= ruleListIterator )
                     {
-                    // InternalKPIFormulaDSL.g:2404:5: (lv_iterators_67_0= ruleListIterator )
-                    // InternalKPIFormulaDSL.g:2405:6: lv_iterators_67_0= ruleListIterator
+                    // InternalKPIFormulaDSL.g:2445:5: (lv_iterators_72_0= ruleListIterator )
+                    // InternalKPIFormulaDSL.g:2446:6: lv_iterators_72_0= ruleListIterator
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_9_4_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_10_4_0());
                       					
                     }
                     pushFollow(FOLLOW_31);
-                    lv_iterators_67_0=ruleListIterator();
+                    lv_iterators_72_0=ruleListIterator();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6814,7 +6903,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						add(
                       							current,
                       							"iterators",
-                      							lv_iterators_67_0,
+                      							lv_iterators_72_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6825,25 +6914,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_68=(Token)match(input,59,FOLLOW_5); if (state.failed) return current;
+                    otherlv_73=(Token)match(input,60,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				newLeafNode(otherlv_68, grammarAccess.getOperatorAccess().getInKeyword_9_5());
+                      				newLeafNode(otherlv_73, grammarAccess.getOperatorAccess().getInKeyword_10_5());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2426:4: ( (lv_lists_69_0= rulePrimary ) )
-                    // InternalKPIFormulaDSL.g:2427:5: (lv_lists_69_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2467:4: ( (lv_lists_74_0= rulePrimary ) )
+                    // InternalKPIFormulaDSL.g:2468:5: (lv_lists_74_0= rulePrimary )
                     {
-                    // InternalKPIFormulaDSL.g:2427:5: (lv_lists_69_0= rulePrimary )
-                    // InternalKPIFormulaDSL.g:2428:6: lv_lists_69_0= rulePrimary
+                    // InternalKPIFormulaDSL.g:2468:5: (lv_lists_74_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2469:6: lv_lists_74_0= rulePrimary
                     {
                     if ( state.backtracking==0 ) {
 
-                      						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_9_6_0());
+                      						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_10_6_0());
                       					
                     }
                     pushFollow(FOLLOW_32);
-                    lv_lists_69_0=rulePrimary();
+                    lv_lists_74_0=rulePrimary();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -6855,7 +6944,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       						add(
                       							current,
                       							"lists",
-                      							lv_lists_69_0,
+                      							lv_lists_74_0,
                       							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
                       						afterParserOrEnumRuleCall();
                       					
@@ -6866,7 +6955,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2445:4: (otherlv_70= ',' ( (lv_iterators_71_0= ruleListIterator ) ) otherlv_72= 'in' ( (lv_lists_73_0= rulePrimary ) ) )*
+                    // InternalKPIFormulaDSL.g:2486:4: (otherlv_75= ',' ( (lv_iterators_76_0= ruleListIterator ) ) otherlv_77= 'in' ( (lv_lists_78_0= rulePrimary ) ) )*
                     loop21:
                     do {
                         int alt21=2;
@@ -6878,7 +6967,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                             if ( (LA21_2==RULE_ID) ) {
                                 int LA21_3 = input.LA(3);
 
-                                if ( (LA21_3==59) ) {
+                                if ( (LA21_3==60) ) {
                                     alt21=1;
                                 }
 
@@ -6891,27 +6980,27 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                         switch (alt21) {
                     	case 1 :
-                    	    // InternalKPIFormulaDSL.g:2446:5: otherlv_70= ',' ( (lv_iterators_71_0= ruleListIterator ) ) otherlv_72= 'in' ( (lv_lists_73_0= rulePrimary ) )
+                    	    // InternalKPIFormulaDSL.g:2487:5: otherlv_75= ',' ( (lv_iterators_76_0= ruleListIterator ) ) otherlv_77= 'in' ( (lv_lists_78_0= rulePrimary ) )
                     	    {
-                    	    otherlv_70=(Token)match(input,49,FOLLOW_9); if (state.failed) return current;
+                    	    otherlv_75=(Token)match(input,49,FOLLOW_9); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
-                    	      					newLeafNode(otherlv_70, grammarAccess.getOperatorAccess().getCommaKeyword_9_7_0());
+                    	      					newLeafNode(otherlv_75, grammarAccess.getOperatorAccess().getCommaKeyword_10_7_0());
                     	      				
                     	    }
-                    	    // InternalKPIFormulaDSL.g:2450:5: ( (lv_iterators_71_0= ruleListIterator ) )
-                    	    // InternalKPIFormulaDSL.g:2451:6: (lv_iterators_71_0= ruleListIterator )
+                    	    // InternalKPIFormulaDSL.g:2491:5: ( (lv_iterators_76_0= ruleListIterator ) )
+                    	    // InternalKPIFormulaDSL.g:2492:6: (lv_iterators_76_0= ruleListIterator )
                     	    {
-                    	    // InternalKPIFormulaDSL.g:2451:6: (lv_iterators_71_0= ruleListIterator )
-                    	    // InternalKPIFormulaDSL.g:2452:7: lv_iterators_71_0= ruleListIterator
+                    	    // InternalKPIFormulaDSL.g:2492:6: (lv_iterators_76_0= ruleListIterator )
+                    	    // InternalKPIFormulaDSL.g:2493:7: lv_iterators_76_0= ruleListIterator
                     	    {
                     	    if ( state.backtracking==0 ) {
 
-                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_9_7_1_0());
+                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_10_7_1_0());
                     	      						
                     	    }
                     	    pushFollow(FOLLOW_31);
-                    	    lv_iterators_71_0=ruleListIterator();
+                    	    lv_iterators_76_0=ruleListIterator();
 
                     	    state._fsp--;
                     	    if (state.failed) return current;
@@ -6923,7 +7012,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     	      							add(
                     	      								current,
                     	      								"iterators",
-                    	      								lv_iterators_71_0,
+                    	      								lv_iterators_76_0,
                     	      								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
                     	      							afterParserOrEnumRuleCall();
                     	      						
@@ -6934,25 +7023,25 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     	    }
 
-                    	    otherlv_72=(Token)match(input,59,FOLLOW_5); if (state.failed) return current;
+                    	    otherlv_77=(Token)match(input,60,FOLLOW_5); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
-                    	      					newLeafNode(otherlv_72, grammarAccess.getOperatorAccess().getInKeyword_9_7_2());
+                    	      					newLeafNode(otherlv_77, grammarAccess.getOperatorAccess().getInKeyword_10_7_2());
                     	      				
                     	    }
-                    	    // InternalKPIFormulaDSL.g:2473:5: ( (lv_lists_73_0= rulePrimary ) )
-                    	    // InternalKPIFormulaDSL.g:2474:6: (lv_lists_73_0= rulePrimary )
+                    	    // InternalKPIFormulaDSL.g:2514:5: ( (lv_lists_78_0= rulePrimary ) )
+                    	    // InternalKPIFormulaDSL.g:2515:6: (lv_lists_78_0= rulePrimary )
                     	    {
-                    	    // InternalKPIFormulaDSL.g:2474:6: (lv_lists_73_0= rulePrimary )
-                    	    // InternalKPIFormulaDSL.g:2475:7: lv_lists_73_0= rulePrimary
+                    	    // InternalKPIFormulaDSL.g:2515:6: (lv_lists_78_0= rulePrimary )
+                    	    // InternalKPIFormulaDSL.g:2516:7: lv_lists_78_0= rulePrimary
                     	    {
                     	    if ( state.backtracking==0 ) {
 
-                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_9_7_3_0());
+                    	      							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_10_7_3_0());
                     	      						
                     	    }
                     	    pushFollow(FOLLOW_32);
-                    	    lv_lists_73_0=rulePrimary();
+                    	    lv_lists_78_0=rulePrimary();
 
                     	    state._fsp--;
                     	    if (state.failed) return current;
@@ -6964,7 +7053,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     	      							add(
                     	      								current,
                     	      								"lists",
-                    	      								lv_lists_73_0,
+                    	      								lv_lists_78_0,
                     	      								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
                     	      							afterParserOrEnumRuleCall();
                     	      						
@@ -6990,22 +7079,22 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 11 :
-                    // InternalKPIFormulaDSL.g:2495:3: this_Primary_74= rulePrimary
+                case 12 :
+                    // InternalKPIFormulaDSL.g:2536:3: this_Primary_79= rulePrimary
                     {
                     if ( state.backtracking==0 ) {
 
-                      			newCompositeNode(grammarAccess.getOperatorAccess().getPrimaryParserRuleCall_10());
+                      			newCompositeNode(grammarAccess.getOperatorAccess().getPrimaryParserRuleCall_11());
                       		
                     }
                     pushFollow(FOLLOW_2);
-                    this_Primary_74=rulePrimary();
+                    this_Primary_79=rulePrimary();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      			current = this_Primary_74;
+                      			current = this_Primary_79;
                       			afterParserOrEnumRuleCall();
                       		
                     }
@@ -7037,7 +7126,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimary"
-    // InternalKPIFormulaDSL.g:2507:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
+    // InternalKPIFormulaDSL.g:2548:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
     public final EObject entryRulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -7045,8 +7134,8 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalKPIFormulaDSL.g:2507:48: (iv_rulePrimary= rulePrimary EOF )
-            // InternalKPIFormulaDSL.g:2508:2: iv_rulePrimary= rulePrimary EOF
+            // InternalKPIFormulaDSL.g:2548:48: (iv_rulePrimary= rulePrimary EOF )
+            // InternalKPIFormulaDSL.g:2549:2: iv_rulePrimary= rulePrimary EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getPrimaryRule()); 
@@ -7077,7 +7166,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimary"
-    // InternalKPIFormulaDSL.g:2514:1: rulePrimary returns [EObject current=null] : ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic ) ;
+    // InternalKPIFormulaDSL.g:2555:1: rulePrimary returns [EObject current=null] : ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic ) ;
     public final EObject rulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -7098,10 +7187,10 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalKPIFormulaDSL.g:2520:2: ( ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic ) )
-            // InternalKPIFormulaDSL.g:2521:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic )
+            // InternalKPIFormulaDSL.g:2561:2: ( ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic ) )
+            // InternalKPIFormulaDSL.g:2562:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic )
             {
-            // InternalKPIFormulaDSL.g:2521:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic )
+            // InternalKPIFormulaDSL.g:2562:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic )
             int alt23=4;
             switch ( input.LA(1) ) {
             case 52:
@@ -7109,7 +7198,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                 alt23=1;
                 }
                 break;
-            case 63:
+            case 64:
                 {
                 alt23=2;
                 }
@@ -7124,9 +7213,9 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
             case RULE_DOUBLE:
             case RULE_STRING:
             case RULE_FQN:
-            case 64:
             case 65:
             case 66:
+            case 67:
                 {
                 alt23=4;
                 }
@@ -7141,10 +7230,10 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt23) {
                 case 1 :
-                    // InternalKPIFormulaDSL.g:2522:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
+                    // InternalKPIFormulaDSL.g:2563:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
                     {
-                    // InternalKPIFormulaDSL.g:2522:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
-                    // InternalKPIFormulaDSL.g:2523:4: otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')'
+                    // InternalKPIFormulaDSL.g:2563:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
+                    // InternalKPIFormulaDSL.g:2564:4: otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')'
                     {
                     otherlv_0=(Token)match(input,52,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7181,13 +7270,13 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalKPIFormulaDSL.g:2541:3: ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) )
+                    // InternalKPIFormulaDSL.g:2582:3: ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2541:3: ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) )
-                    // InternalKPIFormulaDSL.g:2542:4: () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) )
+                    // InternalKPIFormulaDSL.g:2582:3: ( () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) ) )
+                    // InternalKPIFormulaDSL.g:2583:4: () otherlv_4= '!' ( (lv_expression_5_0= rulePrimary ) )
                     {
-                    // InternalKPIFormulaDSL.g:2542:4: ()
-                    // InternalKPIFormulaDSL.g:2543:5: 
+                    // InternalKPIFormulaDSL.g:2583:4: ()
+                    // InternalKPIFormulaDSL.g:2584:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7199,17 +7288,17 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_4=(Token)match(input,63,FOLLOW_5); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,64,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_4, grammarAccess.getPrimaryAccess().getExclamationMarkKeyword_1_1());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2553:4: ( (lv_expression_5_0= rulePrimary ) )
-                    // InternalKPIFormulaDSL.g:2554:5: (lv_expression_5_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2594:4: ( (lv_expression_5_0= rulePrimary ) )
+                    // InternalKPIFormulaDSL.g:2595:5: (lv_expression_5_0= rulePrimary )
                     {
-                    // InternalKPIFormulaDSL.g:2554:5: (lv_expression_5_0= rulePrimary )
-                    // InternalKPIFormulaDSL.g:2555:6: lv_expression_5_0= rulePrimary
+                    // InternalKPIFormulaDSL.g:2595:5: (lv_expression_5_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2596:6: lv_expression_5_0= rulePrimary
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7247,13 +7336,13 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalKPIFormulaDSL.g:2574:3: ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) )
+                    // InternalKPIFormulaDSL.g:2615:3: ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2574:3: ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) )
-                    // InternalKPIFormulaDSL.g:2575:4: () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) )
+                    // InternalKPIFormulaDSL.g:2615:3: ( () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) ) )
+                    // InternalKPIFormulaDSL.g:2616:4: () otherlv_7= '-' ( (lv_expression_8_0= rulePrimary ) )
                     {
-                    // InternalKPIFormulaDSL.g:2575:4: ()
-                    // InternalKPIFormulaDSL.g:2576:5: 
+                    // InternalKPIFormulaDSL.g:2616:4: ()
+                    // InternalKPIFormulaDSL.g:2617:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7271,11 +7360,11 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                       				newLeafNode(otherlv_7, grammarAccess.getPrimaryAccess().getHyphenMinusKeyword_2_1());
                       			
                     }
-                    // InternalKPIFormulaDSL.g:2586:4: ( (lv_expression_8_0= rulePrimary ) )
-                    // InternalKPIFormulaDSL.g:2587:5: (lv_expression_8_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2627:4: ( (lv_expression_8_0= rulePrimary ) )
+                    // InternalKPIFormulaDSL.g:2628:5: (lv_expression_8_0= rulePrimary )
                     {
-                    // InternalKPIFormulaDSL.g:2587:5: (lv_expression_8_0= rulePrimary )
-                    // InternalKPIFormulaDSL.g:2588:6: lv_expression_8_0= rulePrimary
+                    // InternalKPIFormulaDSL.g:2628:5: (lv_expression_8_0= rulePrimary )
+                    // InternalKPIFormulaDSL.g:2629:6: lv_expression_8_0= rulePrimary
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7313,7 +7402,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalKPIFormulaDSL.g:2607:3: this_Atomic_9= ruleAtomic
+                    // InternalKPIFormulaDSL.g:2648:3: this_Atomic_9= ruleAtomic
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7359,7 +7448,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleListIterator"
-    // InternalKPIFormulaDSL.g:2619:1: entryRuleListIterator returns [EObject current=null] : iv_ruleListIterator= ruleListIterator EOF ;
+    // InternalKPIFormulaDSL.g:2660:1: entryRuleListIterator returns [EObject current=null] : iv_ruleListIterator= ruleListIterator EOF ;
     public final EObject entryRuleListIterator() throws RecognitionException {
         EObject current = null;
 
@@ -7367,8 +7456,8 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalKPIFormulaDSL.g:2619:53: (iv_ruleListIterator= ruleListIterator EOF )
-            // InternalKPIFormulaDSL.g:2620:2: iv_ruleListIterator= ruleListIterator EOF
+            // InternalKPIFormulaDSL.g:2660:53: (iv_ruleListIterator= ruleListIterator EOF )
+            // InternalKPIFormulaDSL.g:2661:2: iv_ruleListIterator= ruleListIterator EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getListIteratorRule()); 
@@ -7399,7 +7488,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleListIterator"
-    // InternalKPIFormulaDSL.g:2626:1: ruleListIterator returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
+    // InternalKPIFormulaDSL.g:2667:1: ruleListIterator returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
     public final EObject ruleListIterator() throws RecognitionException {
         EObject current = null;
 
@@ -7409,14 +7498,14 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalKPIFormulaDSL.g:2632:2: ( ( (lv_name_0_0= RULE_ID ) ) )
-            // InternalKPIFormulaDSL.g:2633:2: ( (lv_name_0_0= RULE_ID ) )
+            // InternalKPIFormulaDSL.g:2673:2: ( ( (lv_name_0_0= RULE_ID ) ) )
+            // InternalKPIFormulaDSL.g:2674:2: ( (lv_name_0_0= RULE_ID ) )
             {
-            // InternalKPIFormulaDSL.g:2633:2: ( (lv_name_0_0= RULE_ID ) )
-            // InternalKPIFormulaDSL.g:2634:3: (lv_name_0_0= RULE_ID )
+            // InternalKPIFormulaDSL.g:2674:2: ( (lv_name_0_0= RULE_ID ) )
+            // InternalKPIFormulaDSL.g:2675:3: (lv_name_0_0= RULE_ID )
             {
-            // InternalKPIFormulaDSL.g:2634:3: (lv_name_0_0= RULE_ID )
-            // InternalKPIFormulaDSL.g:2635:4: lv_name_0_0= RULE_ID
+            // InternalKPIFormulaDSL.g:2675:3: (lv_name_0_0= RULE_ID )
+            // InternalKPIFormulaDSL.g:2676:4: lv_name_0_0= RULE_ID
             {
             lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -7464,7 +7553,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomic"
-    // InternalKPIFormulaDSL.g:2654:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
+    // InternalKPIFormulaDSL.g:2695:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
     public final EObject entryRuleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -7472,8 +7561,8 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalKPIFormulaDSL.g:2654:47: (iv_ruleAtomic= ruleAtomic EOF )
-            // InternalKPIFormulaDSL.g:2655:2: iv_ruleAtomic= ruleAtomic EOF
+            // InternalKPIFormulaDSL.g:2695:47: (iv_ruleAtomic= ruleAtomic EOF )
+            // InternalKPIFormulaDSL.g:2696:2: iv_ruleAtomic= ruleAtomic EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAtomicRule()); 
@@ -7504,7 +7593,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomic"
-    // InternalKPIFormulaDSL.g:2661:1: ruleAtomic returns [EObject current=null] : ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) ) ;
+    // InternalKPIFormulaDSL.g:2702:1: ruleAtomic returns [EObject current=null] : ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) ) ;
     public final EObject ruleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -7524,21 +7613,21 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalKPIFormulaDSL.g:2667:2: ( ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) ) )
-            // InternalKPIFormulaDSL.g:2668:2: ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) )
+            // InternalKPIFormulaDSL.g:2708:2: ( ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) ) )
+            // InternalKPIFormulaDSL.g:2709:2: ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) )
             {
-            // InternalKPIFormulaDSL.g:2668:2: ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) )
+            // InternalKPIFormulaDSL.g:2709:2: ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) )
             int alt25=8;
             alt25 = dfa25.predict(input);
             switch (alt25) {
                 case 1 :
-                    // InternalKPIFormulaDSL.g:2669:3: ( () otherlv_1= 'accumulator' )
+                    // InternalKPIFormulaDSL.g:2710:3: ( () otherlv_1= 'accumulator' )
                     {
-                    // InternalKPIFormulaDSL.g:2669:3: ( () otherlv_1= 'accumulator' )
-                    // InternalKPIFormulaDSL.g:2670:4: () otherlv_1= 'accumulator'
+                    // InternalKPIFormulaDSL.g:2710:3: ( () otherlv_1= 'accumulator' )
+                    // InternalKPIFormulaDSL.g:2711:4: () otherlv_1= 'accumulator'
                     {
-                    // InternalKPIFormulaDSL.g:2670:4: ()
-                    // InternalKPIFormulaDSL.g:2671:5: 
+                    // InternalKPIFormulaDSL.g:2711:4: ()
+                    // InternalKPIFormulaDSL.g:2712:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7550,7 +7639,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_1=(Token)match(input,64,FOLLOW_2); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,65,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				newLeafNode(otherlv_1, grammarAccess.getAtomicAccess().getAccumulatorKeyword_0_1());
@@ -7563,13 +7652,13 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalKPIFormulaDSL.g:2683:3: ( () ( (lv_value_3_0= RULE_INT ) ) )
+                    // InternalKPIFormulaDSL.g:2724:3: ( () ( (lv_value_3_0= RULE_INT ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2683:3: ( () ( (lv_value_3_0= RULE_INT ) ) )
-                    // InternalKPIFormulaDSL.g:2684:4: () ( (lv_value_3_0= RULE_INT ) )
+                    // InternalKPIFormulaDSL.g:2724:3: ( () ( (lv_value_3_0= RULE_INT ) ) )
+                    // InternalKPIFormulaDSL.g:2725:4: () ( (lv_value_3_0= RULE_INT ) )
                     {
-                    // InternalKPIFormulaDSL.g:2684:4: ()
-                    // InternalKPIFormulaDSL.g:2685:5: 
+                    // InternalKPIFormulaDSL.g:2725:4: ()
+                    // InternalKPIFormulaDSL.g:2726:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7581,11 +7670,11 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2691:4: ( (lv_value_3_0= RULE_INT ) )
-                    // InternalKPIFormulaDSL.g:2692:5: (lv_value_3_0= RULE_INT )
+                    // InternalKPIFormulaDSL.g:2732:4: ( (lv_value_3_0= RULE_INT ) )
+                    // InternalKPIFormulaDSL.g:2733:5: (lv_value_3_0= RULE_INT )
                     {
-                    // InternalKPIFormulaDSL.g:2692:5: (lv_value_3_0= RULE_INT )
-                    // InternalKPIFormulaDSL.g:2693:6: lv_value_3_0= RULE_INT
+                    // InternalKPIFormulaDSL.g:2733:5: (lv_value_3_0= RULE_INT )
+                    // InternalKPIFormulaDSL.g:2734:6: lv_value_3_0= RULE_INT
                     {
                     lv_value_3_0=(Token)match(input,RULE_INT,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7618,13 +7707,13 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalKPIFormulaDSL.g:2711:3: ( () ( (lv_value_5_0= RULE_DOUBLE ) ) )
+                    // InternalKPIFormulaDSL.g:2752:3: ( () ( (lv_value_5_0= RULE_DOUBLE ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2711:3: ( () ( (lv_value_5_0= RULE_DOUBLE ) ) )
-                    // InternalKPIFormulaDSL.g:2712:4: () ( (lv_value_5_0= RULE_DOUBLE ) )
+                    // InternalKPIFormulaDSL.g:2752:3: ( () ( (lv_value_5_0= RULE_DOUBLE ) ) )
+                    // InternalKPIFormulaDSL.g:2753:4: () ( (lv_value_5_0= RULE_DOUBLE ) )
                     {
-                    // InternalKPIFormulaDSL.g:2712:4: ()
-                    // InternalKPIFormulaDSL.g:2713:5: 
+                    // InternalKPIFormulaDSL.g:2753:4: ()
+                    // InternalKPIFormulaDSL.g:2754:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7636,11 +7725,11 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2719:4: ( (lv_value_5_0= RULE_DOUBLE ) )
-                    // InternalKPIFormulaDSL.g:2720:5: (lv_value_5_0= RULE_DOUBLE )
+                    // InternalKPIFormulaDSL.g:2760:4: ( (lv_value_5_0= RULE_DOUBLE ) )
+                    // InternalKPIFormulaDSL.g:2761:5: (lv_value_5_0= RULE_DOUBLE )
                     {
-                    // InternalKPIFormulaDSL.g:2720:5: (lv_value_5_0= RULE_DOUBLE )
-                    // InternalKPIFormulaDSL.g:2721:6: lv_value_5_0= RULE_DOUBLE
+                    // InternalKPIFormulaDSL.g:2761:5: (lv_value_5_0= RULE_DOUBLE )
+                    // InternalKPIFormulaDSL.g:2762:6: lv_value_5_0= RULE_DOUBLE
                     {
                     lv_value_5_0=(Token)match(input,RULE_DOUBLE,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7673,13 +7762,13 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalKPIFormulaDSL.g:2739:3: ( () ( (lv_value_7_0= RULE_STRING ) ) )
+                    // InternalKPIFormulaDSL.g:2780:3: ( () ( (lv_value_7_0= RULE_STRING ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2739:3: ( () ( (lv_value_7_0= RULE_STRING ) ) )
-                    // InternalKPIFormulaDSL.g:2740:4: () ( (lv_value_7_0= RULE_STRING ) )
+                    // InternalKPIFormulaDSL.g:2780:3: ( () ( (lv_value_7_0= RULE_STRING ) ) )
+                    // InternalKPIFormulaDSL.g:2781:4: () ( (lv_value_7_0= RULE_STRING ) )
                     {
-                    // InternalKPIFormulaDSL.g:2740:4: ()
-                    // InternalKPIFormulaDSL.g:2741:5: 
+                    // InternalKPIFormulaDSL.g:2781:4: ()
+                    // InternalKPIFormulaDSL.g:2782:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7691,11 +7780,11 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2747:4: ( (lv_value_7_0= RULE_STRING ) )
-                    // InternalKPIFormulaDSL.g:2748:5: (lv_value_7_0= RULE_STRING )
+                    // InternalKPIFormulaDSL.g:2788:4: ( (lv_value_7_0= RULE_STRING ) )
+                    // InternalKPIFormulaDSL.g:2789:5: (lv_value_7_0= RULE_STRING )
                     {
-                    // InternalKPIFormulaDSL.g:2748:5: (lv_value_7_0= RULE_STRING )
-                    // InternalKPIFormulaDSL.g:2749:6: lv_value_7_0= RULE_STRING
+                    // InternalKPIFormulaDSL.g:2789:5: (lv_value_7_0= RULE_STRING )
+                    // InternalKPIFormulaDSL.g:2790:6: lv_value_7_0= RULE_STRING
                     {
                     lv_value_7_0=(Token)match(input,RULE_STRING,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7728,13 +7817,13 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalKPIFormulaDSL.g:2767:3: ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) )
+                    // InternalKPIFormulaDSL.g:2808:3: ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2767:3: ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) )
-                    // InternalKPIFormulaDSL.g:2768:4: () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) )
+                    // InternalKPIFormulaDSL.g:2808:3: ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) )
+                    // InternalKPIFormulaDSL.g:2809:4: () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2768:4: ()
-                    // InternalKPIFormulaDSL.g:2769:5: 
+                    // InternalKPIFormulaDSL.g:2809:4: ()
+                    // InternalKPIFormulaDSL.g:2810:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7746,20 +7835,20 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2775:4: ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) )
-                    // InternalKPIFormulaDSL.g:2776:5: ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) )
+                    // InternalKPIFormulaDSL.g:2816:4: ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) )
+                    // InternalKPIFormulaDSL.g:2817:5: ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) )
                     {
-                    // InternalKPIFormulaDSL.g:2776:5: ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) )
-                    // InternalKPIFormulaDSL.g:2777:6: (lv_value_9_1= 'true' | lv_value_9_2= 'false' )
+                    // InternalKPIFormulaDSL.g:2817:5: ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) )
+                    // InternalKPIFormulaDSL.g:2818:6: (lv_value_9_1= 'true' | lv_value_9_2= 'false' )
                     {
-                    // InternalKPIFormulaDSL.g:2777:6: (lv_value_9_1= 'true' | lv_value_9_2= 'false' )
+                    // InternalKPIFormulaDSL.g:2818:6: (lv_value_9_1= 'true' | lv_value_9_2= 'false' )
                     int alt24=2;
                     int LA24_0 = input.LA(1);
 
-                    if ( (LA24_0==65) ) {
+                    if ( (LA24_0==66) ) {
                         alt24=1;
                     }
-                    else if ( (LA24_0==66) ) {
+                    else if ( (LA24_0==67) ) {
                         alt24=2;
                     }
                     else {
@@ -7771,9 +7860,9 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt24) {
                         case 1 :
-                            // InternalKPIFormulaDSL.g:2778:7: lv_value_9_1= 'true'
+                            // InternalKPIFormulaDSL.g:2819:7: lv_value_9_1= 'true'
                             {
-                            lv_value_9_1=(Token)match(input,65,FOLLOW_2); if (state.failed) return current;
+                            lv_value_9_1=(Token)match(input,66,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               							newLeafNode(lv_value_9_1, grammarAccess.getAtomicAccess().getValueTrueKeyword_4_1_0_0());
@@ -7791,9 +7880,9 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalKPIFormulaDSL.g:2789:7: lv_value_9_2= 'false'
+                            // InternalKPIFormulaDSL.g:2830:7: lv_value_9_2= 'false'
                             {
-                            lv_value_9_2=(Token)match(input,66,FOLLOW_2); if (state.failed) return current;
+                            lv_value_9_2=(Token)match(input,67,FOLLOW_2); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               							newLeafNode(lv_value_9_2, grammarAccess.getAtomicAccess().getValueFalseKeyword_4_1_0_1());
@@ -7826,13 +7915,13 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalKPIFormulaDSL.g:2804:3: ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) )
+                    // InternalKPIFormulaDSL.g:2845:3: ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2804:3: ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) )
-                    // InternalKPIFormulaDSL.g:2805:4: () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) )
+                    // InternalKPIFormulaDSL.g:2845:3: ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) )
+                    // InternalKPIFormulaDSL.g:2846:4: () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) )
                     {
-                    // InternalKPIFormulaDSL.g:2805:4: ()
-                    // InternalKPIFormulaDSL.g:2806:5: 
+                    // InternalKPIFormulaDSL.g:2846:4: ()
+                    // InternalKPIFormulaDSL.g:2847:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7844,11 +7933,11 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2812:4: ( (lv_value_11_0= RULE_DOUBLE ) )
-                    // InternalKPIFormulaDSL.g:2813:5: (lv_value_11_0= RULE_DOUBLE )
+                    // InternalKPIFormulaDSL.g:2853:4: ( (lv_value_11_0= RULE_DOUBLE ) )
+                    // InternalKPIFormulaDSL.g:2854:5: (lv_value_11_0= RULE_DOUBLE )
                     {
-                    // InternalKPIFormulaDSL.g:2813:5: (lv_value_11_0= RULE_DOUBLE )
-                    // InternalKPIFormulaDSL.g:2814:6: lv_value_11_0= RULE_DOUBLE
+                    // InternalKPIFormulaDSL.g:2854:5: (lv_value_11_0= RULE_DOUBLE )
+                    // InternalKPIFormulaDSL.g:2855:6: lv_value_11_0= RULE_DOUBLE
                     {
                     lv_value_11_0=(Token)match(input,RULE_DOUBLE,FOLLOW_8); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -7874,11 +7963,11 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2830:4: ( (lv_unit_12_0= ruleValueUnit ) )
-                    // InternalKPIFormulaDSL.g:2831:5: (lv_unit_12_0= ruleValueUnit )
+                    // InternalKPIFormulaDSL.g:2871:4: ( (lv_unit_12_0= ruleValueUnit ) )
+                    // InternalKPIFormulaDSL.g:2872:5: (lv_unit_12_0= ruleValueUnit )
                     {
-                    // InternalKPIFormulaDSL.g:2831:5: (lv_unit_12_0= ruleValueUnit )
-                    // InternalKPIFormulaDSL.g:2832:6: lv_unit_12_0= ruleValueUnit
+                    // InternalKPIFormulaDSL.g:2872:5: (lv_unit_12_0= ruleValueUnit )
+                    // InternalKPIFormulaDSL.g:2873:6: lv_unit_12_0= ruleValueUnit
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7916,13 +8005,13 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalKPIFormulaDSL.g:2851:3: ( () ( (otherlv_14= RULE_FQN ) ) )
+                    // InternalKPIFormulaDSL.g:2892:3: ( () ( (otherlv_14= RULE_FQN ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2851:3: ( () ( (otherlv_14= RULE_FQN ) ) )
-                    // InternalKPIFormulaDSL.g:2852:4: () ( (otherlv_14= RULE_FQN ) )
+                    // InternalKPIFormulaDSL.g:2892:3: ( () ( (otherlv_14= RULE_FQN ) ) )
+                    // InternalKPIFormulaDSL.g:2893:4: () ( (otherlv_14= RULE_FQN ) )
                     {
-                    // InternalKPIFormulaDSL.g:2852:4: ()
-                    // InternalKPIFormulaDSL.g:2853:5: 
+                    // InternalKPIFormulaDSL.g:2893:4: ()
+                    // InternalKPIFormulaDSL.g:2894:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7934,11 +8023,11 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2859:4: ( (otherlv_14= RULE_FQN ) )
-                    // InternalKPIFormulaDSL.g:2860:5: (otherlv_14= RULE_FQN )
+                    // InternalKPIFormulaDSL.g:2900:4: ( (otherlv_14= RULE_FQN ) )
+                    // InternalKPIFormulaDSL.g:2901:5: (otherlv_14= RULE_FQN )
                     {
-                    // InternalKPIFormulaDSL.g:2860:5: (otherlv_14= RULE_FQN )
-                    // InternalKPIFormulaDSL.g:2861:6: otherlv_14= RULE_FQN
+                    // InternalKPIFormulaDSL.g:2901:5: (otherlv_14= RULE_FQN )
+                    // InternalKPIFormulaDSL.g:2902:6: otherlv_14= RULE_FQN
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7966,13 +8055,13 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalKPIFormulaDSL.g:2874:3: ( () ( (otherlv_16= RULE_ID ) ) )
+                    // InternalKPIFormulaDSL.g:2915:3: ( () ( (otherlv_16= RULE_ID ) ) )
                     {
-                    // InternalKPIFormulaDSL.g:2874:3: ( () ( (otherlv_16= RULE_ID ) ) )
-                    // InternalKPIFormulaDSL.g:2875:4: () ( (otherlv_16= RULE_ID ) )
+                    // InternalKPIFormulaDSL.g:2915:3: ( () ( (otherlv_16= RULE_ID ) ) )
+                    // InternalKPIFormulaDSL.g:2916:4: () ( (otherlv_16= RULE_ID ) )
                     {
-                    // InternalKPIFormulaDSL.g:2875:4: ()
-                    // InternalKPIFormulaDSL.g:2876:5: 
+                    // InternalKPIFormulaDSL.g:2916:4: ()
+                    // InternalKPIFormulaDSL.g:2917:5: 
                     {
                     if ( state.backtracking==0 ) {
 
@@ -7984,11 +8073,11 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalKPIFormulaDSL.g:2882:4: ( (otherlv_16= RULE_ID ) )
-                    // InternalKPIFormulaDSL.g:2883:5: (otherlv_16= RULE_ID )
+                    // InternalKPIFormulaDSL.g:2923:4: ( (otherlv_16= RULE_ID ) )
+                    // InternalKPIFormulaDSL.g:2924:5: (otherlv_16= RULE_ID )
                     {
-                    // InternalKPIFormulaDSL.g:2883:5: (otherlv_16= RULE_ID )
-                    // InternalKPIFormulaDSL.g:2884:6: otherlv_16= RULE_ID
+                    // InternalKPIFormulaDSL.g:2924:5: (otherlv_16= RULE_ID )
+                    // InternalKPIFormulaDSL.g:2925:6: otherlv_16= RULE_ID
                     {
                     if ( state.backtracking==0 ) {
 
@@ -8040,7 +8129,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleWindowUnit"
-    // InternalKPIFormulaDSL.g:2900:1: ruleWindowUnit returns [Enumerator current=null] : ( (enumLiteral_0= 'seconds' ) | (enumLiteral_1= 'minutes' ) | (enumLiteral_2= 'hours' ) | (enumLiteral_3= 'days' ) | (enumLiteral_4= 'measurements' ) ) ;
+    // InternalKPIFormulaDSL.g:2941:1: ruleWindowUnit returns [Enumerator current=null] : ( (enumLiteral_0= 'seconds' ) | (enumLiteral_1= 'minutes' ) | (enumLiteral_2= 'hours' ) | (enumLiteral_3= 'days' ) | (enumLiteral_4= 'measurements' ) ) ;
     public final Enumerator ruleWindowUnit() throws RecognitionException {
         Enumerator current = null;
 
@@ -8054,33 +8143,33 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalKPIFormulaDSL.g:2906:2: ( ( (enumLiteral_0= 'seconds' ) | (enumLiteral_1= 'minutes' ) | (enumLiteral_2= 'hours' ) | (enumLiteral_3= 'days' ) | (enumLiteral_4= 'measurements' ) ) )
-            // InternalKPIFormulaDSL.g:2907:2: ( (enumLiteral_0= 'seconds' ) | (enumLiteral_1= 'minutes' ) | (enumLiteral_2= 'hours' ) | (enumLiteral_3= 'days' ) | (enumLiteral_4= 'measurements' ) )
+            // InternalKPIFormulaDSL.g:2947:2: ( ( (enumLiteral_0= 'seconds' ) | (enumLiteral_1= 'minutes' ) | (enumLiteral_2= 'hours' ) | (enumLiteral_3= 'days' ) | (enumLiteral_4= 'measurements' ) ) )
+            // InternalKPIFormulaDSL.g:2948:2: ( (enumLiteral_0= 'seconds' ) | (enumLiteral_1= 'minutes' ) | (enumLiteral_2= 'hours' ) | (enumLiteral_3= 'days' ) | (enumLiteral_4= 'measurements' ) )
             {
-            // InternalKPIFormulaDSL.g:2907:2: ( (enumLiteral_0= 'seconds' ) | (enumLiteral_1= 'minutes' ) | (enumLiteral_2= 'hours' ) | (enumLiteral_3= 'days' ) | (enumLiteral_4= 'measurements' ) )
+            // InternalKPIFormulaDSL.g:2948:2: ( (enumLiteral_0= 'seconds' ) | (enumLiteral_1= 'minutes' ) | (enumLiteral_2= 'hours' ) | (enumLiteral_3= 'days' ) | (enumLiteral_4= 'measurements' ) )
             int alt26=5;
             switch ( input.LA(1) ) {
-            case 67:
+            case 68:
                 {
                 alt26=1;
                 }
                 break;
-            case 68:
+            case 69:
                 {
                 alt26=2;
                 }
                 break;
-            case 69:
+            case 70:
                 {
                 alt26=3;
                 }
                 break;
-            case 70:
+            case 71:
                 {
                 alt26=4;
                 }
                 break;
-            case 71:
+            case 72:
                 {
                 alt26=5;
                 }
@@ -8095,12 +8184,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt26) {
                 case 1 :
-                    // InternalKPIFormulaDSL.g:2908:3: (enumLiteral_0= 'seconds' )
+                    // InternalKPIFormulaDSL.g:2949:3: (enumLiteral_0= 'seconds' )
                     {
-                    // InternalKPIFormulaDSL.g:2908:3: (enumLiteral_0= 'seconds' )
-                    // InternalKPIFormulaDSL.g:2909:4: enumLiteral_0= 'seconds'
+                    // InternalKPIFormulaDSL.g:2949:3: (enumLiteral_0= 'seconds' )
+                    // InternalKPIFormulaDSL.g:2950:4: enumLiteral_0= 'seconds'
                     {
-                    enumLiteral_0=(Token)match(input,67,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,68,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getWindowUnitAccess().getSECEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -8114,12 +8203,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalKPIFormulaDSL.g:2916:3: (enumLiteral_1= 'minutes' )
+                    // InternalKPIFormulaDSL.g:2957:3: (enumLiteral_1= 'minutes' )
                     {
-                    // InternalKPIFormulaDSL.g:2916:3: (enumLiteral_1= 'minutes' )
-                    // InternalKPIFormulaDSL.g:2917:4: enumLiteral_1= 'minutes'
+                    // InternalKPIFormulaDSL.g:2957:3: (enumLiteral_1= 'minutes' )
+                    // InternalKPIFormulaDSL.g:2958:4: enumLiteral_1= 'minutes'
                     {
-                    enumLiteral_1=(Token)match(input,68,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,69,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getWindowUnitAccess().getMINEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -8133,12 +8222,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalKPIFormulaDSL.g:2924:3: (enumLiteral_2= 'hours' )
+                    // InternalKPIFormulaDSL.g:2965:3: (enumLiteral_2= 'hours' )
                     {
-                    // InternalKPIFormulaDSL.g:2924:3: (enumLiteral_2= 'hours' )
-                    // InternalKPIFormulaDSL.g:2925:4: enumLiteral_2= 'hours'
+                    // InternalKPIFormulaDSL.g:2965:3: (enumLiteral_2= 'hours' )
+                    // InternalKPIFormulaDSL.g:2966:4: enumLiteral_2= 'hours'
                     {
-                    enumLiteral_2=(Token)match(input,69,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,70,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getWindowUnitAccess().getHOUREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -8152,12 +8241,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalKPIFormulaDSL.g:2932:3: (enumLiteral_3= 'days' )
+                    // InternalKPIFormulaDSL.g:2973:3: (enumLiteral_3= 'days' )
                     {
-                    // InternalKPIFormulaDSL.g:2932:3: (enumLiteral_3= 'days' )
-                    // InternalKPIFormulaDSL.g:2933:4: enumLiteral_3= 'days'
+                    // InternalKPIFormulaDSL.g:2973:3: (enumLiteral_3= 'days' )
+                    // InternalKPIFormulaDSL.g:2974:4: enumLiteral_3= 'days'
                     {
-                    enumLiteral_3=(Token)match(input,70,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,71,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getWindowUnitAccess().getDAYEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -8171,12 +8260,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalKPIFormulaDSL.g:2940:3: (enumLiteral_4= 'measurements' )
+                    // InternalKPIFormulaDSL.g:2981:3: (enumLiteral_4= 'measurements' )
                     {
-                    // InternalKPIFormulaDSL.g:2940:3: (enumLiteral_4= 'measurements' )
-                    // InternalKPIFormulaDSL.g:2941:4: enumLiteral_4= 'measurements'
+                    // InternalKPIFormulaDSL.g:2981:3: (enumLiteral_4= 'measurements' )
+                    // InternalKPIFormulaDSL.g:2982:4: enumLiteral_4= 'measurements'
                     {
-                    enumLiteral_4=(Token)match(input,71,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_4=(Token)match(input,72,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getWindowUnitAccess().getMEASUREMENTEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
@@ -8214,7 +8303,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValueUnit"
-    // InternalKPIFormulaDSL.g:2951:1: ruleValueUnit returns [Enumerator current=null] : ( (enumLiteral_0= 'milliseconds' ) | (enumLiteral_1= 'seconds' ) | (enumLiteral_2= 'minutes' ) | (enumLiteral_3= 'hours' ) | (enumLiteral_4= 'liters' ) | (enumLiteral_5= 'cubic meter' ) | (enumLiteral_6= 'Wh' ) | (enumLiteral_7= 'kWh' ) | (enumLiteral_8= 'gCO2eq' ) | (enumLiteral_9= 'kgCO2eq' ) ) ;
+    // InternalKPIFormulaDSL.g:2992:1: ruleValueUnit returns [Enumerator current=null] : ( (enumLiteral_0= 'milliseconds' ) | (enumLiteral_1= 'seconds' ) | (enumLiteral_2= 'minutes' ) | (enumLiteral_3= 'hours' ) | (enumLiteral_4= 'liters' ) | (enumLiteral_5= 'cubic meter' ) | (enumLiteral_6= 'Wh' ) | (enumLiteral_7= 'kWh' ) | (enumLiteral_8= 'gCO2eq' ) | (enumLiteral_9= 'kgCO2eq' ) ) ;
     public final Enumerator ruleValueUnit() throws RecognitionException {
         Enumerator current = null;
 
@@ -8233,58 +8322,58 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalKPIFormulaDSL.g:2957:2: ( ( (enumLiteral_0= 'milliseconds' ) | (enumLiteral_1= 'seconds' ) | (enumLiteral_2= 'minutes' ) | (enumLiteral_3= 'hours' ) | (enumLiteral_4= 'liters' ) | (enumLiteral_5= 'cubic meter' ) | (enumLiteral_6= 'Wh' ) | (enumLiteral_7= 'kWh' ) | (enumLiteral_8= 'gCO2eq' ) | (enumLiteral_9= 'kgCO2eq' ) ) )
-            // InternalKPIFormulaDSL.g:2958:2: ( (enumLiteral_0= 'milliseconds' ) | (enumLiteral_1= 'seconds' ) | (enumLiteral_2= 'minutes' ) | (enumLiteral_3= 'hours' ) | (enumLiteral_4= 'liters' ) | (enumLiteral_5= 'cubic meter' ) | (enumLiteral_6= 'Wh' ) | (enumLiteral_7= 'kWh' ) | (enumLiteral_8= 'gCO2eq' ) | (enumLiteral_9= 'kgCO2eq' ) )
+            // InternalKPIFormulaDSL.g:2998:2: ( ( (enumLiteral_0= 'milliseconds' ) | (enumLiteral_1= 'seconds' ) | (enumLiteral_2= 'minutes' ) | (enumLiteral_3= 'hours' ) | (enumLiteral_4= 'liters' ) | (enumLiteral_5= 'cubic meter' ) | (enumLiteral_6= 'Wh' ) | (enumLiteral_7= 'kWh' ) | (enumLiteral_8= 'gCO2eq' ) | (enumLiteral_9= 'kgCO2eq' ) ) )
+            // InternalKPIFormulaDSL.g:2999:2: ( (enumLiteral_0= 'milliseconds' ) | (enumLiteral_1= 'seconds' ) | (enumLiteral_2= 'minutes' ) | (enumLiteral_3= 'hours' ) | (enumLiteral_4= 'liters' ) | (enumLiteral_5= 'cubic meter' ) | (enumLiteral_6= 'Wh' ) | (enumLiteral_7= 'kWh' ) | (enumLiteral_8= 'gCO2eq' ) | (enumLiteral_9= 'kgCO2eq' ) )
             {
-            // InternalKPIFormulaDSL.g:2958:2: ( (enumLiteral_0= 'milliseconds' ) | (enumLiteral_1= 'seconds' ) | (enumLiteral_2= 'minutes' ) | (enumLiteral_3= 'hours' ) | (enumLiteral_4= 'liters' ) | (enumLiteral_5= 'cubic meter' ) | (enumLiteral_6= 'Wh' ) | (enumLiteral_7= 'kWh' ) | (enumLiteral_8= 'gCO2eq' ) | (enumLiteral_9= 'kgCO2eq' ) )
+            // InternalKPIFormulaDSL.g:2999:2: ( (enumLiteral_0= 'milliseconds' ) | (enumLiteral_1= 'seconds' ) | (enumLiteral_2= 'minutes' ) | (enumLiteral_3= 'hours' ) | (enumLiteral_4= 'liters' ) | (enumLiteral_5= 'cubic meter' ) | (enumLiteral_6= 'Wh' ) | (enumLiteral_7= 'kWh' ) | (enumLiteral_8= 'gCO2eq' ) | (enumLiteral_9= 'kgCO2eq' ) )
             int alt27=10;
             switch ( input.LA(1) ) {
-            case 72:
+            case 73:
                 {
                 alt27=1;
                 }
                 break;
-            case 67:
+            case 68:
                 {
                 alt27=2;
                 }
                 break;
-            case 68:
+            case 69:
                 {
                 alt27=3;
                 }
                 break;
-            case 69:
+            case 70:
                 {
                 alt27=4;
                 }
                 break;
-            case 73:
+            case 74:
                 {
                 alt27=5;
                 }
                 break;
-            case 74:
+            case 75:
                 {
                 alt27=6;
                 }
                 break;
-            case 75:
+            case 76:
                 {
                 alt27=7;
                 }
                 break;
-            case 76:
+            case 77:
                 {
                 alt27=8;
                 }
                 break;
-            case 77:
+            case 78:
                 {
                 alt27=9;
                 }
                 break;
-            case 78:
+            case 79:
                 {
                 alt27=10;
                 }
@@ -8299,12 +8388,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt27) {
                 case 1 :
-                    // InternalKPIFormulaDSL.g:2959:3: (enumLiteral_0= 'milliseconds' )
+                    // InternalKPIFormulaDSL.g:3000:3: (enumLiteral_0= 'milliseconds' )
                     {
-                    // InternalKPIFormulaDSL.g:2959:3: (enumLiteral_0= 'milliseconds' )
-                    // InternalKPIFormulaDSL.g:2960:4: enumLiteral_0= 'milliseconds'
+                    // InternalKPIFormulaDSL.g:3000:3: (enumLiteral_0= 'milliseconds' )
+                    // InternalKPIFormulaDSL.g:3001:4: enumLiteral_0= 'milliseconds'
                     {
-                    enumLiteral_0=(Token)match(input,72,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,73,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getMILLIEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -8318,12 +8407,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalKPIFormulaDSL.g:2967:3: (enumLiteral_1= 'seconds' )
+                    // InternalKPIFormulaDSL.g:3008:3: (enumLiteral_1= 'seconds' )
                     {
-                    // InternalKPIFormulaDSL.g:2967:3: (enumLiteral_1= 'seconds' )
-                    // InternalKPIFormulaDSL.g:2968:4: enumLiteral_1= 'seconds'
+                    // InternalKPIFormulaDSL.g:3008:3: (enumLiteral_1= 'seconds' )
+                    // InternalKPIFormulaDSL.g:3009:4: enumLiteral_1= 'seconds'
                     {
-                    enumLiteral_1=(Token)match(input,67,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,68,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getSECEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -8337,12 +8426,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalKPIFormulaDSL.g:2975:3: (enumLiteral_2= 'minutes' )
+                    // InternalKPIFormulaDSL.g:3016:3: (enumLiteral_2= 'minutes' )
                     {
-                    // InternalKPIFormulaDSL.g:2975:3: (enumLiteral_2= 'minutes' )
-                    // InternalKPIFormulaDSL.g:2976:4: enumLiteral_2= 'minutes'
+                    // InternalKPIFormulaDSL.g:3016:3: (enumLiteral_2= 'minutes' )
+                    // InternalKPIFormulaDSL.g:3017:4: enumLiteral_2= 'minutes'
                     {
-                    enumLiteral_2=(Token)match(input,68,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,69,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getMINEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -8356,12 +8445,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalKPIFormulaDSL.g:2983:3: (enumLiteral_3= 'hours' )
+                    // InternalKPIFormulaDSL.g:3024:3: (enumLiteral_3= 'hours' )
                     {
-                    // InternalKPIFormulaDSL.g:2983:3: (enumLiteral_3= 'hours' )
-                    // InternalKPIFormulaDSL.g:2984:4: enumLiteral_3= 'hours'
+                    // InternalKPIFormulaDSL.g:3024:3: (enumLiteral_3= 'hours' )
+                    // InternalKPIFormulaDSL.g:3025:4: enumLiteral_3= 'hours'
                     {
-                    enumLiteral_3=(Token)match(input,69,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,70,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getHOUREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -8375,12 +8464,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalKPIFormulaDSL.g:2991:3: (enumLiteral_4= 'liters' )
+                    // InternalKPIFormulaDSL.g:3032:3: (enumLiteral_4= 'liters' )
                     {
-                    // InternalKPIFormulaDSL.g:2991:3: (enumLiteral_4= 'liters' )
-                    // InternalKPIFormulaDSL.g:2992:4: enumLiteral_4= 'liters'
+                    // InternalKPIFormulaDSL.g:3032:3: (enumLiteral_4= 'liters' )
+                    // InternalKPIFormulaDSL.g:3033:4: enumLiteral_4= 'liters'
                     {
-                    enumLiteral_4=(Token)match(input,73,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_4=(Token)match(input,74,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getLITERSEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
@@ -8394,12 +8483,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalKPIFormulaDSL.g:2999:3: (enumLiteral_5= 'cubic meter' )
+                    // InternalKPIFormulaDSL.g:3040:3: (enumLiteral_5= 'cubic meter' )
                     {
-                    // InternalKPIFormulaDSL.g:2999:3: (enumLiteral_5= 'cubic meter' )
-                    // InternalKPIFormulaDSL.g:3000:4: enumLiteral_5= 'cubic meter'
+                    // InternalKPIFormulaDSL.g:3040:3: (enumLiteral_5= 'cubic meter' )
+                    // InternalKPIFormulaDSL.g:3041:4: enumLiteral_5= 'cubic meter'
                     {
-                    enumLiteral_5=(Token)match(input,74,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_5=(Token)match(input,75,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getM3EnumLiteralDeclaration_5().getEnumLiteral().getInstance();
@@ -8413,12 +8502,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalKPIFormulaDSL.g:3007:3: (enumLiteral_6= 'Wh' )
+                    // InternalKPIFormulaDSL.g:3048:3: (enumLiteral_6= 'Wh' )
                     {
-                    // InternalKPIFormulaDSL.g:3007:3: (enumLiteral_6= 'Wh' )
-                    // InternalKPIFormulaDSL.g:3008:4: enumLiteral_6= 'Wh'
+                    // InternalKPIFormulaDSL.g:3048:3: (enumLiteral_6= 'Wh' )
+                    // InternalKPIFormulaDSL.g:3049:4: enumLiteral_6= 'Wh'
                     {
-                    enumLiteral_6=(Token)match(input,75,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_6=(Token)match(input,76,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getWhEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
@@ -8432,12 +8521,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalKPIFormulaDSL.g:3015:3: (enumLiteral_7= 'kWh' )
+                    // InternalKPIFormulaDSL.g:3056:3: (enumLiteral_7= 'kWh' )
                     {
-                    // InternalKPIFormulaDSL.g:3015:3: (enumLiteral_7= 'kWh' )
-                    // InternalKPIFormulaDSL.g:3016:4: enumLiteral_7= 'kWh'
+                    // InternalKPIFormulaDSL.g:3056:3: (enumLiteral_7= 'kWh' )
+                    // InternalKPIFormulaDSL.g:3057:4: enumLiteral_7= 'kWh'
                     {
-                    enumLiteral_7=(Token)match(input,76,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_7=(Token)match(input,77,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getKWhEnumLiteralDeclaration_7().getEnumLiteral().getInstance();
@@ -8451,12 +8540,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalKPIFormulaDSL.g:3023:3: (enumLiteral_8= 'gCO2eq' )
+                    // InternalKPIFormulaDSL.g:3064:3: (enumLiteral_8= 'gCO2eq' )
                     {
-                    // InternalKPIFormulaDSL.g:3023:3: (enumLiteral_8= 'gCO2eq' )
-                    // InternalKPIFormulaDSL.g:3024:4: enumLiteral_8= 'gCO2eq'
+                    // InternalKPIFormulaDSL.g:3064:3: (enumLiteral_8= 'gCO2eq' )
+                    // InternalKPIFormulaDSL.g:3065:4: enumLiteral_8= 'gCO2eq'
                     {
-                    enumLiteral_8=(Token)match(input,77,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_8=(Token)match(input,78,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getGCO2eqEnumLiteralDeclaration_8().getEnumLiteral().getInstance();
@@ -8470,12 +8559,12 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // InternalKPIFormulaDSL.g:3031:3: (enumLiteral_9= 'kgCO2eq' )
+                    // InternalKPIFormulaDSL.g:3072:3: (enumLiteral_9= 'kgCO2eq' )
                     {
-                    // InternalKPIFormulaDSL.g:3031:3: (enumLiteral_9= 'kgCO2eq' )
-                    // InternalKPIFormulaDSL.g:3032:4: enumLiteral_9= 'kgCO2eq'
+                    // InternalKPIFormulaDSL.g:3072:3: (enumLiteral_9= 'kgCO2eq' )
+                    // InternalKPIFormulaDSL.g:3073:4: enumLiteral_9= 'kgCO2eq'
                     {
-                    enumLiteral_9=(Token)match(input,78,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_9=(Token)match(input,79,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       				current = grammarAccess.getValueUnitAccess().getKgCO2eqEnumLiteralDeclaration_9().getEnumLiteral().getInstance();
@@ -8573,14 +8662,14 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
     static final String dfa_1s = "\12\uffff";
     static final String dfa_2s = "\3\uffff\1\10\6\uffff";
     static final String dfa_3s = "\1\4\2\uffff\1\4\6\uffff";
-    static final String dfa_4s = "\1\102\2\uffff\1\116\6\uffff";
+    static final String dfa_4s = "\1\103\2\uffff\1\117\6\uffff";
     static final String dfa_5s = "\1\uffff\1\1\1\2\1\uffff\1\4\1\5\1\7\1\10\1\3\1\6";
     static final String dfa_6s = "\12\uffff}>";
     static final String[] dfa_7s = {
-            "\1\7\1\2\1\3\1\4\1\6\67\uffff\1\1\2\5",
+            "\1\7\1\2\1\3\1\4\1\6\70\uffff\1\1\2\5",
             "",
             "",
-            "\1\10\13\uffff\1\10\5\uffff\1\10\1\uffff\1\10\7\uffff\2\10\1\uffff\15\10\1\uffff\2\10\2\uffff\1\10\7\uffff\1\10\5\uffff\3\11\2\uffff\7\11",
+            "\1\10\13\uffff\1\10\5\uffff\1\10\1\uffff\1\10\7\uffff\2\10\1\uffff\15\10\1\uffff\2\10\2\uffff\1\10\10\uffff\1\10\5\uffff\3\11\2\uffff\7\11",
             "",
             "",
             "",
@@ -8611,7 +8700,7 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
             this.transition = dfa_7;
         }
         public String getDescription() {
-            return "2668:2: ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) )";
+            return "2709:2: ( ( () otherlv_1= 'accumulator' ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_7_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_9_1= 'true' | lv_value_9_2= 'false' ) ) ) ) | ( () ( (lv_value_11_0= RULE_DOUBLE ) ) ( (lv_unit_12_0= ruleValueUnit ) ) ) | ( () ( (otherlv_14= RULE_FQN ) ) ) | ( () ( (otherlv_16= RULE_ID ) ) ) )";
         }
     }
  
@@ -8620,20 +8709,20 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000010012L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0xD7D99000002001F0L,0x0000000000000007L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0xAFD99000002001F0L,0x000000000000000FL});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000002BE0000L,0x0000000000007F38L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000002BE0000L,0x000000000000FE70L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000400010L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x000000007C000000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000001000000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000000L,0x00000000000000F8L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000000L,0x00000000000001F0L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000100000000L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0xD7D99004002001F0L,0x0000000000000007L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0xAFD99004002001F0L,0x000000000000000FL});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000400000L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000800000002L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000001000000002L});
@@ -8646,8 +8735,8 @@ public class InternalKPIFormulaDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0010000000000000L});
     public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0020000000000000L});
     public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0800000000000000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x1000000000000000L});
     public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0002000000000002L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x2000000000000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x4000000000000000L});
 
 }

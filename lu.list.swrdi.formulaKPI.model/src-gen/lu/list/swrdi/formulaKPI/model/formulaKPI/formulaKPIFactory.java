@@ -418,6 +418,15 @@ public interface formulaKPIFactory extends EFactory {
 	WeightedSumOp createWeightedSumOp();
 
 	/**
+	 * Returns a new object of class '<em>Sum Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sum Op</em>'.
+	 * @generated
+	 */
+	SumOp createSumOp();
+
+	/**
 	 * Returns a new object of class '<em>Avg Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

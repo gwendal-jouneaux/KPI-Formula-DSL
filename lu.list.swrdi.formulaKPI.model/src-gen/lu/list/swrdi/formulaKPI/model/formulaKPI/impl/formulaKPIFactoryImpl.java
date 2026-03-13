@@ -145,6 +145,8 @@ public class formulaKPIFactoryImpl extends EFactoryImpl implements formulaKPIFac
 			return createThresholdOp();
 		case formulaKPIPackage.WEIGHTED_SUM_OP:
 			return createWeightedSumOp();
+		case formulaKPIPackage.SUM_OP:
+			return createSumOp();
 		case formulaKPIPackage.AVG_OP:
 			return createAvgOp();
 		case formulaKPIPackage.MAX_OP:
@@ -650,6 +652,16 @@ public class formulaKPIFactoryImpl extends EFactoryImpl implements formulaKPIFac
 	public WeightedSumOp createWeightedSumOp() {
 		WeightedSumOpImpl weightedSumOp = new WeightedSumOpImpl();
 		return weightedSumOp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SumOp createSumOp() {
+		SumOpImpl sumOp = new SumOpImpl();
+		return sumOp;
 	}
 
 	/**

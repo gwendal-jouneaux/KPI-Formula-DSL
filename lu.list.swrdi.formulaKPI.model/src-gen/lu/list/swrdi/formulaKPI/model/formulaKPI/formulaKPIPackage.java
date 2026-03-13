@@ -2089,6 +2089,43 @@ public interface formulaKPIPackage extends EPackage {
 	int WEIGHTED_SUM_OP_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.SumOpImpl <em>Sum Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.SumOpImpl
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getSumOp()
+	 * @generated
+	 */
+	int SUM_OP = 51;
+
+	/**
+	 * The feature id for the '<em><b>List</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUM_OP__LIST = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Sum Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUM_OP_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Sum Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUM_OP_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.AvgOpImpl <em>Avg Op</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2096,7 +2133,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getAvgOp()
 	 * @generated
 	 */
-	int AVG_OP = 51;
+	int AVG_OP = 52;
 
 	/**
 	 * The feature id for the '<em><b>List</b></em>' containment reference.
@@ -2133,7 +2170,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getMaxOp()
 	 * @generated
 	 */
-	int MAX_OP = 52;
+	int MAX_OP = 53;
 
 	/**
 	 * The feature id for the '<em><b>List</b></em>' containment reference.
@@ -2170,7 +2207,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListOperation()
 	 * @generated
 	 */
-	int LIST_OPERATION = 53;
+	int LIST_OPERATION = 54;
 
 	/**
 	 * The feature id for the '<em><b>Lists</b></em>' containment reference list.
@@ -2225,7 +2262,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListIteration()
 	 * @generated
 	 */
-	int LIST_ITERATION = 54;
+	int LIST_ITERATION = 55;
 
 	/**
 	 * The feature id for the '<em><b>Lists</b></em>' containment reference list.
@@ -2280,7 +2317,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListReduce()
 	 * @generated
 	 */
-	int LIST_REDUCE = 55;
+	int LIST_REDUCE = 56;
 
 	/**
 	 * The feature id for the '<em><b>Lists</b></em>' containment reference list.
@@ -2344,7 +2381,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListFilter()
 	 * @generated
 	 */
-	int LIST_FILTER = 56;
+	int LIST_FILTER = 57;
 
 	/**
 	 * The feature id for the '<em><b>Lists</b></em>' containment reference list.
@@ -2399,7 +2436,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getListIterator()
 	 * @generated
 	 */
-	int LIST_ITERATOR = 57;
+	int LIST_ITERATOR = 58;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2436,7 +2473,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getTextConstant()
 	 * @generated
 	 */
-	int TEXT_CONSTANT = 58;
+	int TEXT_CONSTANT = 59;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2473,7 +2510,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getEnumLiteralRef()
 	 * @generated
 	 */
-	int ENUM_LITERAL_REF = 59;
+	int ENUM_LITERAL_REF = 60;
 
 	/**
 	 * The feature id for the '<em><b>Literal</b></em>' reference.
@@ -2510,7 +2547,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getIntConstant()
 	 * @generated
 	 */
-	int INT_CONSTANT = 60;
+	int INT_CONSTANT = 61;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2547,7 +2584,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getUnitConstant()
 	 * @generated
 	 */
-	int UNIT_CONSTANT = 61;
+	int UNIT_CONSTANT = 62;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2593,7 +2630,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getBoolConstant()
 	 * @generated
 	 */
-	int BOOL_CONSTANT = 62;
+	int BOOL_CONSTANT = 63;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2630,7 +2667,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getComputableRef()
 	 * @generated
 	 */
-	int COMPUTABLE_REF = 63;
+	int COMPUTABLE_REF = 64;
 
 	/**
 	 * The feature id for the '<em><b>Computable</b></em>' reference.
@@ -2667,7 +2704,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getAccumulator()
 	 * @generated
 	 */
-	int ACCUMULATOR = 64;
+	int ACCUMULATOR = 65;
 
 	/**
 	 * The number of structural features of the '<em>Accumulator</em>' class.
@@ -2695,7 +2732,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getWindowUnit()
 	 * @generated
 	 */
-	int WINDOW_UNIT = 65;
+	int WINDOW_UNIT = 66;
 
 	/**
 	 * The meta object id for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.ValueUnit <em>Value Unit</em>}' enum.
@@ -2705,7 +2742,7 @@ public interface formulaKPIPackage extends EPackage {
 	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getValueUnit()
 	 * @generated
 	 */
-	int VALUE_UNIT = 66;
+	int VALUE_UNIT = 67;
 
 	/**
 	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.Computation <em>Computation</em>}'.
@@ -3612,6 +3649,27 @@ public interface formulaKPIPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getWeightedSumOp_Weights();
+
+	/**
+	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp <em>Sum Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sum Op</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp
+	 * @generated
+	 */
+	EClass getSumOp();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp#getList <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>List</em>'.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp#getList()
+	 * @see #getSumOp()
+	 * @generated
+	 */
+	EReference getSumOp_List();
 
 	/**
 	 * Returns the meta object for class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp <em>Avg Op</em>}'.
@@ -4736,6 +4794,24 @@ public interface formulaKPIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference WEIGHTED_SUM_OP__WEIGHTS = eINSTANCE.getWeightedSumOp_Weights();
+
+		/**
+		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.SumOpImpl <em>Sum Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.SumOpImpl
+		 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.impl.formulaKPIPackageImpl#getSumOp()
+		 * @generated
+		 */
+		EClass SUM_OP = eINSTANCE.getSumOp();
+
+		/**
+		 * The meta object literal for the '<em><b>List</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUM_OP__LIST = eINSTANCE.getSumOp_List();
 
 		/**
 		 * The meta object literal for the '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.impl.AvgOpImpl <em>Avg Op</em>}' class.

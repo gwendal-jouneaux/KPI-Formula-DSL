@@ -51,6 +51,7 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.Plus;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.RealConstant;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.RealValue;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.StandardDeviation;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.TextConstant;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.TextualValue;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.ThresholdOp;
@@ -221,6 +222,9 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				return; 
 			case formulaKPIPackage.STANDARD_DEVIATION:
 				sequence_StandardDeviation(context, (StandardDeviation) semanticObject); 
+				return; 
+			case formulaKPIPackage.SUM_OP:
+				sequence_Operator(context, (SumOp) semanticObject); 
 				return; 
 			case formulaKPIPackage.TEXT_CONSTANT:
 				sequence_Atomic(context, (TextConstant) semanticObject); 
@@ -1548,7 +1552,7 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.MAX_OP__LIST));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_5_3_0(), semanticObject.getList());
+		feeder.accept(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_6_3_0(), semanticObject.getList());
 		feeder.finish();
 	}
 	
@@ -1587,6 +1591,47 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.MIN_OP__LIST) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.MIN_OP__LIST));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_5_3_0(), semanticObject.getList());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelExpression returns SumOp
+	 *     Expression returns SumOp
+	 *     Or returns SumOp
+	 *     Or.Or_1_0 returns SumOp
+	 *     And returns SumOp
+	 *     And.And_1_0 returns SumOp
+	 *     Equality returns SumOp
+	 *     Equality.Equality_1_0_0_0 returns SumOp
+	 *     Equality.Inequality_1_0_1_0 returns SumOp
+	 *     Comparison returns SumOp
+	 *     Comparison.GreaterEq_1_0_0_0 returns SumOp
+	 *     Comparison.LessEq_1_0_1_0 returns SumOp
+	 *     Comparison.Greater_1_0_2_0 returns SumOp
+	 *     Comparison.Less_1_0_3_0 returns SumOp
+	 *     PlusOrMinus returns SumOp
+	 *     PlusOrMinus.Plus_1_0_0_0 returns SumOp
+	 *     PlusOrMinus.Minus_1_0_1_0 returns SumOp
+	 *     MulOrDiv returns SumOp
+	 *     MulOrDiv.Multiply_1_0_0_0 returns SumOp
+	 *     MulOrDiv.Divide_1_0_1_0 returns SumOp
+	 *     Operator returns SumOp
+	 *     Primary returns SumOp
+	 *
+	 * Constraint:
+	 *     list=Expression
+	 * </pre>
+	 */
+	protected void sequence_Operator(ISerializationContext context, SumOp semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, formulaKPIPackage.Literals.SUM_OP__LIST) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.SUM_OP__LIST));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_4_3_0(), semanticObject.getList());
@@ -1632,8 +1677,8 @@ public class KPIFormulaDSLSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, formulaKPIPackage.Literals.THRESHOLD_OP__THRESHOLD));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getOperatorAccess().getExpressionExpressionParserRuleCall_6_3_0(), semanticObject.getExpression());
-		feeder.accept(grammarAccess.getOperatorAccess().getThresholdExpressionParserRuleCall_6_5_0(), semanticObject.getThreshold());
+		feeder.accept(grammarAccess.getOperatorAccess().getExpressionExpressionParserRuleCall_7_3_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getOperatorAccess().getThresholdExpressionParserRuleCall_7_5_0(), semanticObject.getThreshold());
 		feeder.finish();
 	}
 	

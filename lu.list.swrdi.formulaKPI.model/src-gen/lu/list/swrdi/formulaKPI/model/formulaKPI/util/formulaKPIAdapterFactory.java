@@ -322,6 +322,11 @@ public class formulaKPIAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseSumOp(SumOp object) {
+			return createSumOpAdapter();
+		}
+
+		@Override
 		public Adapter caseAvgOp(AvgOp object) {
 			return createAvgOpAdapter();
 		}
@@ -1121,6 +1126,20 @@ public class formulaKPIAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWeightedSumOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp <em>Sum Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp
+	 * @generated
+	 */
+	public Adapter createSumOpAdapter() {
 		return null;
 	}
 

@@ -1097,97 +1097,105 @@ public class KPIFormulaDSLGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cWeightsExpressionParserRuleCall_3_5_0 = (RuleCall)cWeightsAssignment_3_5.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3_6 = (Keyword)cGroup_3.eContents().get(6);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Action cMinOpAction_4_0 = (Action)cGroup_4.eContents().get(0);
-		private final Keyword cMINKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Action cSumOpAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Keyword cSUMKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
 		private final Assignment cListAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
 		private final RuleCall cListExpressionParserRuleCall_4_3_0 = (RuleCall)cListAssignment_4_3.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
-		private final Action cMaxOpAction_5_0 = (Action)cGroup_5.eContents().get(0);
-		private final Keyword cMAXKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Action cMinOpAction_5_0 = (Action)cGroup_5.eContents().get(0);
+		private final Keyword cMINKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
 		private final Assignment cListAssignment_5_3 = (Assignment)cGroup_5.eContents().get(3);
 		private final RuleCall cListExpressionParserRuleCall_5_3_0 = (RuleCall)cListAssignment_5_3.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
 		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
-		private final Action cThresholdOpAction_6_0 = (Action)cGroup_6.eContents().get(0);
-		private final Keyword cTHRESHOLDKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Action cMaxOpAction_6_0 = (Action)cGroup_6.eContents().get(0);
+		private final Keyword cMAXKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
-		private final Assignment cExpressionAssignment_6_3 = (Assignment)cGroup_6.eContents().get(3);
-		private final RuleCall cExpressionExpressionParserRuleCall_6_3_0 = (RuleCall)cExpressionAssignment_6_3.eContents().get(0);
-		private final Keyword cCommaKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
-		private final Assignment cThresholdAssignment_6_5 = (Assignment)cGroup_6.eContents().get(5);
-		private final RuleCall cThresholdExpressionParserRuleCall_6_5_0 = (RuleCall)cThresholdAssignment_6_5.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_6_6 = (Keyword)cGroup_6.eContents().get(6);
+		private final Assignment cListAssignment_6_3 = (Assignment)cGroup_6.eContents().get(3);
+		private final RuleCall cListExpressionParserRuleCall_6_3_0 = (RuleCall)cListAssignment_6_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
 		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
-		private final Action cListIterationAction_7_0 = (Action)cGroup_7.eContents().get(0);
-		private final Keyword cDoKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
-		private final Assignment cExpressionAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
-		private final RuleCall cExpressionTopLevelExpressionParserRuleCall_7_2_0 = (RuleCall)cExpressionAssignment_7_2.eContents().get(0);
-		private final Keyword cForKeyword_7_3 = (Keyword)cGroup_7.eContents().get(3);
-		private final Assignment cIteratorsAssignment_7_4 = (Assignment)cGroup_7.eContents().get(4);
-		private final RuleCall cIteratorsListIteratorParserRuleCall_7_4_0 = (RuleCall)cIteratorsAssignment_7_4.eContents().get(0);
-		private final Keyword cInKeyword_7_5 = (Keyword)cGroup_7.eContents().get(5);
-		private final Assignment cListsAssignment_7_6 = (Assignment)cGroup_7.eContents().get(6);
-		private final RuleCall cListsPrimaryParserRuleCall_7_6_0 = (RuleCall)cListsAssignment_7_6.eContents().get(0);
-		private final Group cGroup_7_7 = (Group)cGroup_7.eContents().get(7);
-		private final Keyword cCommaKeyword_7_7_0 = (Keyword)cGroup_7_7.eContents().get(0);
-		private final Assignment cIteratorsAssignment_7_7_1 = (Assignment)cGroup_7_7.eContents().get(1);
-		private final RuleCall cIteratorsListIteratorParserRuleCall_7_7_1_0 = (RuleCall)cIteratorsAssignment_7_7_1.eContents().get(0);
-		private final Keyword cInKeyword_7_7_2 = (Keyword)cGroup_7_7.eContents().get(2);
-		private final Assignment cListsAssignment_7_7_3 = (Assignment)cGroup_7_7.eContents().get(3);
-		private final RuleCall cListsPrimaryParserRuleCall_7_7_3_0 = (RuleCall)cListsAssignment_7_7_3.eContents().get(0);
+		private final Action cThresholdOpAction_7_0 = (Action)cGroup_7.eContents().get(0);
+		private final Keyword cTHRESHOLDKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_7_2 = (Keyword)cGroup_7.eContents().get(2);
+		private final Assignment cExpressionAssignment_7_3 = (Assignment)cGroup_7.eContents().get(3);
+		private final RuleCall cExpressionExpressionParserRuleCall_7_3_0 = (RuleCall)cExpressionAssignment_7_3.eContents().get(0);
+		private final Keyword cCommaKeyword_7_4 = (Keyword)cGroup_7.eContents().get(4);
+		private final Assignment cThresholdAssignment_7_5 = (Assignment)cGroup_7.eContents().get(5);
+		private final RuleCall cThresholdExpressionParserRuleCall_7_5_0 = (RuleCall)cThresholdAssignment_7_5.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7_6 = (Keyword)cGroup_7.eContents().get(6);
 		private final Group cGroup_8 = (Group)cAlternatives.eContents().get(8);
-		private final Action cListReduceAction_8_0 = (Action)cGroup_8.eContents().get(0);
-		private final Keyword cReduceKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
+		private final Action cListIterationAction_8_0 = (Action)cGroup_8.eContents().get(0);
+		private final Keyword cMapKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
 		private final Assignment cExpressionAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
 		private final RuleCall cExpressionTopLevelExpressionParserRuleCall_8_2_0 = (RuleCall)cExpressionAssignment_8_2.eContents().get(0);
-		private final Keyword cStartingKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
-		private final Assignment cAccumulatorAssignment_8_4 = (Assignment)cGroup_8.eContents().get(4);
-		private final RuleCall cAccumulatorPrimaryParserRuleCall_8_4_0 = (RuleCall)cAccumulatorAssignment_8_4.eContents().get(0);
-		private final Keyword cForKeyword_8_5 = (Keyword)cGroup_8.eContents().get(5);
-		private final Assignment cIteratorsAssignment_8_6 = (Assignment)cGroup_8.eContents().get(6);
-		private final RuleCall cIteratorsListIteratorParserRuleCall_8_6_0 = (RuleCall)cIteratorsAssignment_8_6.eContents().get(0);
-		private final Keyword cInKeyword_8_7 = (Keyword)cGroup_8.eContents().get(7);
-		private final Assignment cListsAssignment_8_8 = (Assignment)cGroup_8.eContents().get(8);
-		private final RuleCall cListsPrimaryParserRuleCall_8_8_0 = (RuleCall)cListsAssignment_8_8.eContents().get(0);
-		private final Group cGroup_8_9 = (Group)cGroup_8.eContents().get(9);
-		private final Keyword cCommaKeyword_8_9_0 = (Keyword)cGroup_8_9.eContents().get(0);
-		private final Assignment cIteratorsAssignment_8_9_1 = (Assignment)cGroup_8_9.eContents().get(1);
-		private final RuleCall cIteratorsListIteratorParserRuleCall_8_9_1_0 = (RuleCall)cIteratorsAssignment_8_9_1.eContents().get(0);
-		private final Keyword cInKeyword_8_9_2 = (Keyword)cGroup_8_9.eContents().get(2);
-		private final Assignment cListsAssignment_8_9_3 = (Assignment)cGroup_8_9.eContents().get(3);
-		private final RuleCall cListsPrimaryParserRuleCall_8_9_3_0 = (RuleCall)cListsAssignment_8_9_3.eContents().get(0);
+		private final Keyword cForKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
+		private final Assignment cIteratorsAssignment_8_4 = (Assignment)cGroup_8.eContents().get(4);
+		private final RuleCall cIteratorsListIteratorParserRuleCall_8_4_0 = (RuleCall)cIteratorsAssignment_8_4.eContents().get(0);
+		private final Keyword cInKeyword_8_5 = (Keyword)cGroup_8.eContents().get(5);
+		private final Assignment cListsAssignment_8_6 = (Assignment)cGroup_8.eContents().get(6);
+		private final RuleCall cListsPrimaryParserRuleCall_8_6_0 = (RuleCall)cListsAssignment_8_6.eContents().get(0);
+		private final Group cGroup_8_7 = (Group)cGroup_8.eContents().get(7);
+		private final Keyword cCommaKeyword_8_7_0 = (Keyword)cGroup_8_7.eContents().get(0);
+		private final Assignment cIteratorsAssignment_8_7_1 = (Assignment)cGroup_8_7.eContents().get(1);
+		private final RuleCall cIteratorsListIteratorParserRuleCall_8_7_1_0 = (RuleCall)cIteratorsAssignment_8_7_1.eContents().get(0);
+		private final Keyword cInKeyword_8_7_2 = (Keyword)cGroup_8_7.eContents().get(2);
+		private final Assignment cListsAssignment_8_7_3 = (Assignment)cGroup_8_7.eContents().get(3);
+		private final RuleCall cListsPrimaryParserRuleCall_8_7_3_0 = (RuleCall)cListsAssignment_8_7_3.eContents().get(0);
 		private final Group cGroup_9 = (Group)cAlternatives.eContents().get(9);
-		private final Action cListFilterAction_9_0 = (Action)cGroup_9.eContents().get(0);
-		private final Keyword cFilterKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
+		private final Action cListReduceAction_9_0 = (Action)cGroup_9.eContents().get(0);
+		private final Keyword cReduceKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
 		private final Assignment cExpressionAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
 		private final RuleCall cExpressionTopLevelExpressionParserRuleCall_9_2_0 = (RuleCall)cExpressionAssignment_9_2.eContents().get(0);
-		private final Keyword cForKeyword_9_3 = (Keyword)cGroup_9.eContents().get(3);
-		private final Assignment cIteratorsAssignment_9_4 = (Assignment)cGroup_9.eContents().get(4);
-		private final RuleCall cIteratorsListIteratorParserRuleCall_9_4_0 = (RuleCall)cIteratorsAssignment_9_4.eContents().get(0);
-		private final Keyword cInKeyword_9_5 = (Keyword)cGroup_9.eContents().get(5);
-		private final Assignment cListsAssignment_9_6 = (Assignment)cGroup_9.eContents().get(6);
-		private final RuleCall cListsPrimaryParserRuleCall_9_6_0 = (RuleCall)cListsAssignment_9_6.eContents().get(0);
-		private final Group cGroup_9_7 = (Group)cGroup_9.eContents().get(7);
-		private final Keyword cCommaKeyword_9_7_0 = (Keyword)cGroup_9_7.eContents().get(0);
-		private final Assignment cIteratorsAssignment_9_7_1 = (Assignment)cGroup_9_7.eContents().get(1);
-		private final RuleCall cIteratorsListIteratorParserRuleCall_9_7_1_0 = (RuleCall)cIteratorsAssignment_9_7_1.eContents().get(0);
-		private final Keyword cInKeyword_9_7_2 = (Keyword)cGroup_9_7.eContents().get(2);
-		private final Assignment cListsAssignment_9_7_3 = (Assignment)cGroup_9_7.eContents().get(3);
-		private final RuleCall cListsPrimaryParserRuleCall_9_7_3_0 = (RuleCall)cListsAssignment_9_7_3.eContents().get(0);
-		private final RuleCall cPrimaryParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
+		private final Keyword cStartingKeyword_9_3 = (Keyword)cGroup_9.eContents().get(3);
+		private final Assignment cAccumulatorAssignment_9_4 = (Assignment)cGroup_9.eContents().get(4);
+		private final RuleCall cAccumulatorPrimaryParserRuleCall_9_4_0 = (RuleCall)cAccumulatorAssignment_9_4.eContents().get(0);
+		private final Keyword cForKeyword_9_5 = (Keyword)cGroup_9.eContents().get(5);
+		private final Assignment cIteratorsAssignment_9_6 = (Assignment)cGroup_9.eContents().get(6);
+		private final RuleCall cIteratorsListIteratorParserRuleCall_9_6_0 = (RuleCall)cIteratorsAssignment_9_6.eContents().get(0);
+		private final Keyword cInKeyword_9_7 = (Keyword)cGroup_9.eContents().get(7);
+		private final Assignment cListsAssignment_9_8 = (Assignment)cGroup_9.eContents().get(8);
+		private final RuleCall cListsPrimaryParserRuleCall_9_8_0 = (RuleCall)cListsAssignment_9_8.eContents().get(0);
+		private final Group cGroup_9_9 = (Group)cGroup_9.eContents().get(9);
+		private final Keyword cCommaKeyword_9_9_0 = (Keyword)cGroup_9_9.eContents().get(0);
+		private final Assignment cIteratorsAssignment_9_9_1 = (Assignment)cGroup_9_9.eContents().get(1);
+		private final RuleCall cIteratorsListIteratorParserRuleCall_9_9_1_0 = (RuleCall)cIteratorsAssignment_9_9_1.eContents().get(0);
+		private final Keyword cInKeyword_9_9_2 = (Keyword)cGroup_9_9.eContents().get(2);
+		private final Assignment cListsAssignment_9_9_3 = (Assignment)cGroup_9_9.eContents().get(3);
+		private final RuleCall cListsPrimaryParserRuleCall_9_9_3_0 = (RuleCall)cListsAssignment_9_9_3.eContents().get(0);
+		private final Group cGroup_10 = (Group)cAlternatives.eContents().get(10);
+		private final Action cListFilterAction_10_0 = (Action)cGroup_10.eContents().get(0);
+		private final Keyword cFilterKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
+		private final Assignment cExpressionAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
+		private final RuleCall cExpressionTopLevelExpressionParserRuleCall_10_2_0 = (RuleCall)cExpressionAssignment_10_2.eContents().get(0);
+		private final Keyword cForKeyword_10_3 = (Keyword)cGroup_10.eContents().get(3);
+		private final Assignment cIteratorsAssignment_10_4 = (Assignment)cGroup_10.eContents().get(4);
+		private final RuleCall cIteratorsListIteratorParserRuleCall_10_4_0 = (RuleCall)cIteratorsAssignment_10_4.eContents().get(0);
+		private final Keyword cInKeyword_10_5 = (Keyword)cGroup_10.eContents().get(5);
+		private final Assignment cListsAssignment_10_6 = (Assignment)cGroup_10.eContents().get(6);
+		private final RuleCall cListsPrimaryParserRuleCall_10_6_0 = (RuleCall)cListsAssignment_10_6.eContents().get(0);
+		private final Group cGroup_10_7 = (Group)cGroup_10.eContents().get(7);
+		private final Keyword cCommaKeyword_10_7_0 = (Keyword)cGroup_10_7.eContents().get(0);
+		private final Assignment cIteratorsAssignment_10_7_1 = (Assignment)cGroup_10_7.eContents().get(1);
+		private final RuleCall cIteratorsListIteratorParserRuleCall_10_7_1_0 = (RuleCall)cIteratorsAssignment_10_7_1.eContents().get(0);
+		private final Keyword cInKeyword_10_7_2 = (Keyword)cGroup_10_7.eContents().get(2);
+		private final Assignment cListsAssignment_10_7_3 = (Assignment)cGroup_10_7.eContents().get(3);
+		private final RuleCall cListsPrimaryParserRuleCall_10_7_3_0 = (RuleCall)cListsAssignment_10_7_3.eContents().get(0);
+		private final RuleCall cPrimaryParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
 		
 		//Operator returns Expression:
 		//    {ListSize} '|' expression=Expression '|'|
 		//    {ListLiteral} "[" elements+=Expression ("," elements+=Expression)* "]" |
 		//    {AvgOp} "AVERAGE" "(" list=Expression ")" |
 		//    {WeightedSumOp} "WEIGHTED_SUM" "(" list=Expression "," weights=Expression ")" |
+		//    {SumOp} "SUM" "("  list=Expression ")" |
 		//    {MinOp} "MIN" "(" list=Expression ")" |
 		//    {MaxOp} "MAX" "(" list=Expression ")" |
 		//    {ThresholdOp} "THRESHOLD" "(" expression=Expression "," threshold=Expression ")" |
-		//    {ListIteration} "do" expression=TopLevelExpression
+		//    {ListIteration} "map" expression=TopLevelExpression
 		//                    "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*|
 		//    {ListReduce} "reduce" expression=TopLevelExpression "starting" accumulator=Primary
 		//                 "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*|
@@ -1201,10 +1209,11 @@ public class KPIFormulaDSLGrammarAccess extends AbstractElementFinder.AbstractGr
 		//{ListLiteral} "[" elements+=Expression ("," elements+=Expression)* "]" |
 		//{AvgOp} "AVERAGE" "(" list=Expression ")" |
 		//{WeightedSumOp} "WEIGHTED_SUM" "(" list=Expression "," weights=Expression ")" |
+		//{SumOp} "SUM" "("  list=Expression ")" |
 		//{MinOp} "MIN" "(" list=Expression ")" |
 		//{MaxOp} "MAX" "(" list=Expression ")" |
 		//{ThresholdOp} "THRESHOLD" "(" expression=Expression "," threshold=Expression ")" |
-		//{ListIteration} "do" expression=TopLevelExpression
+		//{ListIteration} "map" expression=TopLevelExpression
 		//                "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*|
 		//{ListReduce} "reduce" expression=TopLevelExpression "starting" accumulator=Primary
 		//             "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*|
@@ -1312,14 +1321,14 @@ public class KPIFormulaDSLGrammarAccess extends AbstractElementFinder.AbstractGr
 		//")"
 		public Keyword getRightParenthesisKeyword_3_6() { return cRightParenthesisKeyword_3_6; }
 		
-		//{MinOp} "MIN" "(" list=Expression ")"
+		//{SumOp} "SUM" "("  list=Expression ")"
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//{MinOp}
-		public Action getMinOpAction_4_0() { return cMinOpAction_4_0; }
+		//{SumOp}
+		public Action getSumOpAction_4_0() { return cSumOpAction_4_0; }
 		
-		//"MIN"
-		public Keyword getMINKeyword_4_1() { return cMINKeyword_4_1; }
+		//"SUM"
+		public Keyword getSUMKeyword_4_1() { return cSUMKeyword_4_1; }
 		
 		//"("
 		public Keyword getLeftParenthesisKeyword_4_2() { return cLeftParenthesisKeyword_4_2; }
@@ -1333,14 +1342,14 @@ public class KPIFormulaDSLGrammarAccess extends AbstractElementFinder.AbstractGr
 		//")"
 		public Keyword getRightParenthesisKeyword_4_4() { return cRightParenthesisKeyword_4_4; }
 		
-		//{MaxOp} "MAX" "(" list=Expression ")"
+		//{MinOp} "MIN" "(" list=Expression ")"
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//{MaxOp}
-		public Action getMaxOpAction_5_0() { return cMaxOpAction_5_0; }
+		//{MinOp}
+		public Action getMinOpAction_5_0() { return cMinOpAction_5_0; }
 		
-		//"MAX"
-		public Keyword getMAXKeyword_5_1() { return cMAXKeyword_5_1; }
+		//"MIN"
+		public Keyword getMINKeyword_5_1() { return cMINKeyword_5_1; }
 		
 		//"("
 		public Keyword getLeftParenthesisKeyword_5_2() { return cLeftParenthesisKeyword_5_2; }
@@ -1354,100 +1363,66 @@ public class KPIFormulaDSLGrammarAccess extends AbstractElementFinder.AbstractGr
 		//")"
 		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
 		
-		//{ThresholdOp} "THRESHOLD" "(" expression=Expression "," threshold=Expression ")"
+		//{MaxOp} "MAX" "(" list=Expression ")"
 		public Group getGroup_6() { return cGroup_6; }
 		
-		//{ThresholdOp}
-		public Action getThresholdOpAction_6_0() { return cThresholdOpAction_6_0; }
+		//{MaxOp}
+		public Action getMaxOpAction_6_0() { return cMaxOpAction_6_0; }
 		
-		//"THRESHOLD"
-		public Keyword getTHRESHOLDKeyword_6_1() { return cTHRESHOLDKeyword_6_1; }
+		//"MAX"
+		public Keyword getMAXKeyword_6_1() { return cMAXKeyword_6_1; }
 		
 		//"("
 		public Keyword getLeftParenthesisKeyword_6_2() { return cLeftParenthesisKeyword_6_2; }
 		
-		//expression=Expression
-		public Assignment getExpressionAssignment_6_3() { return cExpressionAssignment_6_3; }
+		//list=Expression
+		public Assignment getListAssignment_6_3() { return cListAssignment_6_3; }
 		
 		//Expression
-		public RuleCall getExpressionExpressionParserRuleCall_6_3_0() { return cExpressionExpressionParserRuleCall_6_3_0; }
-		
-		//","
-		public Keyword getCommaKeyword_6_4() { return cCommaKeyword_6_4; }
-		
-		//threshold=Expression
-		public Assignment getThresholdAssignment_6_5() { return cThresholdAssignment_6_5; }
-		
-		//Expression
-		public RuleCall getThresholdExpressionParserRuleCall_6_5_0() { return cThresholdExpressionParserRuleCall_6_5_0; }
+		public RuleCall getListExpressionParserRuleCall_6_3_0() { return cListExpressionParserRuleCall_6_3_0; }
 		
 		//")"
-		public Keyword getRightParenthesisKeyword_6_6() { return cRightParenthesisKeyword_6_6; }
+		public Keyword getRightParenthesisKeyword_6_4() { return cRightParenthesisKeyword_6_4; }
 		
-		//{ListIteration} "do" expression=TopLevelExpression
-		//                "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*
+		//{ThresholdOp} "THRESHOLD" "(" expression=Expression "," threshold=Expression ")"
 		public Group getGroup_7() { return cGroup_7; }
 		
-		//{ListIteration}
-		public Action getListIterationAction_7_0() { return cListIterationAction_7_0; }
+		//{ThresholdOp}
+		public Action getThresholdOpAction_7_0() { return cThresholdOpAction_7_0; }
 		
-		//"do"
-		public Keyword getDoKeyword_7_1() { return cDoKeyword_7_1; }
+		//"THRESHOLD"
+		public Keyword getTHRESHOLDKeyword_7_1() { return cTHRESHOLDKeyword_7_1; }
 		
-		//expression=TopLevelExpression
-		public Assignment getExpressionAssignment_7_2() { return cExpressionAssignment_7_2; }
+		//"("
+		public Keyword getLeftParenthesisKeyword_7_2() { return cLeftParenthesisKeyword_7_2; }
 		
-		//TopLevelExpression
-		public RuleCall getExpressionTopLevelExpressionParserRuleCall_7_2_0() { return cExpressionTopLevelExpressionParserRuleCall_7_2_0; }
+		//expression=Expression
+		public Assignment getExpressionAssignment_7_3() { return cExpressionAssignment_7_3; }
 		
-		//"for"
-		public Keyword getForKeyword_7_3() { return cForKeyword_7_3; }
-		
-		//iterators+=ListIterator
-		public Assignment getIteratorsAssignment_7_4() { return cIteratorsAssignment_7_4; }
-		
-		//ListIterator
-		public RuleCall getIteratorsListIteratorParserRuleCall_7_4_0() { return cIteratorsListIteratorParserRuleCall_7_4_0; }
-		
-		//"in"
-		public Keyword getInKeyword_7_5() { return cInKeyword_7_5; }
-		
-		//lists+=Primary
-		public Assignment getListsAssignment_7_6() { return cListsAssignment_7_6; }
-		
-		//Primary
-		public RuleCall getListsPrimaryParserRuleCall_7_6_0() { return cListsPrimaryParserRuleCall_7_6_0; }
-		
-		//("," iterators+=ListIterator "in" lists+=Primary)*
-		public Group getGroup_7_7() { return cGroup_7_7; }
+		//Expression
+		public RuleCall getExpressionExpressionParserRuleCall_7_3_0() { return cExpressionExpressionParserRuleCall_7_3_0; }
 		
 		//","
-		public Keyword getCommaKeyword_7_7_0() { return cCommaKeyword_7_7_0; }
+		public Keyword getCommaKeyword_7_4() { return cCommaKeyword_7_4; }
 		
-		//iterators+=ListIterator
-		public Assignment getIteratorsAssignment_7_7_1() { return cIteratorsAssignment_7_7_1; }
+		//threshold=Expression
+		public Assignment getThresholdAssignment_7_5() { return cThresholdAssignment_7_5; }
 		
-		//ListIterator
-		public RuleCall getIteratorsListIteratorParserRuleCall_7_7_1_0() { return cIteratorsListIteratorParserRuleCall_7_7_1_0; }
+		//Expression
+		public RuleCall getThresholdExpressionParserRuleCall_7_5_0() { return cThresholdExpressionParserRuleCall_7_5_0; }
 		
-		//"in"
-		public Keyword getInKeyword_7_7_2() { return cInKeyword_7_7_2; }
+		//")"
+		public Keyword getRightParenthesisKeyword_7_6() { return cRightParenthesisKeyword_7_6; }
 		
-		//lists+=Primary
-		public Assignment getListsAssignment_7_7_3() { return cListsAssignment_7_7_3; }
-		
-		//Primary
-		public RuleCall getListsPrimaryParserRuleCall_7_7_3_0() { return cListsPrimaryParserRuleCall_7_7_3_0; }
-		
-		//{ListReduce} "reduce" expression=TopLevelExpression "starting" accumulator=Primary
-		//             "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*
+		//{ListIteration} "map" expression=TopLevelExpression
+		//                "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*
 		public Group getGroup_8() { return cGroup_8; }
 		
-		//{ListReduce}
-		public Action getListReduceAction_8_0() { return cListReduceAction_8_0; }
+		//{ListIteration}
+		public Action getListIterationAction_8_0() { return cListIterationAction_8_0; }
 		
-		//"reduce"
-		public Keyword getReduceKeyword_8_1() { return cReduceKeyword_8_1; }
+		//"map"
+		public Keyword getMapKeyword_8_1() { return cMapKeyword_8_1; }
 		
 		//expression=TopLevelExpression
 		public Assignment getExpressionAssignment_8_2() { return cExpressionAssignment_8_2; }
@@ -1455,63 +1430,54 @@ public class KPIFormulaDSLGrammarAccess extends AbstractElementFinder.AbstractGr
 		//TopLevelExpression
 		public RuleCall getExpressionTopLevelExpressionParserRuleCall_8_2_0() { return cExpressionTopLevelExpressionParserRuleCall_8_2_0; }
 		
-		//"starting"
-		public Keyword getStartingKeyword_8_3() { return cStartingKeyword_8_3; }
-		
-		//accumulator=Primary
-		public Assignment getAccumulatorAssignment_8_4() { return cAccumulatorAssignment_8_4; }
-		
-		//Primary
-		public RuleCall getAccumulatorPrimaryParserRuleCall_8_4_0() { return cAccumulatorPrimaryParserRuleCall_8_4_0; }
-		
 		//"for"
-		public Keyword getForKeyword_8_5() { return cForKeyword_8_5; }
+		public Keyword getForKeyword_8_3() { return cForKeyword_8_3; }
 		
 		//iterators+=ListIterator
-		public Assignment getIteratorsAssignment_8_6() { return cIteratorsAssignment_8_6; }
+		public Assignment getIteratorsAssignment_8_4() { return cIteratorsAssignment_8_4; }
 		
 		//ListIterator
-		public RuleCall getIteratorsListIteratorParserRuleCall_8_6_0() { return cIteratorsListIteratorParserRuleCall_8_6_0; }
+		public RuleCall getIteratorsListIteratorParserRuleCall_8_4_0() { return cIteratorsListIteratorParserRuleCall_8_4_0; }
 		
 		//"in"
-		public Keyword getInKeyword_8_7() { return cInKeyword_8_7; }
+		public Keyword getInKeyword_8_5() { return cInKeyword_8_5; }
 		
 		//lists+=Primary
-		public Assignment getListsAssignment_8_8() { return cListsAssignment_8_8; }
+		public Assignment getListsAssignment_8_6() { return cListsAssignment_8_6; }
 		
 		//Primary
-		public RuleCall getListsPrimaryParserRuleCall_8_8_0() { return cListsPrimaryParserRuleCall_8_8_0; }
+		public RuleCall getListsPrimaryParserRuleCall_8_6_0() { return cListsPrimaryParserRuleCall_8_6_0; }
 		
 		//("," iterators+=ListIterator "in" lists+=Primary)*
-		public Group getGroup_8_9() { return cGroup_8_9; }
+		public Group getGroup_8_7() { return cGroup_8_7; }
 		
 		//","
-		public Keyword getCommaKeyword_8_9_0() { return cCommaKeyword_8_9_0; }
+		public Keyword getCommaKeyword_8_7_0() { return cCommaKeyword_8_7_0; }
 		
 		//iterators+=ListIterator
-		public Assignment getIteratorsAssignment_8_9_1() { return cIteratorsAssignment_8_9_1; }
+		public Assignment getIteratorsAssignment_8_7_1() { return cIteratorsAssignment_8_7_1; }
 		
 		//ListIterator
-		public RuleCall getIteratorsListIteratorParserRuleCall_8_9_1_0() { return cIteratorsListIteratorParserRuleCall_8_9_1_0; }
+		public RuleCall getIteratorsListIteratorParserRuleCall_8_7_1_0() { return cIteratorsListIteratorParserRuleCall_8_7_1_0; }
 		
 		//"in"
-		public Keyword getInKeyword_8_9_2() { return cInKeyword_8_9_2; }
+		public Keyword getInKeyword_8_7_2() { return cInKeyword_8_7_2; }
 		
 		//lists+=Primary
-		public Assignment getListsAssignment_8_9_3() { return cListsAssignment_8_9_3; }
+		public Assignment getListsAssignment_8_7_3() { return cListsAssignment_8_7_3; }
 		
 		//Primary
-		public RuleCall getListsPrimaryParserRuleCall_8_9_3_0() { return cListsPrimaryParserRuleCall_8_9_3_0; }
+		public RuleCall getListsPrimaryParserRuleCall_8_7_3_0() { return cListsPrimaryParserRuleCall_8_7_3_0; }
 		
-		//{ListFilter} "filter" expression=TopLevelExpression
+		//{ListReduce} "reduce" expression=TopLevelExpression "starting" accumulator=Primary
 		//             "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*
 		public Group getGroup_9() { return cGroup_9; }
 		
-		//{ListFilter}
-		public Action getListFilterAction_9_0() { return cListFilterAction_9_0; }
+		//{ListReduce}
+		public Action getListReduceAction_9_0() { return cListReduceAction_9_0; }
 		
-		//"filter"
-		public Keyword getFilterKeyword_9_1() { return cFilterKeyword_9_1; }
+		//"reduce"
+		public Keyword getReduceKeyword_9_1() { return cReduceKeyword_9_1; }
 		
 		//expression=TopLevelExpression
 		public Assignment getExpressionAssignment_9_2() { return cExpressionAssignment_9_2; }
@@ -1519,47 +1485,111 @@ public class KPIFormulaDSLGrammarAccess extends AbstractElementFinder.AbstractGr
 		//TopLevelExpression
 		public RuleCall getExpressionTopLevelExpressionParserRuleCall_9_2_0() { return cExpressionTopLevelExpressionParserRuleCall_9_2_0; }
 		
-		//"for"
-		public Keyword getForKeyword_9_3() { return cForKeyword_9_3; }
+		//"starting"
+		public Keyword getStartingKeyword_9_3() { return cStartingKeyword_9_3; }
 		
-		//iterators+=ListIterator
-		public Assignment getIteratorsAssignment_9_4() { return cIteratorsAssignment_9_4; }
-		
-		//ListIterator
-		public RuleCall getIteratorsListIteratorParserRuleCall_9_4_0() { return cIteratorsListIteratorParserRuleCall_9_4_0; }
-		
-		//"in"
-		public Keyword getInKeyword_9_5() { return cInKeyword_9_5; }
-		
-		//lists+=Primary
-		public Assignment getListsAssignment_9_6() { return cListsAssignment_9_6; }
+		//accumulator=Primary
+		public Assignment getAccumulatorAssignment_9_4() { return cAccumulatorAssignment_9_4; }
 		
 		//Primary
-		public RuleCall getListsPrimaryParserRuleCall_9_6_0() { return cListsPrimaryParserRuleCall_9_6_0; }
+		public RuleCall getAccumulatorPrimaryParserRuleCall_9_4_0() { return cAccumulatorPrimaryParserRuleCall_9_4_0; }
+		
+		//"for"
+		public Keyword getForKeyword_9_5() { return cForKeyword_9_5; }
+		
+		//iterators+=ListIterator
+		public Assignment getIteratorsAssignment_9_6() { return cIteratorsAssignment_9_6; }
+		
+		//ListIterator
+		public RuleCall getIteratorsListIteratorParserRuleCall_9_6_0() { return cIteratorsListIteratorParserRuleCall_9_6_0; }
+		
+		//"in"
+		public Keyword getInKeyword_9_7() { return cInKeyword_9_7; }
+		
+		//lists+=Primary
+		public Assignment getListsAssignment_9_8() { return cListsAssignment_9_8; }
+		
+		//Primary
+		public RuleCall getListsPrimaryParserRuleCall_9_8_0() { return cListsPrimaryParserRuleCall_9_8_0; }
 		
 		//("," iterators+=ListIterator "in" lists+=Primary)*
-		public Group getGroup_9_7() { return cGroup_9_7; }
+		public Group getGroup_9_9() { return cGroup_9_9; }
 		
 		//","
-		public Keyword getCommaKeyword_9_7_0() { return cCommaKeyword_9_7_0; }
+		public Keyword getCommaKeyword_9_9_0() { return cCommaKeyword_9_9_0; }
 		
 		//iterators+=ListIterator
-		public Assignment getIteratorsAssignment_9_7_1() { return cIteratorsAssignment_9_7_1; }
+		public Assignment getIteratorsAssignment_9_9_1() { return cIteratorsAssignment_9_9_1; }
 		
 		//ListIterator
-		public RuleCall getIteratorsListIteratorParserRuleCall_9_7_1_0() { return cIteratorsListIteratorParserRuleCall_9_7_1_0; }
+		public RuleCall getIteratorsListIteratorParserRuleCall_9_9_1_0() { return cIteratorsListIteratorParserRuleCall_9_9_1_0; }
 		
 		//"in"
-		public Keyword getInKeyword_9_7_2() { return cInKeyword_9_7_2; }
+		public Keyword getInKeyword_9_9_2() { return cInKeyword_9_9_2; }
 		
 		//lists+=Primary
-		public Assignment getListsAssignment_9_7_3() { return cListsAssignment_9_7_3; }
+		public Assignment getListsAssignment_9_9_3() { return cListsAssignment_9_9_3; }
 		
 		//Primary
-		public RuleCall getListsPrimaryParserRuleCall_9_7_3_0() { return cListsPrimaryParserRuleCall_9_7_3_0; }
+		public RuleCall getListsPrimaryParserRuleCall_9_9_3_0() { return cListsPrimaryParserRuleCall_9_9_3_0; }
+		
+		//{ListFilter} "filter" expression=TopLevelExpression
+		//             "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*
+		public Group getGroup_10() { return cGroup_10; }
+		
+		//{ListFilter}
+		public Action getListFilterAction_10_0() { return cListFilterAction_10_0; }
+		
+		//"filter"
+		public Keyword getFilterKeyword_10_1() { return cFilterKeyword_10_1; }
+		
+		//expression=TopLevelExpression
+		public Assignment getExpressionAssignment_10_2() { return cExpressionAssignment_10_2; }
+		
+		//TopLevelExpression
+		public RuleCall getExpressionTopLevelExpressionParserRuleCall_10_2_0() { return cExpressionTopLevelExpressionParserRuleCall_10_2_0; }
+		
+		//"for"
+		public Keyword getForKeyword_10_3() { return cForKeyword_10_3; }
+		
+		//iterators+=ListIterator
+		public Assignment getIteratorsAssignment_10_4() { return cIteratorsAssignment_10_4; }
+		
+		//ListIterator
+		public RuleCall getIteratorsListIteratorParserRuleCall_10_4_0() { return cIteratorsListIteratorParserRuleCall_10_4_0; }
+		
+		//"in"
+		public Keyword getInKeyword_10_5() { return cInKeyword_10_5; }
+		
+		//lists+=Primary
+		public Assignment getListsAssignment_10_6() { return cListsAssignment_10_6; }
 		
 		//Primary
-		public RuleCall getPrimaryParserRuleCall_10() { return cPrimaryParserRuleCall_10; }
+		public RuleCall getListsPrimaryParserRuleCall_10_6_0() { return cListsPrimaryParserRuleCall_10_6_0; }
+		
+		//("," iterators+=ListIterator "in" lists+=Primary)*
+		public Group getGroup_10_7() { return cGroup_10_7; }
+		
+		//","
+		public Keyword getCommaKeyword_10_7_0() { return cCommaKeyword_10_7_0; }
+		
+		//iterators+=ListIterator
+		public Assignment getIteratorsAssignment_10_7_1() { return cIteratorsAssignment_10_7_1; }
+		
+		//ListIterator
+		public RuleCall getIteratorsListIteratorParserRuleCall_10_7_1_0() { return cIteratorsListIteratorParserRuleCall_10_7_1_0; }
+		
+		//"in"
+		public Keyword getInKeyword_10_7_2() { return cInKeyword_10_7_2; }
+		
+		//lists+=Primary
+		public Assignment getListsAssignment_10_7_3() { return cListsAssignment_10_7_3; }
+		
+		//Primary
+		public RuleCall getListsPrimaryParserRuleCall_10_7_3_0() { return cListsPrimaryParserRuleCall_10_7_3_0; }
+		
+		//Primary
+		public RuleCall getPrimaryParserRuleCall_11() { return cPrimaryParserRuleCall_11; }
 	}
 	public class PrimaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
@@ -2472,10 +2502,11 @@ public class KPIFormulaDSLGrammarAccess extends AbstractElementFinder.AbstractGr
 	//    {ListLiteral} "[" elements+=Expression ("," elements+=Expression)* "]" |
 	//    {AvgOp} "AVERAGE" "(" list=Expression ")" |
 	//    {WeightedSumOp} "WEIGHTED_SUM" "(" list=Expression "," weights=Expression ")" |
+	//    {SumOp} "SUM" "("  list=Expression ")" |
 	//    {MinOp} "MIN" "(" list=Expression ")" |
 	//    {MaxOp} "MAX" "(" list=Expression ")" |
 	//    {ThresholdOp} "THRESHOLD" "(" expression=Expression "," threshold=Expression ")" |
-	//    {ListIteration} "do" expression=TopLevelExpression
+	//    {ListIteration} "map" expression=TopLevelExpression
 	//                    "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*|
 	//    {ListReduce} "reduce" expression=TopLevelExpression "starting" accumulator=Primary
 	//                 "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*|

@@ -114,10 +114,11 @@ Operator returns Expression:
 	{ListLiteral} "[" elements+=Expression ("," elements+=Expression)* "]" |
 	{AvgOp} "AVERAGE" "(" list=Expression ")" |
 	{WeightedSumOp} "WEIGHTED_SUM" "(" list=Expression "," weights=Expression ")" |
+	{SumOp} "SUM" "("  list=Expression ")" |
 	{MinOp} "MIN" "(" list=Expression ")" |
 	{MaxOp} "MAX" "(" list=Expression ")" |
 	{ThresholdOp} "THRESHOLD" "(" expression=Expression "," threshold=Expression ")" |
-	{ListIteration} "do" expression=TopLevelExpression
+	{ListIteration} "map" expression=TopLevelExpression
 					"for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*|
 	{ListReduce} "reduce" expression=TopLevelExpression "starting" accumulator=Primary
 				 "for" iterators+=ListIterator "in" lists+=Primary ("," iterators+=ListIterator "in" lists+=Primary)*|

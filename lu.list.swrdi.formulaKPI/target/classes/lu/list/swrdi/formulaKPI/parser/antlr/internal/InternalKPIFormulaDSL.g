@@ -1946,13 +1946,13 @@ ruleOperator returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getOperatorAccess().getMinOpAction_4_0(),
+						grammarAccess.getOperatorAccess().getSumOpAction_4_0(),
 						$current);
 				}
 			)
-			otherlv_23='MIN'
+			otherlv_23='SUM'
 			{
-				newLeafNode(otherlv_23, grammarAccess.getOperatorAccess().getMINKeyword_4_1());
+				newLeafNode(otherlv_23, grammarAccess.getOperatorAccess().getSUMKeyword_4_1());
 			}
 			otherlv_24='('
 			{
@@ -1987,13 +1987,13 @@ ruleOperator returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getOperatorAccess().getMaxOpAction_5_0(),
+						grammarAccess.getOperatorAccess().getMinOpAction_5_0(),
 						$current);
 				}
 			)
-			otherlv_28='MAX'
+			otherlv_28='MIN'
 			{
-				newLeafNode(otherlv_28, grammarAccess.getOperatorAccess().getMAXKeyword_5_1());
+				newLeafNode(otherlv_28, grammarAccess.getOperatorAccess().getMINKeyword_5_1());
 			}
 			otherlv_29='('
 			{
@@ -2028,13 +2028,13 @@ ruleOperator returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getOperatorAccess().getThresholdOpAction_6_0(),
+						grammarAccess.getOperatorAccess().getMaxOpAction_6_0(),
 						$current);
 				}
 			)
-			otherlv_33='THRESHOLD'
+			otherlv_33='MAX'
 			{
-				newLeafNode(otherlv_33, grammarAccess.getOperatorAccess().getTHRESHOLDKeyword_6_1());
+				newLeafNode(otherlv_33, grammarAccess.getOperatorAccess().getMAXKeyword_6_1());
 			}
 			otherlv_34='('
 			{
@@ -2043,9 +2043,50 @@ ruleOperator returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionExpressionParserRuleCall_6_3_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getListExpressionParserRuleCall_6_3_0());
 					}
-					lv_expression_35_0=ruleExpression
+					lv_list_35_0=ruleExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOperatorRule());
+						}
+						set(
+							$current,
+							"list",
+							lv_list_35_0,
+							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Expression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_36=')'
+			{
+				newLeafNode(otherlv_36, grammarAccess.getOperatorAccess().getRightParenthesisKeyword_6_4());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOperatorAccess().getThresholdOpAction_7_0(),
+						$current);
+				}
+			)
+			otherlv_38='THRESHOLD'
+			{
+				newLeafNode(otherlv_38, grammarAccess.getOperatorAccess().getTHRESHOLDKeyword_7_1());
+			}
+			otherlv_39='('
+			{
+				newLeafNode(otherlv_39, grammarAccess.getOperatorAccess().getLeftParenthesisKeyword_7_2());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionExpressionParserRuleCall_7_3_0());
+					}
+					lv_expression_40_0=ruleExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2053,22 +2094,22 @@ ruleOperator returns [EObject current=null]
 						set(
 							$current,
 							"expression",
-							lv_expression_35_0,
+							lv_expression_40_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Expression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_36=','
+			otherlv_41=','
 			{
-				newLeafNode(otherlv_36, grammarAccess.getOperatorAccess().getCommaKeyword_6_4());
+				newLeafNode(otherlv_41, grammarAccess.getOperatorAccess().getCommaKeyword_7_4());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getThresholdExpressionParserRuleCall_6_5_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getThresholdExpressionParserRuleCall_7_5_0());
 					}
-					lv_threshold_37_0=ruleExpression
+					lv_threshold_42_0=ruleExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2076,15 +2117,15 @@ ruleOperator returns [EObject current=null]
 						set(
 							$current,
 							"threshold",
-							lv_threshold_37_0,
+							lv_threshold_42_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Expression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_38=')'
+			otherlv_43=')'
 			{
-				newLeafNode(otherlv_38, grammarAccess.getOperatorAccess().getRightParenthesisKeyword_6_6());
+				newLeafNode(otherlv_43, grammarAccess.getOperatorAccess().getRightParenthesisKeyword_7_6());
 			}
 		)
 		    |
@@ -2092,20 +2133,20 @@ ruleOperator returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getOperatorAccess().getListIterationAction_7_0(),
+						grammarAccess.getOperatorAccess().getListIterationAction_8_0(),
 						$current);
 				}
 			)
-			otherlv_40='do'
+			otherlv_45='map'
 			{
-				newLeafNode(otherlv_40, grammarAccess.getOperatorAccess().getDoKeyword_7_1());
+				newLeafNode(otherlv_45, grammarAccess.getOperatorAccess().getMapKeyword_8_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_7_2_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_8_2_0());
 					}
-					lv_expression_41_0=ruleTopLevelExpression
+					lv_expression_46_0=ruleTopLevelExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2113,22 +2154,22 @@ ruleOperator returns [EObject current=null]
 						set(
 							$current,
 							"expression",
-							lv_expression_41_0,
+							lv_expression_46_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.TopLevelExpression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_42='for'
+			otherlv_47='for'
 			{
-				newLeafNode(otherlv_42, grammarAccess.getOperatorAccess().getForKeyword_7_3());
+				newLeafNode(otherlv_47, grammarAccess.getOperatorAccess().getForKeyword_8_3());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_7_4_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_8_4_0());
 					}
-					lv_iterators_43_0=ruleListIterator
+					lv_iterators_48_0=ruleListIterator
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2136,22 +2177,22 @@ ruleOperator returns [EObject current=null]
 						add(
 							$current,
 							"iterators",
-							lv_iterators_43_0,
+							lv_iterators_48_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_44='in'
+			otherlv_49='in'
 			{
-				newLeafNode(otherlv_44, grammarAccess.getOperatorAccess().getInKeyword_7_5());
+				newLeafNode(otherlv_49, grammarAccess.getOperatorAccess().getInKeyword_8_5());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_7_6_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_8_6_0());
 					}
-					lv_lists_45_0=rulePrimary
+					lv_lists_50_0=rulePrimary
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2159,23 +2200,23 @@ ruleOperator returns [EObject current=null]
 						add(
 							$current,
 							"lists",
-							lv_lists_45_0,
+							lv_lists_50_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_46=','
+				otherlv_51=','
 				{
-					newLeafNode(otherlv_46, grammarAccess.getOperatorAccess().getCommaKeyword_7_7_0());
+					newLeafNode(otherlv_51, grammarAccess.getOperatorAccess().getCommaKeyword_8_7_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_7_7_1_0());
+							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_8_7_1_0());
 						}
-						lv_iterators_47_0=ruleListIterator
+						lv_iterators_52_0=ruleListIterator
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2183,22 +2224,22 @@ ruleOperator returns [EObject current=null]
 							add(
 								$current,
 								"iterators",
-								lv_iterators_47_0,
+								lv_iterators_52_0,
 								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				otherlv_48='in'
+				otherlv_53='in'
 				{
-					newLeafNode(otherlv_48, grammarAccess.getOperatorAccess().getInKeyword_7_7_2());
+					newLeafNode(otherlv_53, grammarAccess.getOperatorAccess().getInKeyword_8_7_2());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_7_7_3_0());
+							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_8_7_3_0());
 						}
-						lv_lists_49_0=rulePrimary
+						lv_lists_54_0=rulePrimary
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2206,7 +2247,7 @@ ruleOperator returns [EObject current=null]
 							add(
 								$current,
 								"lists",
-								lv_lists_49_0,
+								lv_lists_54_0,
 								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
 							afterParserOrEnumRuleCall();
 						}
@@ -2219,20 +2260,20 @@ ruleOperator returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getOperatorAccess().getListReduceAction_8_0(),
+						grammarAccess.getOperatorAccess().getListReduceAction_9_0(),
 						$current);
 				}
 			)
-			otherlv_51='reduce'
+			otherlv_56='reduce'
 			{
-				newLeafNode(otherlv_51, grammarAccess.getOperatorAccess().getReduceKeyword_8_1());
+				newLeafNode(otherlv_56, grammarAccess.getOperatorAccess().getReduceKeyword_9_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_8_2_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_9_2_0());
 					}
-					lv_expression_52_0=ruleTopLevelExpression
+					lv_expression_57_0=ruleTopLevelExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2240,22 +2281,22 @@ ruleOperator returns [EObject current=null]
 						set(
 							$current,
 							"expression",
-							lv_expression_52_0,
+							lv_expression_57_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.TopLevelExpression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_53='starting'
+			otherlv_58='starting'
 			{
-				newLeafNode(otherlv_53, grammarAccess.getOperatorAccess().getStartingKeyword_8_3());
+				newLeafNode(otherlv_58, grammarAccess.getOperatorAccess().getStartingKeyword_9_3());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getAccumulatorPrimaryParserRuleCall_8_4_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getAccumulatorPrimaryParserRuleCall_9_4_0());
 					}
-					lv_accumulator_54_0=rulePrimary
+					lv_accumulator_59_0=rulePrimary
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2263,22 +2304,22 @@ ruleOperator returns [EObject current=null]
 						set(
 							$current,
 							"accumulator",
-							lv_accumulator_54_0,
+							lv_accumulator_59_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_55='for'
+			otherlv_60='for'
 			{
-				newLeafNode(otherlv_55, grammarAccess.getOperatorAccess().getForKeyword_8_5());
+				newLeafNode(otherlv_60, grammarAccess.getOperatorAccess().getForKeyword_9_5());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_8_6_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_9_6_0());
 					}
-					lv_iterators_56_0=ruleListIterator
+					lv_iterators_61_0=ruleListIterator
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2286,22 +2327,22 @@ ruleOperator returns [EObject current=null]
 						add(
 							$current,
 							"iterators",
-							lv_iterators_56_0,
+							lv_iterators_61_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_57='in'
+			otherlv_62='in'
 			{
-				newLeafNode(otherlv_57, grammarAccess.getOperatorAccess().getInKeyword_8_7());
+				newLeafNode(otherlv_62, grammarAccess.getOperatorAccess().getInKeyword_9_7());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_8_8_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_9_8_0());
 					}
-					lv_lists_58_0=rulePrimary
+					lv_lists_63_0=rulePrimary
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2309,23 +2350,23 @@ ruleOperator returns [EObject current=null]
 						add(
 							$current,
 							"lists",
-							lv_lists_58_0,
+							lv_lists_63_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_59=','
+				otherlv_64=','
 				{
-					newLeafNode(otherlv_59, grammarAccess.getOperatorAccess().getCommaKeyword_8_9_0());
+					newLeafNode(otherlv_64, grammarAccess.getOperatorAccess().getCommaKeyword_9_9_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_8_9_1_0());
+							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_9_9_1_0());
 						}
-						lv_iterators_60_0=ruleListIterator
+						lv_iterators_65_0=ruleListIterator
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2333,22 +2374,22 @@ ruleOperator returns [EObject current=null]
 							add(
 								$current,
 								"iterators",
-								lv_iterators_60_0,
+								lv_iterators_65_0,
 								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				otherlv_61='in'
+				otherlv_66='in'
 				{
-					newLeafNode(otherlv_61, grammarAccess.getOperatorAccess().getInKeyword_8_9_2());
+					newLeafNode(otherlv_66, grammarAccess.getOperatorAccess().getInKeyword_9_9_2());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_8_9_3_0());
+							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_9_9_3_0());
 						}
-						lv_lists_62_0=rulePrimary
+						lv_lists_67_0=rulePrimary
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2356,7 +2397,7 @@ ruleOperator returns [EObject current=null]
 							add(
 								$current,
 								"lists",
-								lv_lists_62_0,
+								lv_lists_67_0,
 								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
 							afterParserOrEnumRuleCall();
 						}
@@ -2369,20 +2410,20 @@ ruleOperator returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getOperatorAccess().getListFilterAction_9_0(),
+						grammarAccess.getOperatorAccess().getListFilterAction_10_0(),
 						$current);
 				}
 			)
-			otherlv_64='filter'
+			otherlv_69='filter'
 			{
-				newLeafNode(otherlv_64, grammarAccess.getOperatorAccess().getFilterKeyword_9_1());
+				newLeafNode(otherlv_69, grammarAccess.getOperatorAccess().getFilterKeyword_10_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_9_2_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getExpressionTopLevelExpressionParserRuleCall_10_2_0());
 					}
-					lv_expression_65_0=ruleTopLevelExpression
+					lv_expression_70_0=ruleTopLevelExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2390,22 +2431,22 @@ ruleOperator returns [EObject current=null]
 						set(
 							$current,
 							"expression",
-							lv_expression_65_0,
+							lv_expression_70_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.TopLevelExpression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_66='for'
+			otherlv_71='for'
 			{
-				newLeafNode(otherlv_66, grammarAccess.getOperatorAccess().getForKeyword_9_3());
+				newLeafNode(otherlv_71, grammarAccess.getOperatorAccess().getForKeyword_10_3());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_9_4_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_10_4_0());
 					}
-					lv_iterators_67_0=ruleListIterator
+					lv_iterators_72_0=ruleListIterator
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2413,22 +2454,22 @@ ruleOperator returns [EObject current=null]
 						add(
 							$current,
 							"iterators",
-							lv_iterators_67_0,
+							lv_iterators_72_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_68='in'
+			otherlv_73='in'
 			{
-				newLeafNode(otherlv_68, grammarAccess.getOperatorAccess().getInKeyword_9_5());
+				newLeafNode(otherlv_73, grammarAccess.getOperatorAccess().getInKeyword_10_5());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_9_6_0());
+						newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_10_6_0());
 					}
-					lv_lists_69_0=rulePrimary
+					lv_lists_74_0=rulePrimary
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2436,23 +2477,23 @@ ruleOperator returns [EObject current=null]
 						add(
 							$current,
 							"lists",
-							lv_lists_69_0,
+							lv_lists_74_0,
 							"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			(
-				otherlv_70=','
+				otherlv_75=','
 				{
-					newLeafNode(otherlv_70, grammarAccess.getOperatorAccess().getCommaKeyword_9_7_0());
+					newLeafNode(otherlv_75, grammarAccess.getOperatorAccess().getCommaKeyword_10_7_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_9_7_1_0());
+							newCompositeNode(grammarAccess.getOperatorAccess().getIteratorsListIteratorParserRuleCall_10_7_1_0());
 						}
-						lv_iterators_71_0=ruleListIterator
+						lv_iterators_76_0=ruleListIterator
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2460,22 +2501,22 @@ ruleOperator returns [EObject current=null]
 							add(
 								$current,
 								"iterators",
-								lv_iterators_71_0,
+								lv_iterators_76_0,
 								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.ListIterator");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				otherlv_72='in'
+				otherlv_77='in'
 				{
-					newLeafNode(otherlv_72, grammarAccess.getOperatorAccess().getInKeyword_9_7_2());
+					newLeafNode(otherlv_77, grammarAccess.getOperatorAccess().getInKeyword_10_7_2());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_9_7_3_0());
+							newCompositeNode(grammarAccess.getOperatorAccess().getListsPrimaryParserRuleCall_10_7_3_0());
 						}
-						lv_lists_73_0=rulePrimary
+						lv_lists_78_0=rulePrimary
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getOperatorRule());
@@ -2483,7 +2524,7 @@ ruleOperator returns [EObject current=null]
 							add(
 								$current,
 								"lists",
-								lv_lists_73_0,
+								lv_lists_78_0,
 								"lu.list.swrdi.formulaKPI.KPIFormulaDSL.Primary");
 							afterParserOrEnumRuleCall();
 						}
@@ -2493,11 +2534,11 @@ ruleOperator returns [EObject current=null]
 		)
 		    |
 		{
-			newCompositeNode(grammarAccess.getOperatorAccess().getPrimaryParserRuleCall_10());
+			newCompositeNode(grammarAccess.getOperatorAccess().getPrimaryParserRuleCall_11());
 		}
-		this_Primary_74=rulePrimary
+		this_Primary_79=rulePrimary
 		{
-			$current = $this_Primary_74.current;
+			$current = $this_Primary_79.current;
 			afterParserOrEnumRuleCall();
 		}
 	)

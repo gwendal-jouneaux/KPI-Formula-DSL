@@ -58,6 +58,7 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.QualityModel;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.RealConstant;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.RealValue;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.StandardDeviation;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.TextConstant;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.TextualValue;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.ThresholdOp;
@@ -442,6 +443,13 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * @generated
 	 */
 	private EClass weightedSumOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sumOpEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1407,6 +1415,24 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSumOp() {
+		return sumOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSumOp_List() {
+		return (EReference) sumOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAvgOp() {
 		return avgOpEClass;
 	}
@@ -1830,6 +1856,9 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 		createEReference(weightedSumOpEClass, WEIGHTED_SUM_OP__LIST);
 		createEReference(weightedSumOpEClass, WEIGHTED_SUM_OP__WEIGHTS);
 
+		sumOpEClass = createEClass(SUM_OP);
+		createEReference(sumOpEClass, SUM_OP__LIST);
+
 		avgOpEClass = createEClass(AVG_OP);
 		createEReference(avgOpEClass, AVG_OP__LIST);
 
@@ -1946,6 +1975,7 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 		conditionalOpEClass.getESuperTypes().add(this.getExpression());
 		thresholdOpEClass.getESuperTypes().add(this.getExpression());
 		weightedSumOpEClass.getESuperTypes().add(this.getExpression());
+		sumOpEClass.getESuperTypes().add(this.getExpression());
 		avgOpEClass.getESuperTypes().add(this.getExpression());
 		maxOpEClass.getESuperTypes().add(this.getExpression());
 		listOperationEClass.getESuperTypes().add(this.getExpression());
@@ -2198,6 +2228,11 @@ public class formulaKPIPackageImpl extends EPackageImpl implements formulaKPIPac
 		initEReference(getWeightedSumOp_Weights(), this.getExpression(), null, "weights", null, 1, 1,
 				WeightedSumOp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(sumOpEClass, SumOp.class, "SumOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSumOp_List(), this.getExpression(), null, "list", null, 1, 1, SumOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(avgOpEClass, AvgOp.class, "AvgOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAvgOp_List(), this.getExpression(), null, "list", null, 1, 1, AvgOp.class, !IS_TRANSIENT,

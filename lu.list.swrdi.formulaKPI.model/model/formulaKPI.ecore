@@ -160,6 +160,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="weights" lowerBound="1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SumOp" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="list" lowerBound="1" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AvgOp" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="list" lowerBound="1" eType="#//Expression"
         containment="true"/>

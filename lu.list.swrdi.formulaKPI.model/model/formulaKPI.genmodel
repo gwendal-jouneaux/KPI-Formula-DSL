@@ -141,6 +141,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//WeightedSumOp/list"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//WeightedSumOp/weights"/>
     </genClasses>
+    <genClasses ecoreClass="formulaKPI.ecore#//SumOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//SumOp/list"/>
+    </genClasses>
     <genClasses ecoreClass="formulaKPI.ecore#//AvgOp">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference formulaKPI.ecore#//AvgOp/list"/>
     </genClasses>

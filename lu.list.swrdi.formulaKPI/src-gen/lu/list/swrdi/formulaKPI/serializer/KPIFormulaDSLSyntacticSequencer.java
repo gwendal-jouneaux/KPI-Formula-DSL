@@ -61,12 +61,13 @@ public class KPIFormulaDSLSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     (rule start) (ambiguity) 'AVERAGE' '(' list=Expression
 	 *     (rule start) (ambiguity) 'MAX' '(' list=Expression
 	 *     (rule start) (ambiguity) 'MIN' '(' list=Expression
+	 *     (rule start) (ambiguity) 'SUM' '(' list=Expression
 	 *     (rule start) (ambiguity) 'THRESHOLD' '(' expression=Expression
 	 *     (rule start) (ambiguity) 'WEIGHTED_SUM' '(' list=Expression
 	 *     (rule start) (ambiguity) '[' elements+=Expression
 	 *     (rule start) (ambiguity) 'accumulator' (rule start)
-	 *     (rule start) (ambiguity) 'do' expression=TopLevelExpression
 	 *     (rule start) (ambiguity) 'filter' expression=TopLevelExpression
+	 *     (rule start) (ambiguity) 'map' expression=TopLevelExpression
 	 *     (rule start) (ambiguity) 'reduce' expression=TopLevelExpression
 	 *     (rule start) (ambiguity) '|' expression=Expression
 	 *     (rule start) (ambiguity) computable=[Computable|ID]
@@ -104,11 +105,12 @@ public class KPIFormulaDSLSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     (rule start) (ambiguity) 'AVERAGE' '(' list=Expression
 	 *     (rule start) (ambiguity) 'MAX' '(' list=Expression
 	 *     (rule start) (ambiguity) 'MIN' '(' list=Expression
+	 *     (rule start) (ambiguity) 'SUM' '(' list=Expression
 	 *     (rule start) (ambiguity) 'THRESHOLD' '(' expression=Expression
 	 *     (rule start) (ambiguity) 'WEIGHTED_SUM' '(' list=Expression
 	 *     (rule start) (ambiguity) '[' elements+=Expression
-	 *     (rule start) (ambiguity) 'do' expression=TopLevelExpression
 	 *     (rule start) (ambiguity) 'filter' expression=TopLevelExpression
+	 *     (rule start) (ambiguity) 'map' expression=TopLevelExpression
 	 *     (rule start) (ambiguity) 'reduce' expression=TopLevelExpression
 	 *     (rule start) (ambiguity) '|' expression=Expression
 	 *     (rule start) (ambiguity) {And.left=}
