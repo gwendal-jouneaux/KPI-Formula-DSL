@@ -23,6 +23,7 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.IntConstant;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.KPI;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Less;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.LessEq;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Metric;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp;
@@ -39,6 +40,7 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.UnitConstant;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.DoubleExtensions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.XbaseGenerated;
@@ -53,8 +55,8 @@ public class KPIFormulaEvaluator implements KPIFormula {
 
   public KPIFormulaEvaluator(final lu.list.swrdi.formulaKPI.model.formulaKPI.KPIFormula ast) {
     this.ast = ast;
-    this.computedValues = null;
-    this.computedKPIs = null;
+    this.computedValues = CollectionLiterals.<String, Value>newHashMap();
+    this.computedKPIs = CollectionLiterals.<String, Value>newHashMap();
   }
 
   @Override
@@ -65,7 +67,7 @@ public class KPIFormulaEvaluator implements KPIFormula {
       {
         final Value value = this.computedKPIs.get(kpi);
         if ((value instanceof Value.DoubleValue)) {
-          return (((Value.DoubleValue)value).getValue()).doubleValue();
+          return (((Value.DoubleValue) value).getValue()).doubleValue();
         }
       }
     }
@@ -85,7 +87,7 @@ public class KPIFormulaEvaluator implements KPIFormula {
   }
 
   protected Value _interpret(final Declaration node, final Map<?, Double> metricValues) {
-    return new Value.NullValue();
+    return this.interpret(node.getDeclared(), metricValues);
   }
 
   protected Value _interpret(final Computation node, final Map<?, Double> metricValues) {
@@ -457,6 +459,15 @@ public class KPIFormulaEvaluator implements KPIFormula {
     return new Value.DoubleValue(0);
   }
 
+  protected Value _interpret(final ListLiteral node, final Map<?, Double> metricValues) {
+    final Value.ListValue<Object> result = new Value.ListValue<Object>();
+    EList<Expression> _elements = node.getElements();
+    for (final Expression elem : _elements) {
+      result.getValue().add(this.interpret(elem, metricValues));
+    }
+    return result;
+  }
+
   @XbaseGenerated
   public Value interpret(final EObject node, final Map<?, Double> metricValues) {
     if (node instanceof And) {
@@ -481,6 +492,8 @@ public class KPIFormulaEvaluator implements KPIFormula {
       return _interpret((Less)node, metricValues);
     } else if (node instanceof LessEq) {
       return _interpret((LessEq)node, metricValues);
+    } else if (node instanceof ListLiteral) {
+      return _interpret((ListLiteral)node, metricValues);
     } else if (node instanceof Metric) {
       return _interpret((Metric)node, metricValues);
     } else if (node instanceof Minus) {

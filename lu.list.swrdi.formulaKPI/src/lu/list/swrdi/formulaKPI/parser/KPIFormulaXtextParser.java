@@ -29,6 +29,10 @@ public class KPIFormulaXtextParser implements KPIFormulaParser {
 
 	@Override
 	public DslParseResult parse(String dslExpression) {
+		if (dslExpression == null) {
+			return DslParseResult.failure(new DslValidationError(0, 0, "DSL expression cannot be null"), null);
+		}
+		
 		Resource resource;
 		try {
 			resource = getResourceFor(dslExpression);
@@ -37,10 +41,14 @@ public class KPIFormulaXtextParser implements KPIFormulaParser {
 			return DslParseResult.failure(new DslValidationError(0,0, "Error in EMF resource creation"), dslExpression);
 		}
 		
+		if (resource.getContents().isEmpty()) {
+			return DslParseResult.failure(new DslValidationError(0, 0, "Empty or invalid DSL expression"), dslExpression);
+		}
+		
 		KPIFormula formulas = (KPIFormula) resource.getContents().get(0);
 		Set<String> usedMetrics = EcoreUtil2.getAllContentsOfType(formulas, ComputableRef.class).stream()
-									.filter(elem -> elem.getComputable() instanceof Metric)
-									.map(metric -> ((Computable) metric).getName())
+									.filter(ref -> ref.getComputable() instanceof Metric)
+									.map(ref -> ref.getComputable().getName())
 									.collect(Collectors.toSet());
 		
 		usedMetrics.retainAll(getKnownMetricKeys());
@@ -67,10 +75,15 @@ public class KPIFormulaXtextParser implements KPIFormulaParser {
 		}
 	}
 	
+	private static Injector parserInjector = null;
+	
 	private Resource getResourceFor(String code) throws IOException {
-		Injector injector = new KPIFormulaDSLStandaloneSetup().createInjectorAndDoEMFRegistration();
-		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
-		Resource resource = resourceSet.createResource(URI.createURI("temp"));
+		if (parserInjector == null) {
+			parserInjector = new KPIFormulaDSLStandaloneSetup().createInjectorAndDoEMFRegistration();
+		}
+		XtextResourceSet resourceSet = parserInjector.getInstance(XtextResourceSet.class);
+		// IMPORTANT: use .kpi extension as registered in StandaloneSetupGenerated
+		Resource resource = resourceSet.createResource(URI.createURI("temp.kpi"));
 		resource.load(new ByteArrayInputStream(code.getBytes()), null);
 		return resource;
 	}

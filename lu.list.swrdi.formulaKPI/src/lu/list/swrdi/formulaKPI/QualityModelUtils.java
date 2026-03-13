@@ -8,7 +8,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Computable;
@@ -21,6 +20,7 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.formulaKPIFactory;
 public class QualityModelUtils {
 	
 	private static Resource resourceQM = null;
+	private static Injector injector = null;
 	
 	public static void populateQualityModelResource() {
         String[] characs = {"Functional_Suitability", 
@@ -77,22 +77,24 @@ public class QualityModelUtils {
     public static void updateQualityModelResource() {
     	if(QualityModelUtils.resourceQM != null) return;
     	
-    	Injector injector = Guice.createInjector(new KPIFormulaDSLRuntimeModule());
+    	// Use the StandaloneSetup to properly register EMF factories and Xtext infrastructure
+    	if(injector == null) {
+    		injector = new KPIFormulaDSLStandaloneSetup().createInjectorAndDoEMFRegistration();
+    	}
         XtextResourceSet rs = injector.getInstance(XtextResourceSet.class);
-        URI uri = URI.createPlatformResourceURI("lu.list.swrdi.formulaKPI.model/quality-model", true);
-        Resource resource = rs.getResource(uri, false);
-        if(resource == null) {
-        	QualityModelUtils.resourceQM = rs.createResource(uri);
+        
+        // IMPORTANT: Use .kpi extension as registered in KPIFormulaDSLStandaloneSetupGenerated
+        URI uri = URI.createURI("__quality_model__.kpi");
+        QualityModelUtils.resourceQM = rs.createResource(uri);
+        if(QualityModelUtils.resourceQM != null) {
         	QualityModelUtils.populateQualityModelResource();
-        } else {
-        	QualityModelUtils.resourceQM = resource;
         }
     }
     
     @SuppressWarnings("unchecked") // The QM is only composed of Computable
 	public static Collection<? extends Computable> getQualityModelElements() {
     	QualityModelUtils.updateQualityModelResource();
-    	return (Collection<? extends Computable>) QualityModelUtils.resourceQM.getContents();
+    	return (Collection<? extends Computable>) (Collection<?>) QualityModelUtils.resourceQM.getContents();
     }
     
     public static void addMetric(String metricName) {
