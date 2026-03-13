@@ -1,10 +1,12 @@
 package lu.list.swrdi.formulaKPI.evaluation;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.Accumulator;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.And;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.BoolConstant;
@@ -23,7 +25,12 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.IntConstant;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.KPI;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Less;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.LessEq;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListFilter;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListIteration;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListIterator;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Metric;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp;
@@ -33,6 +40,7 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.Not;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Or;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Plus;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.RealConstant;
+import lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.TextConstant;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.ThresholdOp;
 import lu.list.swrdi.formulaKPI.model.formulaKPI.UnaryMinus;
@@ -53,10 +61,13 @@ public class KPIFormulaEvaluator implements KPIFormula {
 
   private Map<String, Value> computedKPIs;
 
+  private List<Value> accumulators;
+
   public KPIFormulaEvaluator(final lu.list.swrdi.formulaKPI.model.formulaKPI.KPIFormula ast) {
     this.ast = ast;
     this.computedValues = CollectionLiterals.<String, Value>newHashMap();
     this.computedKPIs = CollectionLiterals.<String, Value>newHashMap();
+    this.accumulators = CollectionLiterals.<Value>newArrayList();
   }
 
   @Override
@@ -385,6 +396,19 @@ public class KPIFormulaEvaluator implements KPIFormula {
     return new Value.DoubleValue(sum);
   }
 
+  protected Value _interpret(final SumOp node, final Map<?, Double> metricValues) {
+    double sum = 0.0;
+    Value _interpret = this.interpret(node.getList(), metricValues);
+    final List elements = ((Value.ListValue) _interpret).getValue();
+    for (int i = 0; (i < elements.size()); i++) {
+      double _sum = sum;
+      Object _get = elements.get(i);
+      Double _value = ((Value.DoubleValue) _get).getValue();
+      sum = (_sum + (_value).doubleValue());
+    }
+    return new Value.DoubleValue(sum);
+  }
+
   protected Value _interpret(final MinOp node, final Map<?, Double> metricValues) {
     Value _interpret = this.interpret(node.getList(), metricValues);
     final List<Value<Value>> elements = ((Value.ListValue<Value>) _interpret).getValue();
@@ -468,6 +492,180 @@ public class KPIFormulaEvaluator implements KPIFormula {
     return result;
   }
 
+  protected Value _interpret(final ListIteration node, final Map<?, Double> metricValues) {
+    final List<List<Value>> lists = CollectionLiterals.<List<Value>>newArrayList();
+    int minSize = Integer.MAX_VALUE;
+    for (int i = 0; (i < node.getLists().size()); i++) {
+      {
+        final Value value = this.interpret(node.getLists().get(i), metricValues);
+        if ((value instanceof Value.ListValue)) {
+          lists.add(((Value.ListValue)value).getValue());
+          int _size = ((Value.ListValue)value).getValue().size();
+          boolean _lessThan = (_size < minSize);
+          if (_lessThan) {
+            minSize = ((Value.ListValue)value).getValue().size();
+          }
+          String _name = node.getIterators().get(i).getName();
+          Value.DoubleValue _doubleValue = new Value.DoubleValue(0);
+          this.computedValues.put(_name, _doubleValue);
+        } else {
+          lists.add(null);
+          this.computedValues.put(node.getIterators().get(i).getName(), value);
+        }
+      }
+    }
+    final ArrayList<Value<Object>> result = CollectionLiterals.<Value<Object>>newArrayList();
+    for (int i = 0; (i < minSize); i++) {
+      {
+        for (int listIndex = 0; (listIndex < lists.size()); listIndex++) {
+          {
+            final List<Value> list = lists.get(listIndex);
+            final String iterator = node.getIterators().get(listIndex).getName();
+            if ((list != null)) {
+              this.computedValues.replace(iterator, list.get(i));
+            }
+          }
+        }
+        final Value value = this.interpret(node.getExpression(), metricValues);
+        result.add(value);
+      }
+    }
+    EList<ListIterator> _iterators = node.getIterators();
+    for (final ListIterator iterator : _iterators) {
+      this.computedValues.remove(iterator.getName());
+    }
+    return new Value.ListValue<Object>(result);
+  }
+
+  protected Value _interpret(final ListReduce node, final Map<?, Double> metricValues) {
+    final List<List<Value>> lists = CollectionLiterals.<List<Value>>newArrayList();
+    int minSize = Integer.MAX_VALUE;
+    final Value start = this.interpret(node.getAccumulator(), metricValues);
+    this.accumulators.addLast(start);
+    for (int i = 0; (i < node.getLists().size()); i++) {
+      {
+        final Value value = this.interpret(node.getLists().get(i), metricValues);
+        if ((value instanceof Value.ListValue)) {
+          lists.add(((Value.ListValue)value).getValue());
+          int _size = ((Value.ListValue)value).getValue().size();
+          boolean _lessThan = (_size < minSize);
+          if (_lessThan) {
+            minSize = ((Value.ListValue)value).getValue().size();
+          }
+          String _name = node.getIterators().get(i).getName();
+          Value.DoubleValue _doubleValue = new Value.DoubleValue(0);
+          this.computedValues.put(_name, _doubleValue);
+        } else {
+          lists.add(null);
+          this.computedValues.put(node.getIterators().get(i).getName(), value);
+        }
+      }
+    }
+    for (int i = 0; (i < minSize); i++) {
+      {
+        for (int listIndex = 0; (listIndex < lists.size()); listIndex++) {
+          {
+            final List<Value> list = lists.get(listIndex);
+            final String iterator = node.getIterators().get(listIndex).getName();
+            if ((list != null)) {
+              this.computedValues.replace(iterator, list.get(i));
+            }
+          }
+        }
+        int _size = this.accumulators.size();
+        int _minus = (_size - 1);
+        this.accumulators.set(_minus, this.interpret(node.getExpression(), metricValues));
+      }
+    }
+    final Value result = this.accumulators.getLast();
+    this.accumulators.removeLast();
+    EList<ListIterator> _iterators = node.getIterators();
+    for (final ListIterator iterator : _iterators) {
+      this.computedValues.remove(iterator.getName());
+    }
+    return result;
+  }
+
+  protected Value _interpret(final ListFilter node, final Map<?, Double> metricValues) {
+    final List<List<Value>> lists = CollectionLiterals.<List<Value>>newArrayList();
+    int minSize = Integer.MAX_VALUE;
+    for (int i = 0; (i < node.getLists().size()); i++) {
+      {
+        final Value value = this.interpret(node.getLists().get(i), metricValues);
+        if ((value instanceof Value.ListValue)) {
+          lists.add(((Value.ListValue)value).getValue());
+          int _size = ((Value.ListValue)value).getValue().size();
+          boolean _lessThan = (_size < minSize);
+          if (_lessThan) {
+            minSize = ((Value.ListValue)value).getValue().size();
+          }
+          String _name = node.getIterators().get(i).getName();
+          Value.DoubleValue _doubleValue = new Value.DoubleValue(0);
+          this.computedValues.put(_name, _doubleValue);
+        } else {
+          lists.add(null);
+          this.computedValues.put(node.getIterators().get(i).getName(), value);
+        }
+      }
+    }
+    final ArrayList<Value<?>> result = CollectionLiterals.<Value<?>>newArrayList();
+    for (int i = 0; (i < minSize); i++) {
+      {
+        for (int listIndex = 0; (listIndex < lists.size()); listIndex++) {
+          {
+            final List<Value> list = lists.get(listIndex);
+            final String iterator = node.getIterators().get(listIndex).getName();
+            if ((list != null)) {
+              this.computedValues.replace(iterator, list.get(i));
+            }
+          }
+        }
+        final Value predicate = this.interpret(node.getExpression(), metricValues);
+        int _compareTo = predicate.compareTo(Double.valueOf(0.5));
+        boolean _greaterThan = (_compareTo > 0);
+        if (_greaterThan) {
+          final List<Value<?>> elems = CollectionLiterals.<Value<?>>newArrayList();
+          EList<ListIterator> _iterators = node.getIterators();
+          for (final ListIterator iterator : _iterators) {
+            elems.add(this.computedValues.get(iterator.getName()));
+          }
+          int _size = elems.size();
+          boolean _equals = (_size == 1);
+          if (_equals) {
+            result.add(elems.getFirst());
+          } else {
+            Value.ListValue<?> _listValue = new Value.ListValue(elems);
+            result.add(_listValue);
+          }
+        }
+      }
+    }
+    EList<ListIterator> _iterators = node.getIterators();
+    for (final ListIterator iterator : _iterators) {
+      this.computedValues.remove(iterator.getName());
+    }
+    return new Value.ListValue(result);
+  }
+
+  protected Value _interpret(final ListSize node, final Map<?, Double> metricValues) {
+    final Value result = this.interpret(node.getExpression(), metricValues);
+    if ((result instanceof Value.ListValue)) {
+      int _size = ((Value.ListValue)result).getValue().size();
+      return new Value.DoubleValue(_size);
+    }
+    Value.DoubleValue _xifexpression = null;
+    if ((result instanceof Value.DoubleValue)) {
+      _xifexpression = new Value.DoubleValue(0);
+    } else {
+      _xifexpression = new Value.DoubleValue(1);
+    }
+    return _xifexpression;
+  }
+
+  protected Value _interpret(final Accumulator node, final Map<?, Double> metricValues) {
+    return IterableExtensions.<Value>lastOrNull(this.accumulators);
+  }
+
   @XbaseGenerated
   public Value interpret(final EObject node, final Map<?, Double> metricValues) {
     if (node instanceof And) {
@@ -492,8 +690,14 @@ public class KPIFormulaEvaluator implements KPIFormula {
       return _interpret((Less)node, metricValues);
     } else if (node instanceof LessEq) {
       return _interpret((LessEq)node, metricValues);
+    } else if (node instanceof ListFilter) {
+      return _interpret((ListFilter)node, metricValues);
+    } else if (node instanceof ListIteration) {
+      return _interpret((ListIteration)node, metricValues);
     } else if (node instanceof ListLiteral) {
       return _interpret((ListLiteral)node, metricValues);
+    } else if (node instanceof ListReduce) {
+      return _interpret((ListReduce)node, metricValues);
     } else if (node instanceof Metric) {
       return _interpret((Metric)node, metricValues);
     } else if (node instanceof Minus) {
@@ -510,6 +714,8 @@ public class KPIFormulaEvaluator implements KPIFormula {
       return _interpret((TextConstant)node, metricValues);
     } else if (node instanceof UnitConstant) {
       return _interpret((UnitConstant)node, metricValues);
+    } else if (node instanceof Accumulator) {
+      return _interpret((Accumulator)node, metricValues);
     } else if (node instanceof AvgOp) {
       return _interpret((AvgOp)node, metricValues);
     } else if (node instanceof ComputableRef) {
@@ -518,12 +724,16 @@ public class KPIFormulaEvaluator implements KPIFormula {
       return _interpret((ConditionalOp)node, metricValues);
     } else if (node instanceof EnumLiteralRef) {
       return _interpret((EnumLiteralRef)node, metricValues);
+    } else if (node instanceof ListSize) {
+      return _interpret((ListSize)node, metricValues);
     } else if (node instanceof MaxOp) {
       return _interpret((MaxOp)node, metricValues);
     } else if (node instanceof MinOp) {
       return _interpret((MinOp)node, metricValues);
     } else if (node instanceof Not) {
       return _interpret((Not)node, metricValues);
+    } else if (node instanceof SumOp) {
+      return _interpret((SumOp)node, metricValues);
     } else if (node instanceof ThresholdOp) {
       return _interpret((ThresholdOp)node, metricValues);
     } else if (node instanceof UnaryMinus) {

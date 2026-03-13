@@ -1,6 +1,11 @@
 package lu.list.swrdi.formulaKPI.evaluation
 
+import java.util.List
 import java.util.Map
+import lu.list.swrdi.formulaKPI.evaluation.Value.DoubleValue
+import lu.list.swrdi.formulaKPI.evaluation.Value.ListValue
+import lu.list.swrdi.formulaKPI.evaluation.Value.NullValue
+import lu.list.swrdi.formulaKPI.model.formulaKPI.Accumulator
 import lu.list.swrdi.formulaKPI.model.formulaKPI.And
 import lu.list.swrdi.formulaKPI.model.formulaKPI.AvgOp
 import lu.list.swrdi.formulaKPI.model.formulaKPI.BoolConstant
@@ -19,7 +24,11 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.KPI
 import lu.list.swrdi.formulaKPI.model.formulaKPI.KPIFormula
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Less
 import lu.list.swrdi.formulaKPI.model.formulaKPI.LessEq
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListFilter
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListIteration
 import lu.list.swrdi.formulaKPI.model.formulaKPI.ListLiteral
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListReduce
+import lu.list.swrdi.formulaKPI.model.formulaKPI.ListSize
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MaxOp
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Metric
 import lu.list.swrdi.formulaKPI.model.formulaKPI.MinOp
@@ -29,24 +38,24 @@ import lu.list.swrdi.formulaKPI.model.formulaKPI.Not
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Or
 import lu.list.swrdi.formulaKPI.model.formulaKPI.Plus
 import lu.list.swrdi.formulaKPI.model.formulaKPI.RealConstant
+import lu.list.swrdi.formulaKPI.model.formulaKPI.SumOp
 import lu.list.swrdi.formulaKPI.model.formulaKPI.TextConstant
 import lu.list.swrdi.formulaKPI.model.formulaKPI.ThresholdOp
 import lu.list.swrdi.formulaKPI.model.formulaKPI.UnaryMinus
 import lu.list.swrdi.formulaKPI.model.formulaKPI.UnitConstant
 import lu.list.swrdi.formulaKPI.model.formulaKPI.WeightedSumOp
-import lu.list.swrdi.formulaKPI.evaluation.Value.NullValue
-import lu.list.swrdi.formulaKPI.evaluation.Value.ListValue
-import lu.list.swrdi.formulaKPI.evaluation.Value.DoubleValue
 
 class KPIFormulaEvaluator implements lu.list.swrdi.formulaKPI.evaluation.KPIFormula {
 	KPIFormula ast;
 	Map<String, Value> computedValues;
 	Map<String, Value> computedKPIs;
+	List<Value> accumulators;
 	
 	new(KPIFormula ast) {
 		this.ast = ast
 		this.computedValues = newHashMap()
 		this.computedKPIs = newHashMap()
+		this.accumulators = newArrayList()
 	}	
 	
 	override evaluate(Map<?, Double> metricValues) {
@@ -262,6 +271,15 @@ class KPIFormulaEvaluator implements lu.list.swrdi.formulaKPI.evaluation.KPIForm
 		return new DoubleValue(sum)
 	}
 	
+	def dispatch Value interpret(SumOp node, Map<?, Double> metricValues){
+		var sum = 0.0
+		val elements = (node.list.interpret(metricValues) as ListValue).value
+		for(var i = 0; i < elements.size; i++){
+			sum += (elements.get(i) as DoubleValue).value
+		}
+		return new DoubleValue(sum)
+	}
+	
 	def dispatch Value interpret(MinOp node, Map<?, Double> metricValues){
 		val elements = (node.list.interpret(metricValues) as ListValue<Value>).value
 		return elements.min
@@ -319,6 +337,146 @@ class KPIFormulaEvaluator implements lu.list.swrdi.formulaKPI.evaluation.KPIForm
 			result.value.add(elem.interpret(metricValues))
 		}
 		return result
+	}
+	
+	def dispatch Value interpret(ListIteration node, Map<?, Double> metricValues){
+		val List<List<Value>> lists = newArrayList
+		var minSize = Integer.MAX_VALUE
+		for(var i = 0; i< node.lists.size; i++){
+			val value = node.lists.get(i).interpret(metricValues)
+			if(value instanceof ListValue){
+				lists.add(value.value)
+				if(value.value.size < minSize){
+					minSize = value.value.size
+				}
+				this.computedValues.put(node.iterators.get(i).name, new DoubleValue(0))
+			} else {
+				lists.add(null)
+				this.computedValues.put(node.iterators.get(i).name, value)
+			}
+		}
+		
+		val result = newArrayList
+		for(var i = 0; i<minSize; i++){
+			for(var listIndex = 0; listIndex<lists.size; listIndex++){
+				val list = lists.get(listIndex)
+				val iterator = node.iterators.get(listIndex).name
+				if(list !== null){
+					this.computedValues.replace(iterator, list.get(i))
+				}
+			}
+			
+			val value = node.expression.interpret(metricValues)
+			result.add(value)
+		}
+		
+		for(iterator: node.iterators){
+			this.computedValues.remove(iterator.name)
+		}
+		
+		return new ListValue(result)
+	}
+	
+	def dispatch Value interpret(ListReduce node, Map<?, Double> metricValues){
+		val List<List<Value>> lists = newArrayList
+		var minSize = Integer.MAX_VALUE
+		val start = node.accumulator.interpret(metricValues)
+		this.accumulators.addLast(start)
+		for(var i = 0; i< node.lists.size; i++){
+			val value = node.lists.get(i).interpret(metricValues)
+			if(value instanceof ListValue){
+				lists.add(value.value)
+				if(value.value.size < minSize){
+					minSize = value.value.size
+				}
+				this.computedValues.put(node.iterators.get(i).name, new DoubleValue(0))
+			} else {
+				lists.add(null)
+				this.computedValues.put(node.iterators.get(i).name, value)
+			}
+		}
+		
+		for(var i = 0; i<minSize; i++){
+			for(var listIndex = 0; listIndex<lists.size; listIndex++){
+				val list = lists.get(listIndex)
+				val iterator = node.iterators.get(listIndex).name
+				if(list !== null){
+					this.computedValues.replace(iterator, list.get(i))
+				}
+			}
+			
+			this.accumulators.set(this.accumulators.size-1, node.expression.interpret(metricValues))
+		}
+		
+		val result = this.accumulators.last
+		
+		this.accumulators.removeLast
+		for(iterator: node.iterators){
+			this.computedValues.remove(iterator.name)
+		}
+		
+		
+		return result
+	}
+	
+	def dispatch Value interpret(ListFilter node, Map<?, Double> metricValues){
+		val List<List<Value>> lists = newArrayList
+		var minSize = Integer.MAX_VALUE
+		for(var i = 0; i< node.lists.size; i++){
+			val value = node.lists.get(i).interpret(metricValues)
+			if(value instanceof ListValue){
+				lists.add(value.value)
+				if(value.value.size < minSize){
+					minSize = value.value.size
+				}
+				this.computedValues.put(node.iterators.get(i).name, new DoubleValue(0))
+			} else {
+				lists.add(null)
+				this.computedValues.put(node.iterators.get(i).name, value)
+			}
+		}
+		
+		val result = newArrayList
+		for(var i = 0; i<minSize; i++){
+			for(var listIndex = 0; listIndex<lists.size; listIndex++){
+				val list = lists.get(listIndex)
+				val iterator = node.iterators.get(listIndex).name
+				if(list !== null){
+					this.computedValues.replace(iterator, list.get(i))
+				}
+			}
+			
+			val predicate = node.expression.interpret(metricValues)
+			if(predicate.compareTo(0.5) > 0){
+				val List<Value<?>> elems = newArrayList
+				for(iterator: node.iterators){
+					elems.add(this.computedValues.get(iterator.name))
+				}
+				if(elems.size == 1){
+					result.add(elems.first)
+				} else {
+					result.add(new ListValue(elems))
+				}
+			}
+		}
+		
+		for(iterator: node.iterators){
+			this.computedValues.remove(iterator.name)
+		}
+		
+		return new ListValue(result)
+	}
+	
+	def dispatch Value interpret(ListSize node, Map<?, Double> metricValues){
+		val result = node.expression.interpret(metricValues)
+		if(result instanceof ListValue){
+			return new DoubleValue(result.value.size)
+		}
+		return result instanceof DoubleValue ? new DoubleValue(0) : new DoubleValue(1)
+	}
+	
+	def dispatch Value interpret(Accumulator node, Map<?, Double> metricValues){
+		return this.accumulators.lastOrNull
 	}
 	
 }

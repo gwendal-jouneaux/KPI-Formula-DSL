@@ -37,6 +37,8 @@ Thumbs.db
 .idea/
 *.iml
 .vscode/
+**/.settings/*
+.project
 
 # ------------------------------
 # Maven helper files

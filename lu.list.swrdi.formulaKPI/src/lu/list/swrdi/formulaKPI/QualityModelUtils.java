@@ -64,14 +64,6 @@ public class QualityModelUtils {
             	QualityModelUtils.resourceQM.getContents().add(attr);
             }
         }
-        
-    	String[] metrics = {"ATR", "HR", "HHR_Max", "WHR_Max", "TR", "TrainingConsumption", "InferenceConsumption", "Latency"};
-        for(String name: metrics) {
-            Metric metric = formulaKPIFactory.eINSTANCE.createMetric();
-            metric.setName(name);
-            QualityModelUtils.resourceQM.getContents().add(metric);
-            
-        }
     }
     
     public static void updateQualityModelResource() {
